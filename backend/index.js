@@ -13,6 +13,7 @@ const { default: mongoose } = require('mongoose');
 const SECRET = process.env.SECRET;
 const LocalStrategy = require('passport-local')
 const userRoutes = require('./Routes/userRoutes');
+const eventRoutes = require('./Routes/eventRoutes');
 const app = express();
 
 mongoose.set('strictQuery', true);
@@ -51,8 +52,8 @@ app.use(mongoSanitize())
 app.get('/', (req, res)=>{
     res.send("HELLO")
 })
-
 app.use('/auth', userRoutes);
+app.use('/event', eventRoutes);
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));
