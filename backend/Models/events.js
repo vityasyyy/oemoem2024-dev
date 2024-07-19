@@ -15,11 +15,11 @@ const eventsSchema = new Schema({
     curriculum: String,
     assignments: [
         {
-            assignmentLink: String,
-            assignmentComment: String
+            type: Schema.Types.ObjectId,
+            ref: "Assignment"
         }
     ],
-    submittedBy: [
+    enrolledBy: [
         {
             type: Schema.Types.ObjectId,
             ref: "User"
