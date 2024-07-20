@@ -6,6 +6,6 @@ const {enroll} = require('../Controllers/eventController');
 const {submit} = require('../Controllers/assignmentController');
 
 router.post('/:id/enroll', isAuthenticated, enroll);
-router.post('/:id/submit', submit);
+router.post('/:id/submit', isAuthenticated, submit);
 
 module.exports = router;
