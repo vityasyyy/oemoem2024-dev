@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const User = require('./users');
+
+const imageSchema = new Schema({
+    url: String,
+    filename: String
+})
+imageSchema.virtual('thumbnail').get(function() {
+    return this.url.replace('/upload', '/upload/w_200')
+})
 
 const eventsSchema = new Schema({
     title: String,
@@ -10,8 +17,10 @@ const eventsSchema = new Schema({
     prerequisite: String,
     slots: Number,
     date: Date,
+    deadline: Date,
     groupChat: String,
     mentors: String,
+    emailKadiv: String,
     curriculum: String,
     assignments: [
         {
@@ -24,7 +33,9 @@ const eventsSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "User"
         }
-    ]
+    ],
+    image: [imageSchema]
 })
 
 module.exports = mongoose.model('Event', eventsSchema);
+

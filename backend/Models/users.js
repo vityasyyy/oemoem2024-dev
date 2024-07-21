@@ -28,7 +28,11 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "Event"
         }
-    ]
+    ],
+    assignments: [{
+        type: Schema.Types.ObjectId,
+        ref: "Assignment"
+    }]
 });
 
 userSchema.plugin(passportLocalMongoose);
