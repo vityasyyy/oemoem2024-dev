@@ -34,11 +34,11 @@ const Hero = () => {
                     src="heroCardsMD.svg"
                     height={800}
                     width={800}
-                    className="absolute block lg:hidden z-0 sm:bottom-0 bottom-56qq"
+                    className="absolute block lg:hidden z-0 bottom-1/2 min-[400px]:bottom-24 min-[590px]:bottom-0"
                 />
 
                 {/* Penutupan Pendaftaran */}
-                <div className="p-4 w-fit text-white bg-basicBlue-10 rounded-lg text-base md:text-xl lg:mb-72 md:mb-64 sm:mb-56 mb-48  z-50 text-center">Penutupan Pendaftaran: &nbsp; 
+                <div className="p-2 sm:p-4 w-fit text-white bg-basicBlue-10 rounded-lg text-base md:text-xl lg:mb-72 md:mb-64 sm:mb-56 mb-48 z-50 text-center">Penutupan Pendaftaran: &nbsp; 
                     <span className="font-bold">  00:00:00</span>
                 </div>
 

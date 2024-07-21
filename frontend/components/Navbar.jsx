@@ -11,17 +11,17 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-basicLightGreen-10">
-            <div className={`flex items-center justify-between relative mx-auto px-6 lg:px-20 3xl:px-0 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
+        <nav className="bg-basicLightGreen-10 z-50 ">
+            <div className={`flex items-center justify-between relative mx-auto py-8 px-6 3xl:px-0 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
                 <Link href="/">
-                    <h1 className="text-white font-semibold">
+                    <h1 className="text-white text-xl sm:text-2xl font-semibold">
                         OemOem 
                     </h1>
                 </Link>
 
                 {/* Program dan Kelas & Button */}
-                <div className="hidden md:flex items-center space-x-5">
-                    <h2 className="text-white">
+                <div className="hidden md:flex text-xl items-center space-x-5">
+                    <h2 className="text-white px-4">
                         Program dan Kelas
                     </h2>   
                     <div className="flex items-center justify between gap-2">
