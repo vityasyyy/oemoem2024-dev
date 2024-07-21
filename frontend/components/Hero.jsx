@@ -4,15 +4,7 @@ import Link from "next/link";
 const Hero = () => {
     return (
         <>
-            <section className="flex flex-col relative md:py-8 py-4 px-5 items-center w-screen h-fit bg-basicLightGreen-10">
-                {/* Background Gradient */}
-                <Image 
-                    src="heroBackground.svg"
-                    layout="fill"
-                    objectFit="cover"
-                    className="z-10"
-                />
-
+            <section className="flex flex-col relative md:py-8 py-4 px-4 items-center w-screen h-fit bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10">
                 {/* White Shine */}
                 <Image 
                     src="heroShine.svg"
@@ -26,7 +18,7 @@ const Hero = () => {
                     src="heroCards.svg"
                     height={1000}
                     width={1000}
-                    className="hidden lg:block absolute z-0 bottom-0"
+                    className="hidden lg:block absolute z-0 bottom-0 opacity-50"
                 />
 
                 {/* Cards on Medium Screens */}
@@ -34,16 +26,16 @@ const Hero = () => {
                     src="heroCardsMD.svg"
                     height={800}
                     width={800}
-                    className="absolute block lg:hidden z-0 bottom-1/2 min-[400px]:bottom-24 min-[590px]:bottom-0"
+                    className="absolute block lg:hidden z-0 bottom-1/2 opacity-50 min-[400px]:bottom-24 min-[590px]:bottom-0"
                 />
 
                 {/* Penutupan Pendaftaran */}
-                <div className="p-2 sm:p-4 w-fit text-white bg-basicBlue-10 rounded-lg text-base md:text-xl lg:mb-72 md:mb-64 sm:mb-56 mb-48 z-50 text-center">Penutupan Pendaftaran: &nbsp; 
+                <div className="p-2 sm:p-4 w-fit text-white bg-basicBlue-10 rounded-lg text-base md:text-xl lg:mb-72 md:mb-64 sm:mb-56 mb-48 z-30 text-center">Penutupan Pendaftaran: &nbsp; 
                     <span className="font-bold">  00:00:00</span>
                 </div>
 
                 {/* div kelompokin konten hero */}
-                <div className="flex flex-col mb-14 items-center gap-3 z-50">
+                <div className="flex flex-col mb-14 items-center gap-3 z-30">
                     {/* Headers */}
                     <h1 className="text-white lg:text-5xl md:text-4xl text-3xl text-center font-bold">Hadirkan IT Untuk Semua!</h1>
                     <h2 className="text-white lg:text-2xl md:text-xl text-lg text-center">Pelatihan hardskill komputer gratis dan offline bersama Ilmu Komputer Universitas Gadjah Mada</h2>
@@ -57,7 +49,6 @@ const Hero = () => {
                         alt="menu"
                         width={320}
                         height={32}
-                        className="inline-block cursor-pointer"
                     />
 
                 </div>
