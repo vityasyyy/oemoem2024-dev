@@ -1,7 +1,7 @@
 const User = require('../Models/users');
 const Event = require('../Models/events');
 
-exports.enroll = async (req, res) => {
+module.exports.enroll = async (req, res) => {
     try {
         const eventId = req.params.id;
         const userId = req.user._id;
@@ -34,3 +34,4 @@ exports.enroll = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
