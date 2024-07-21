@@ -15,7 +15,7 @@ const LocalStrategy = require('passport-local')
 const userRoutes = require('./Routes/userRoutes');
 const eventRoutes = require('./Routes/eventRoutes');
 const app = express();
-
+const cors = require('cors')
 mongoose.set('strictQuery', true);
 connectDB();
 
@@ -45,6 +45,7 @@ passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
+app.use(cors({origin: "http://localhost:3000"}))
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(mongoSanitize())
