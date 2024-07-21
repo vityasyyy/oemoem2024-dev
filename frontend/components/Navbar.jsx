@@ -1,17 +1,25 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import react, { useState } from "react";
 
 const Navbar = () => {
+    const [isClick, setisClick] = useState(false);
+
+    const toggleNavbar = () => {
+        setisClick(!isClick);
+    };
+
     return (
         <nav className="bg-basicLightGreen-10">
-            <nav className="flex items-center justify-between relative mx-auto px-6 lg:px-20 3xl:px-0 bg-basicBlack-10 h-12 rounded-b-lg">
+            <div className={`flex items-center justify-between relative mx-auto px-6 lg:px-20 3xl:px-0 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
                 <Link href="/">
                     <h1 className="text-white font-semibold">
                         OemOem 
                     </h1>
                 </Link>
 
-                {/* Program dan Kelas */}
+                {/* Program dan Kelas & Button */}
                 <div className="hidden md:flex items-center space-x-5">
                     <h2 className="text-white">
                         Program dan Kelas
@@ -26,14 +34,50 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <Image
-                    src="menu.svg"
-                    alt="menu"
-                    width={32}
-                    height={32}
-                    className="inline-block cursor-pointer md:hidden"
-                />
-            </nav>
+                <button onClick={toggleNavbar} className="md:hidden">
+                    {isClick ? (
+                        <svg className="h-6 w-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="white"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={3}
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    ) : (
+                        <Image
+                            src="/menu.svg"
+                            alt="menu"
+                            width={24}
+                            height={24}
+                            className="inline-block cursor-pointer"
+                        />
+                    )}
+                </button>
+            </div>
+
+            {isClick && (
+                <div className="md:hidden bg-basicBlack-10 rounded-b-lg px-6 py-4">
+                    <div className="flex justify-center">
+                        <h2 className="text-white">
+                            Program dan Kelas
+                        </h2>
+                    </div>
+                    <div className="flex flex-col items-center justify-center gap-2 mt-2">
+                        <button className="flex items-center p-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
+                            <label className="cursor-pointer">Masuk</label>
+                        </button>
+                        <button className="flex items-center p-1 justify-center gap-3 border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
+                            <label className="cursor-pointer">Daftar</label>
+                        </button>
+                    </div>
+                </div>
+            )}
         </nav>
     );
 }
