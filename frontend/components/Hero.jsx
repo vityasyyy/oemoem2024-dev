@@ -1,6 +1,11 @@
 const Hero = () => {
     return (
-        <h1>dsadasd</h1>
+        <section className="flex flex-col bg-basicLightGreen-10 w-screen h-screen">
+            {/* Countdown */}
+            <div className="time ">
+                dsjkad
+            </div>
+        </section>
     );
 }
 
