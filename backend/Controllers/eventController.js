@@ -35,3 +35,29 @@ module.exports.enroll = async (req, res) => {
     }
 };
 
+module.exports.getAllEvents = async (req, res) => {
+    try {
+        const events = await Event.find({});
+        res.status(200).json(events);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// Get a single event
+module.exports.getEvent = async (req, res) => {
+    try {
+        const eventId = req.params.id;
+        const event = await Event.findById(eventId)
+            .populate('enrolledBy', 'username email')
+            .populate('assignments');
+
+        if (!event) {
+            return res.status(404).json({ error: 'Event not found' });
+        }
+
+        res.status(200).json(event);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
