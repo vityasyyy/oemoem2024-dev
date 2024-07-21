@@ -1,6 +1,9 @@
 const Hero = () => {
     return (
-        <h1>dsadasd</h1>
+        <div className="flex items-center">
+            <h1>Header</h1>
+            
+        </div>
     );
 }
 
