@@ -9,7 +9,7 @@ const storage = new CloudinaryStorage({
     cloudinary,
     params: {
         folder: "Deedoo",
-        allowedFormats: ['jpg', 'png', 'jpeg']
+        allowedFormats: ['jpg', 'png', 'jpeg', 'svg']
     }
 })
 
