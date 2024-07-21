@@ -1,7 +1,7 @@
 import DiceAd from "@/components/DiceAd";
 import Hero from "@/components/Hero";
 import Information from "@/components/Information";
-import Navbar from "@/components/Navbar";
+import Kelas from "@/components/Kelas";
 
 export default function Home() {
   return (
@@ -9,6 +9,7 @@ export default function Home() {
       <Hero />
       <Information />
       <DiceAd />
+      <Kelas />
     </>
   );
 }
