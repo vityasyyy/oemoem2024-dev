@@ -21,7 +21,7 @@ const sampleEvents = [
         slots: 30,
         date: new Date('2023-08-15'),
         deadline: new Date('2023-08-10'), // 5 days before the event
-        groupChat: "https://chat.example.com/webdev",
+        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         mentors: "Jane Smith, Bob Johnson",
         emailKadiv: "kadiv@example.com",
         curriculum: "HTML, CSS, JavaScript",
@@ -41,7 +41,7 @@ const sampleEvents = [
         slots: 50,
         date: new Date('2023-09-01'),
         deadline: new Date('2023-08-25'), // 7 days before the event
-        groupChat: "https://chat.example.com/datascience",
+        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         mentors: "Charlie Davis, Eve Wilson",
         emailKadiv: "kadiv@example.com",
         curriculum: "Python, pandas, scikit-learn",

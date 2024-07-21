@@ -20,7 +20,6 @@ const eventsSchema = new Schema({
     deadline: Date,
     groupChat: String,
     mentors: String,
-    emailKadiv: String,
     curriculum: String,
     assignments: [
         {
