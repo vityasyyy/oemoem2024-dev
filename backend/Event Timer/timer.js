@@ -1,0 +1,94 @@
+/* 
+Frontend implementation example: 
+-This is already tested with live preview. To test it, do a live preview on the index.html 
+-Example of separate implementation of the html and css are included in this folder. 
+-Make sure to follow the instruction for each implementation.
+
+
+===========HTML IMPLEMENTATION===========
+-Make a new file for index.html.
+-Javascript logic can be implemented internally inside index.html using <script> tag. 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="timeout">
+        <div>
+            <p id="days">00</p> //ids are used for the script to refer to the element.
+            <span>Days</span>
+        </div>
+
+        <div>
+            <p id="hours">00</p>
+            <span>Hours</span>
+        </div>
+
+        <div>
+            <p id="minutes">00</p>
+            <span>Minutes</span>
+        </div>
+
+        <div>
+            <p id="seconds">00</p>
+            <span>Seconds</span>
+        </div>
+
+    </div>
+
+    </body>
+</html>
+
+===========CSS IMPLEMENTATION===========
+-Make a new file for style.css
+
+    .timeout{
+        display: flex;
+    }
+
+    .timeout div{
+        flex-basis: 100px;
+    }
+
+    .timeout div p{
+        font-size: 60px;
+        margin-bottom: -14px;
+    }
+*/
+
+/* ===========COUNTDOWN FUNCTION JS=========== */
+// Uncomment the <script> tag to implement internal javascript in index.html
+// <script>
+    var countDownDate = new Date("Oct 16, 2024 00:00:00").getTime(); //Bisa diganti dengan deadline pendaftaran, pengumpulan tugas, etc. 
+    var x = setInterval(function(){
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        //Refers to the elements with the respective ids, in this case <p> that shows the time in <div class="timeout">
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+
+        if(distance < 0){
+            clearInterval(x);
+            document.getElementById("days").innerHTML = "00";
+            document.getElementById("hours").innerHTML = "00";
+            document.getElementById("minutes").innerHTML = "00";
+            document.getElementById("seconds").innerHTML = "00";
+        }
+    }, 1000)
+// </script>
+
+
+
