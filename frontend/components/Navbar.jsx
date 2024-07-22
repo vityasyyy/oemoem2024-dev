@@ -11,7 +11,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-basicLightGreen-10 z-50 ">
+        <nav className="bg-basicLightGreen-10">
             <div className={`flex items-center justify-between relative mx-auto py-8 px-6 3xl:px-0 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
                 <Link href="/">
                     <h1 className="text-white text-xl sm:text-2xl font-semibold">
@@ -62,20 +62,22 @@ const Navbar = () => {
             </div>
 
             {isClick && (
-                <div className="md:hidden bg-basicBlack-10 rounded-b-lg px-6 py-4">
-                    <div className="flex justify-center">
-                        <h2 className="text-white">
+                <div className="absolute z-[51] w-screen md:hidden bg-basicWhite-10 rounded-b-lg">
+                    <div className="flex justify-center py-2">
+                        <h2 className="text-basicBlack-10 font-semibold">
                             Program dan Kelas
                         </h2>
                     </div>
-                    <div className="flex flex-col items-center justify-center gap-2 mt-2">
-                        <button className="flex items-center p-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
+
+                    <div className="flex justify-center flex-col">
+                        <button className="flex items-center justify-center py-2 bg-basicRed-10 text-white border-basicRed-10 " type='login'>
                             <label className="cursor-pointer">Masuk</label>
                         </button>
-                        <button className="flex items-center p-1 justify-center gap-3 border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
-                            <label className="cursor-pointer">Daftar</label>
+                        <button className="flex items-center py-2 justify-center border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded-lg" type='login'>
+                            <label className="cursor-pointer font-semibold">Daftar</label>
                         </button>
                     </div>
+
                 </div>
             )}
         </nav>
