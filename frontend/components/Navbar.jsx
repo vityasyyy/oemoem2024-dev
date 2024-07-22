@@ -41,42 +41,43 @@ const Navbar = () => {
                             <button className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
                                 <label className="cursor-pointer font-medium">Masuk</label>
                             </button>
-                            <button className="flex items-center px-2 py-1 justify-center gap-3 border-2 border-basicRed-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
+                            <button className="flex items-center px-2 py-1 justify-center gap-3 border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
                                 <label className="cursor-pointer font-medium">Daftar</label>
                             </button>
                         </div>
                     </div>
 
-                <button onClick={toggleNavbar} className="md:hidden focus:outline-none relative w-8 h-8">
-                    <div className={`hamburger ${isClick ? 'open' : ''}`}>
-                        <span className="block w-full h-1 bg-white transition-transform duration-300 rounded"></span>
-                        <span className="block w-full h-1 bg-white mt-2 transition-transform duration-300 rounded"></span>
-                        <span className="block w-full h-1 bg-white mt-2 transition-transform duration-300 rounded"></span>
-                    </div>
-                </button>
-            </div>
-
-            {transitions((style, item) =>
-                item && (
-                    <animated.div style={style} className="absolute z-[51] w-screen md:hidden bg-basicWhite-10 rounded-b-lg shadow-lg">
-                        <div className="flex justify-center py-2">
-                            <h2 className="text-basicBlack-10 font-semibold">
-                                Program dan Kelas
-                            </h2>
+                    <button onClick={toggleNavbar} className="md:hidden focus:outline-none relative w-8 h-8">
+                        <div className={`hamburger ${isClick ? 'open' : ''}`}>
+                            <span className="block w-full h-1 bg-white transition-transform duration-300 rounded"></span>
+                            <span className="block w-full h-1 bg-white mt-2 transition-transform duration-300 rounded"></span>
+                            <span className="block w-full h-1 bg-white mt-2 transition-transform duration-300 rounded"></span>
                         </div>
+                    </button>
+                </div>
 
-                        <div className="flex justify-center flex-col">
-                            <button className="flex items-center justify-center py-2 bg-basicRed-10 text-white border-basicRed-10 " type='login'>
-                                <label className="cursor-pointer">Masuk</label>
-                            </button>
-                            <button className="flex items-center py-2 justify-center border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded-lg" type='login'>
-                                <label className="cursor-pointer font-semibold">Daftar</label>
-                            </button>
-                        </div>
-                    </animated.div>
-                )
-            )}
-        </nav>
+                {transitions((style, item) =>
+                    item && (
+                        <animated.div style={style} className="absolute z-[51] w-screen md:hidden bg-basicWhite-10 rounded-b-lg shadow-lg">
+                            <div className="flex justify-center py-2">
+                                <h2 className="text-basicBlack-10 font-semibold">
+                                    Program dan Kelas
+                                </h2>
+                            </div>
+
+                            <div className="flex justify-center flex-col">
+                                <button className="flex items-center justify-center py-2 bg-basicRed-10 text-white border-basicRed-10 " type='login'>
+                                    <label className="cursor-pointer">Masuk</label>
+                                </button>
+                                <button className="flex items-center py-2 justify-center border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded-lg" type='login'>
+                                    <label className="cursor-pointer font-semibold">Daftar</label>
+                                </button>
+                            </div>
+                        </animated.div>
+                    )
+                )}
+            </nav>
+        </>
     );
 }
 
