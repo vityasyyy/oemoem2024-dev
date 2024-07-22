@@ -22,9 +22,13 @@ export default function Masuk() {
             const response = await axios.post('http://localhost:8080/auth/login', {
                 email,
                 password
-            });
+            }, {withCredentials: true});
             console.log(response)
             if (response.status === 200) {
+                const validateResponse = await axios.get('http://localhost:8080/auth/validate', {
+                    withCredentials: true
+                });
+                console.log(validateResponse)
                 // Login successful, redirect to home page
                 router.push('/');
             }
