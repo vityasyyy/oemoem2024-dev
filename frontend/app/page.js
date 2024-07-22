@@ -1,3 +1,5 @@
+'use client'
+
 import DiceAd from "@/components/DiceAd";
 import Hero from "@/components/Hero";
 import Information from "@/components/Information";

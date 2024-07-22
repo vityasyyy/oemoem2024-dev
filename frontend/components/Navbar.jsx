@@ -19,28 +19,33 @@ const Navbar = () => {
     });
 
     return (
-        <nav className="bg-basicLightGreen-10 z-50 sticky top-0">
-            <div className={`flex items-center justify-between relative mx-auto py-8 px-6 sm:px-8 3xl:px-0 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
-                <Link href="/">
-                    <h1 className="text-white text-xl sm:text-2xl font-semibold">
-                        OemOem 
-                    </h1>
-                </Link>
+        <>
+            {/* Fill color behind navbar */}
+            <div className="bg-basicLightGreen-10 absolute top-0 right-0 left-0 bottom-0"></div>
 
-                {/* Program dan Kelas & Button */}
-                <div className="hidden md:flex text-xl items-center space-x-5">
-                    <h2 className="text-white px-4">
-                        Program dan Kelas
-                    </h2>   
-                    <div className="flex items-center justify between gap-2">
-                        <button className="flex items-center p-2 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
-                            <label className="cursor-pointer">Masuk</label>
-                        </button>
-                        <button className="flex items-center p-2 justify-center gap-3 border-2 border-basicRed-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
-                            <label className="cursor-pointer">Daftar</label>
-                        </button>
+            {/* Navigation Bar */}
+            <nav className="bg-transparent z-50 sticky top-0">
+                <div className={`flex items-center justify-between relative z-30 mx-auto py-8 px-6 sm:px-8 3xl:px-0 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
+                    <Link href="/">
+                        <h1 className="text-white text-xl sm:text-2xl font-semibold">
+                            OemOem 
+                        </h1>
+                    </Link>
+
+                    {/* Program dan Kelas & Button */}
+                    <div className="hidden md:flex text-xl items-center space-x-5">
+                        <h2 className="text-white px-4">
+                            Program dan Kelas
+                        </h2>   
+                        <div className="flex items-center justify between gap-2">
+                            <button className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
+                                <label className="cursor-pointer font-medium">Masuk</label>
+                            </button>
+                            <button className="flex items-center px-2 py-1 justify-center gap-3 border-2 border-basicRed-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
+                                <label className="cursor-pointer font-medium">Daftar</label>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
                 <button onClick={toggleNavbar} className="md:hidden focus:outline-none relative w-8 h-8">
                     <div className={`hamburger ${isClick ? 'open' : ''}`}>
