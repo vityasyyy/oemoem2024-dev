@@ -34,9 +34,9 @@ const Navbar = () => {
 
                     {/* Program dan Kelas & Button */}
                     <div className="hidden md:flex text-xl items-center space-x-5">
-                        <h2 className="text-white px-4">
+                        <Link href="/kelas" className="text-white px-4">
                             Program dan Kelas
-                        </h2>   
+                        </Link>   
                         <div className="flex items-center justify between gap-2">
                             <Link href="auth/masuk" className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
                                 <label className="cursor-pointer font-medium">Masuk</label>

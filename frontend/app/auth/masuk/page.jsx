@@ -1,3 +1,4 @@
+import BackButton from "@/components/BackButton";
 import LoginNavbar from "@/components/LoginNavbar";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,13 +14,8 @@ export default function Masuk() {
 
                 {/* Back Button*/}
                 <div className="flex gap-2 items-center px-6 sm:px-8">
-                    <Link href="/" className="flex items-center justify-center bg-white rounded-md py-0.5 px-2">
-                        <Image
-                            src="back.svg"
-                            alt="back"
-                            width={10}
-                            height={10}
-                        />
+                    <Link href="/">
+                        <BackButton />
                     </Link>
                     <h2 className="font-bold text-black text-lg sm:text-xl sm:ml-2">Masuk</h2>
                 </div>

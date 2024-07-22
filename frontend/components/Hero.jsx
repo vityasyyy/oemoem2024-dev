@@ -4,13 +4,21 @@ import Link from "next/link";
 const Hero = () => {
     return (
         <>
-            <section className="flex flex-col relative md:pt-24 md:pb-4 py-4 px-4 items-center w-screen h-fit bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10">
+            <section className="flex flex-col relative pt-24 md:pb-4 pb-4 px-4 items-center w-screen h-fit bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10">
                 {/* White Shine */}
                 <Image 
                     src="heroShine.svg"
                     height={500}
                     width={500}
                     className="z-0 absolute top-0 left-0"
+                />
+                
+                {/* White Shine */}
+                <Image 
+                    src="heroShine2.svg"
+                    height={500}
+                    width={500}
+                    className="z-0 absolute bottom-0 right-0"
                 />
 
                 {/* Cards on Large Screens */}
@@ -21,12 +29,12 @@ const Hero = () => {
                     className="hidden lg:block absolute z-0 bottom-0 opacity-50"
                 />
 
-                {/* Cards on Medium Screens */}
+                {/* Cards on Smaller Screens */}
                 <Image 
                     src="heroCardsMD.svg"
                     height={800}
                     width={800}
-                    className="absolute block lg:hidden z-0 bottom-1/2 opacity-50 min-[400px]:bottom-24 min-[590px]:bottom-0"
+                    className="absolute block lg:hidden z-0 bottom-1/3 opacity-50 min-[400px]:bottom-24 min-[590px]:bottom-0"
                 />
 
                 {/* Penutupan Pendaftaran */}
