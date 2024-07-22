@@ -1,16 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Hero = () => {
+const Hero = ({ user }) => {
     return (
         <>
             <section className="flex flex-col relative pt-24 md:pb-4 pb-4 px-4 items-center w-screen h-fit bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10">
+                {/* User Greeting */}
+                {user && (
+                    <div className="absolute top-4 right-4 text-white text-[100px] font-semibold z-40">
+                        Hello, {user.username}
+                    </div>
+                )}
+
                 {/* White Shine */}
                 <Image 
                     src="heroShine.svg"
                     height={500}
                     width={500}
                     className="z-0 absolute top-0 left-0"
+                    alt="Hero Shine"
                 />
                 
                 {/* White Shine */}
@@ -19,6 +27,7 @@ const Hero = () => {
                     height={500}
                     width={500}
                     className="z-0 absolute bottom-0 right-0"
+                    alt="Hero Shine 2"
                 />
 
                 {/* Cards on Large Screens */}
@@ -27,6 +36,7 @@ const Hero = () => {
                     height={1000}
                     width={1000}
                     className="hidden lg:block absolute z-0 bottom-0 opacity-50"
+                    alt="Hero Cards Large"
                 />
 
                 {/* Cards on Smaller Screens */}
@@ -35,6 +45,7 @@ const Hero = () => {
                     height={800}
                     width={800}
                     className="absolute block lg:hidden z-0 bottom-1/3 opacity-50 min-[400px]:bottom-24 min-[590px]:bottom-0"
+                    alt="Hero Cards Small"
                 />
 
                 {/* Penutupan Pendaftaran */}
@@ -54,7 +65,7 @@ const Hero = () => {
                     {/* Presented By */}
                     <Image
                         src="presented.svg"
-                        alt="menu"
+                        alt="Presented By"
                         width={320}
                         height={32}
                     />

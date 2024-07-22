@@ -1,50 +1,69 @@
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 
-const Kelas = () => {
+const Kelas = ({ events }) => {
+    const router = useRouter();
+
+    const handleClick = (id) => {
+        router.push(`/events/${id}`);
+    };
+
     return (
+<<<<<<< Updated upstream
         <section className="bg-basicBlack-10 px-[min(10%,512px)] py-10">
             <div className="w-fit text-lg bg-basicBlue-10 px-4 py-2 rounded-md text-white">Program dan Kelas
+=======
+        <section className="bg-basicBlack-10 px-8 py-10">
+            <div className="w-fit text-lg bg-basicBlue-10 px-4 py-2 rounded-md text-white">
+                Program dan Kelas
+>>>>>>> Stashed changes
             </div>
             
             {/* Kumpulan Kartu */}
-            <div className="flex pt-4">
-
-                {/* Card */}
-                <div className="border-[3px] border-basicRed-10 rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 bg-basicLightBrown-10 flex flex-col justify-between">
-                    {/* Upper part: Heart and Class Logo */}
-                    <div>
-                        {/* Logo Kiri Atas */}
-                        <Image
-                            src="heart.svg"
-                            alt="menu"
-                            width={25}
-                            height={32}
-                            className=""
-                            />
-
-                        {/* Logo Kelas */}
-                        <div className="flex justify-center mt-2">
-                            <Image
-                                src="cp.svg"
-                                alt="menu"
-                                width={75}
-                                height={32}
-                                className=""
+            <div className="flex flex-wrap pt-4 gap-4">
+                {events.map((event, index) => (
+                    <div key={index} className="border-[3px] rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 flex flex-col justify-between" style={{ borderColor: event.color, backgroundColor: '#FAF0E6' }}>
+                        {/* Upper part: Shape and Class Logo */}
+                        <div>
+                            {/* Logo Kiri Atas */}
+                            {event.shape && event.shape[0] && (
+                                <Image
+                                    src={event.shape[0].url}
+                                    alt="shape"
+                                    width={25}
+                                    height={32}
+                                    className=""
                                 />
+                            )}
+
+                            {/* Logo Kelas */}
+                            <div className="flex justify-center mt-2">
+                                {event.image && event.image[0] && (
+                                    <Image
+                                        src={event.image[0].url}
+                                        alt="class logo"
+                                        width={75}
+                                        height={32}
+                                        className=""
+                                    />
+                                )}
+                            </div>
+
+                            {/* Nama Kelas */}
+                            <h1 className="text-center font-medium text-base mt-1">
+                                {event.title}
+                            </h1>
                         </div>
 
-                        {/* Nama Kelas */}
-                        <h1 className="text-center font-medium text-base mt-1">
-                            Comp. Prog.
-                        </h1>
+                        <button 
+                            onClick={() => handleClick(event._id)} 
+                            className="text-white py-2 mx-2 text-center rounded-xl mb-2 cursor-pointer" 
+                            style={{ backgroundColor: event.color }}
+                        >
+                            Lihat Kelas
+                        </button>
                     </div>
-
-                    {/* Lower part: Lihat Kelas Button */}
-                    <div className="bg-basicRed-10 text-white py-2 mx-2 text-center rounded-xl mb-2">
-                        Lihat Kelas
-                    </div>
-                </div>
-
+                ))}
             </div>
         </section>
     );
