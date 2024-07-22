@@ -12,10 +12,10 @@ export default function Akun() {
             <LoginNavbar />
 
             {/* Main Section */}
-            <section className="bg-basicLightGreen-10 pt-20 relative">
+            <section className="bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10 px-[min(10%,512px)] pt-20 relative">
 
                 {/* Back Button*/}
-                <div className="flex gap-2 items-center px-6 sm:px-8">
+                <div className="flex gap-2 items-center">
                     <Link href="/">
                         <BackButton />
                     </Link>
@@ -23,12 +23,12 @@ export default function Akun() {
                 </div>
 
                 {/* Hero */}
-                <div className="flex flex-col items-center gap-4 mt-8 bg-gradient-to-t pb-24 sm:pb-42 px-6 sm:px-8 from-basicBlack-10 to-basicLightGreen-10 z-30">
+                <div className="flex flex-col items-center gap-4 mt-8 pb-24 sm:pb-42 z-30">
                     {/* Title */}
                     <h1 className="max-w-[24rem] text-3xl text-wrap text-center text-white drop-shadow-lg font-semibold z-30">Informasi Akun</h1>
 
-                    {/* Login Card */}
-                    <div className="bg-basicBlack-10 w-[min(100%,24rem)] z-30 text-sm sm:text-base flex flex-col gap-1 border-[1px] border-white rounded-lg p-4 mb-2 mx-6 sm:mx-8">
+                    {/* Card */}
+                    <div className="bg-basicBlack-10 w-[min(100%,32rem)] z-30 text-sm sm:text-xl flex flex-col gap-1 border-[1px] border-white rounded-xl px-6 py-4 mb-2 mx-6 sm:mx-8">
                         {/* Form */}
                         <h2 className="text-basicLightBrown-10 font-medium sm:mt-4">Nama</h2>
                         <h2 className="text-white font-medium sm">Fahmi Shampoerna</h2>

@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-const Kelas = () => {
+const Classes = () => {
     return (
-        <section className="bg-basicBlack-10 px-[min(10%,512px)] py-10">
+        <section className="py-10">
             <div className="w-fit text-lg bg-basicBlue-10 px-4 py-2 rounded-md text-white">Program dan Kelas
             </div>
             
@@ -50,4 +50,4 @@ const Kelas = () => {
     );
 }
 
-export default Kelas;
+export default Classes;

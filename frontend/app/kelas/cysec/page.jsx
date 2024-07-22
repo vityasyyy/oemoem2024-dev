@@ -7,7 +7,7 @@ export default function cysec() {
         <>
             <NavbarKelas />
 
-            <section className="h-screen bg-basicLightGreen-10 pt-24 px-8">
+            <section className="h-fit px-[min(10%,512px)] bg-basicLightGreen-10 pt-24">
                 <div className="bg-basicBlack-10 max-w-xs flex p-3 rounded-lg">
                     <Image
                         src="/cysec.svg"

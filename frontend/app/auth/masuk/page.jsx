@@ -56,7 +56,7 @@ export default function Masuk() {
                     <h1 className="max-w-[24rem] text-3xl text-wrap text-center text-white drop-shadow-lg font-semibold z-30">Selamat Datang Kembali di <span className="text-basicLightBrown-10">OemOem</span></h1>
 
                     {/* Login Card */}
-                    <form onSubmit={handleSubmit} className="bg-basicBlack-10 w-[min(100%,24rem)] z-30 text-sm sm:text-base flex flex-col gap-1 border-[1px] border-white rounded-lg p-4 mb-2 mx-6 sm:mx-8">
+                    <form onSubmit={handleSubmit} className="bg-basicBlack-10 w-[min(100%,32rem)] z-30 text-sm sm:text-base flex flex-col gap-1 border-[1px] border-white rounded-xl px-6 py-4 mb-2 mx-6 sm:mx-8">
                         {error && <p className="text-red-500 text-xs mb-2">{error}</p>}
 
                         {/* Form */}
