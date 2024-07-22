@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
 
-const Kelas = ({ events }) => {
+const Classes = ({ events }) => {
     const router = useRouter();
 
     const handleClick = (id) => {
