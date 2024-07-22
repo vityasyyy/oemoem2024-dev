@@ -9,7 +9,7 @@ module.exports.register = async (req, res) => {
             if(err) {
                 return next(err);
             }
-            res.status(201).json({message: "Register succesful"})
+            res.status(201).json({message: "Register succesful", user: req.user})
         })
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -27,4 +27,12 @@ module.exports.logout = (req, res) => {
         }
         res.json({message: "Logout successful"});
     })
+}
+
+module.exports.validate = async (req, res) => {
+    if (req.isAuthenticated()) {
+        res.json({message: "Authenticated", user: req.user})
+    } else {
+        res.status(401).json({message: "Not authenticated"})
+    }
 }
