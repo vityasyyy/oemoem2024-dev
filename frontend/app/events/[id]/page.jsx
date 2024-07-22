@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
+import Loading from '@/components/Loading';
 import EventDetail from '../../../components/EventDetail';
 import api from '../../../lib/axios';
 
@@ -35,7 +36,7 @@ export default function EventPage() {
   }
 
   if (error) {
-    return <section>Error: {error}</section>;
+    return <Loading />;
   }
 
   if (!event) {
