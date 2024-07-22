@@ -1,7 +1,8 @@
+"use client";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
 
-const Kelas = ({ events }) => {
+const Classes = ({ events }) => {
     const router = useRouter();
 
     const handleClick = (id) => {
@@ -9,7 +10,7 @@ const Kelas = ({ events }) => {
     };
 
     return (
-        <section className="bg-basicBlack-10 px-8 py-10">
+        <section className="bg-basicBlack-10 py-10">
             <div className="w-fit text-lg bg-basicBlue-10 px-4 py-2 rounded-md text-white">
                 Program dan Kelas
             </div>
