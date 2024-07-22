@@ -1,8 +1,10 @@
 import LoginNavbar from "@/components/LoginNavbar";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
+import { useForm } from 'react-hook-form';
 
-export default function Login() {
+export default function Daftar() {
     return (
         <>
             {/* Navigation Bar */}
@@ -21,7 +23,7 @@ export default function Login() {
                             height={10}
                         />
                     </Link>
-                    <h2 className="font-bold text-black text-lg sm:text-xl sm:ml-2">Masuk</h2>
+                    <h2 className="font-bold text-black text-lg sm:text-xl sm:ml-2">Daftar</h2>
                 </div>
 
                 {/* Hero */}
@@ -31,25 +33,36 @@ export default function Login() {
 
                     {/* Login Card */}
                     <div className="bg-basicBlack-10 w-[min(100%,24rem)] z-30 text-sm sm:text-base flex flex-col gap-1 border-[1px] border-white rounded-lg p-4 mb-2 mx-6 sm:mx-8">
-                        
                         {/* Form */}
-                        <h2 className="text-basicLightBrown-10 font-medium sm:mt-4">Email</h2>
+                        <h2 className="text-basicLightBrown-10 font-medium sm:mt-4">Nama</h2>
+                        <input 
+                            type="text"
+                            placeholder="Tuliskan Namamu"
+                            className="text-basicLightGrey-10 rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"/>
+
+                        <h2 className="text-basicLightBrown-10 font-medium">Email</h2>
                         <input
                             type="text"
                             placeholder="Tuliskan Namamu"
                             className="text-basicLightGrey-10 rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"/>
 
-                        <h2 className="text-basicLightBrown-10 font-medium ">Password</h2>
+                        <h2 className="text-basicLightBrown-10 font-medium">Password</h2>
+                        <input 
+                            type="password"
+                            placeholder="Tuliskan Namamu"
+                            className="text-basicLightGrey-10 rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"/>
+
+                        <h2 className="text-basicLightBrown-10 font-medium">Konfirmasi Password</h2>
                         <input
                             type="password"
                             placeholder="Tuliskan Namamu"
                             className="text-basicLightGrey-10 rounded-sm border-1 border-black font-medium mb-8 px-2 py-1 sm:py-2"/>
 
-                        <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Masuk</button>
+                        <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Daftar</button>
                     </div>
 
                     {/* Belom punya akun? */}
-                    <h1 className="text-white text-xl font-medium mb-12 z-30">Belom punya akun? <Link href="/auth/daftar" className="text-basicLightBrown-10">Daftar</Link></h1>
+                    <h1 className="text-white text-xl font-medium mb-12 z-30">Sudah punya akun? <Link href="/auth/login" className="text-basicLightBrown-10">Masuk</Link></h1>
                 </div>
 
                 {/* Card Background */}

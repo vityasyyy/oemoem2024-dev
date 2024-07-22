@@ -4,7 +4,7 @@ import Link from "next/link";
 const Hero = () => {
     return (
         <>
-            <section className="flex flex-col relative md:py-8 py-4 px-4 items-center w-screen h-fit bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10">
+            <section className="flex flex-col relative md:pt-24 md:pb-4 py-4 px-4 items-center w-screen h-fit bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10">
                 {/* White Shine */}
                 <Image 
                     src="heroShine.svg"
@@ -41,7 +41,7 @@ const Hero = () => {
                     <h2 className="text-white lg:text-2xl md:text-xl text-lg text-center">Pelatihan hardskill komputer gratis dan offline bersama Ilmu Komputer Universitas Gadjah Mada</h2>
 
                     {/* Tombol Daftar Sekarang */}
-                    <Link href="/" className="sm:rounded-2xl rounded-md bg-basicRed-10 text-white md:text-2xl text-lg text-center sm:px-28 px-16 md:py-3 py-1 mb-5 border-4 border-basicDarkBrown-10">Daftar Sekarang</Link>
+                    <Link href="/auth/daftar" className="sm:rounded-2xl rounded-md bg-basicRed-10 text-white md:text-2xl text-lg text-center sm:px-28 px-16 md:py-3 py-1 mb-5 border-4 border-basicDarkBrown-10">Daftar Sekarang</Link>
                     
                     {/* Presented By */}
                     <Image
