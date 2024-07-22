@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import react, { useState } from "react";
+import React, { useState } from "react";
+import { useTransition, animated } from 'react-spring';
 
 const Navbar = () => {
     const [isClick, setisClick] = useState(false);
@@ -9,6 +10,13 @@ const Navbar = () => {
     const toggleNavbar = () => {
         setisClick(!isClick);
     };
+
+    const transitions = useTransition(isClick, {
+        from: { transform: 'translateY(-100%)', opacity: 0 },
+        enter: { transform: 'translateY(0%)', opacity: 1 },
+        leave: { transform: 'translateY(-100%)', opacity: 0 },
+        config: { tension: 220, friction: 20 }
+    });
 
     return (
         <nav className="bg-basicLightGreen-10 z-50 sticky top-0">
@@ -34,51 +42,34 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <button onClick={toggleNavbar} className="md:hidden">
-                    {isClick ? (
-                        <svg className="h-6 w-6"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="white"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={3}
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        </svg>
-                    ) : (
-                        <Image
-                            src="/menu.svg"
-                            alt="menu"
-                            width={24}
-                            height={24}
-                            className="inline-block cursor-pointer"
-                        />
-                    )}
+                <button onClick={toggleNavbar} className="md:hidden focus:outline-none relative w-8 h-8">
+                    <div className={`hamburger ${isClick ? 'open' : ''}`}>
+                        <span className="block w-full h-1 bg-white transition-transform duration-300 rounded"></span>
+                        <span className="block w-full h-1 bg-white mt-2 transition-transform duration-300 rounded"></span>
+                        <span className="block w-full h-1 bg-white mt-2 transition-transform duration-300 rounded"></span>
+                    </div>
                 </button>
             </div>
 
-            {isClick && (
-                <div className="absolute z-[51] w-screen md:hidden bg-basicWhite-10 rounded-b-lg">
-                    <div className="flex justify-center py-2">
-                        <h2 className="text-basicBlack-10 font-semibold">
-                            Program dan Kelas
-                        </h2>
-                    </div>
+            {transitions((style, item) =>
+                item && (
+                    <animated.div style={style} className="absolute z-[51] w-screen md:hidden bg-basicWhite-10 rounded-b-lg shadow-lg">
+                        <div className="flex justify-center py-2">
+                            <h2 className="text-basicBlack-10 font-semibold">
+                                Program dan Kelas
+                            </h2>
+                        </div>
 
-                    <div className="flex justify-center flex-col">
-                        <button className="flex items-center justify-center py-2 bg-basicRed-10 text-white border-basicRed-10 " type='login'>
-                            <label className="cursor-pointer">Masuk</label>
-                        </button>
-                        <button className="flex items-center py-2 justify-center border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded-lg" type='login'>
-                            <label className="cursor-pointer font-semibold">Daftar</label>
-                        </button>
-                    </div>
-
-                </div>
+                        <div className="flex justify-center flex-col">
+                            <button className="flex items-center justify-center py-2 bg-basicRed-10 text-white border-basicRed-10 " type='login'>
+                                <label className="cursor-pointer">Masuk</label>
+                            </button>
+                            <button className="flex items-center py-2 justify-center border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded-lg" type='login'>
+                                <label className="cursor-pointer font-semibold">Daftar</label>
+                            </button>
+                        </div>
+                    </animated.div>
+                )
             )}
         </nav>
     );
