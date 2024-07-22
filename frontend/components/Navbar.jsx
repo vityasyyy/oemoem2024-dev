@@ -11,7 +11,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-transparent z-50 sticky top-0">
+        <nav className="bg-basicLightGreen-10 z-50 sticky top-0">
             <div className={`flex items-center justify-between relative mx-auto py-8 px-6 sm:px-8 3xl:px-0 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
                 <Link href="/">
                     <h1 className="text-white text-xl sm:text-2xl font-semibold">
