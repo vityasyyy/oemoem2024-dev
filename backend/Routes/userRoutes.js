@@ -4,7 +4,7 @@ const router = express.Router({mergeParams: true})
 const {login, register, logout, validate} = require('../Controllers/userController');
 
 router.post('/register', register);
-router.post('/login', passport.authenticate('local'),login);
+router.post('/login', passport.authenticate('local', {session:true}),login);
 router.post('/logout', logout);
 router.get('/validate', validate);
 
