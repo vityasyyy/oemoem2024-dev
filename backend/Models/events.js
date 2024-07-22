@@ -33,7 +33,9 @@ const eventsSchema = new Schema({
             ref: "User"
         }
     ],
-    image: [imageSchema]
+    image: [imageSchema],
+    shape: [image],
+    color: String
 })
 
 module.exports = mongoose.model('Event', eventsSchema);

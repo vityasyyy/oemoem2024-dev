@@ -6,6 +6,6 @@ const {login, register, logout, validate} = require('../Controllers/userControll
 router.post('/register', register);
 router.post('/login', passport.authenticate('local'),login);
 router.post('/logout', logout);
-router.post('/validate', validate);
+router.get('/validate', validate);
 
 module.exports = router;
