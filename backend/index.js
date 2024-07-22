@@ -41,11 +41,17 @@ app.use(helmet({
 app.use(passport.initialize())
 app.use(passport.session())
 
-passport.use(new LocalStrategy(User.authenticate()))
+passport.use(new LocalStrategy({
+    usernameField: 'email'
+}, User.authenticate()));
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
-app.use(cors({origin: "http://localhost:3000"}))
+app.use(cors({
+    origin: 'http://localhost:3000', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true // Allow credentials (cookies) to be sent
+}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(mongoSanitize())

@@ -18,17 +18,22 @@ const userSchema = new Schema({
         required: true,
         unique: true
     },
+    nim: {
+        type: String,
+        required: true,
+        unique: true
+    },
     enrolledTo: [
         {
             type: Schema.Types.ObjectId,
             ref: "Event"
         }
     ],
-    assignments: [{
+    assignment: [{
         type: Schema.Types.ObjectId,
         ref: "Assignment"
     }]
 });
 
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose, {usernameField: "email"});
 module.exports = mongoose.model('User', userSchema);
