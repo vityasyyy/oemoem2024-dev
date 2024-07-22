@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Kelas = () => {
     return (
-        <section className="bg-basicBlack-10 px-8 py-10">
+        <section className="bg-basicBlack-10 px-[min(10%,512px)] py-10">
             <div className="w-fit text-lg bg-basicBlue-10 px-4 py-2 rounded-md text-white">Program dan Kelas
             </div>
             

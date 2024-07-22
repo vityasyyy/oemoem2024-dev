@@ -1,7 +1,7 @@
 const Information = () => {
     return (
         <>
-            <section className="flex flex-col gap-3 bg-basicBlack-10 p-4 sm:p-8 text-white">
+            <section className="flex flex-col gap-3 bg-basicBlack-10 px-[min(10%,512px)] py-4 sm:py-8 text-white">
                 {/* Section Title (Informasi) */}
                 <div className="w-fit text-lg bg-basicBlue-10 px-4 py-2 rounded-md">Informasi</div>
 
