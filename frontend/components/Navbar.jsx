@@ -38,7 +38,7 @@ const Navbar = () => {
                             Program dan Kelas
                         </h2>   
                         <div className="flex items-center justify between gap-2">
-                            <Link href="auth/login" className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
+                            <Link href="auth/masuk" className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
                                 <label className="cursor-pointer font-medium">Masuk</label>
                             </Link>
                             <Link href="auth/daftar" className="flex items-center px-2 py-1 justify-center gap-3 border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>

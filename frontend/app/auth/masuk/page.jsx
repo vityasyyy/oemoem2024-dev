@@ -2,7 +2,7 @@ import LoginNavbar from "@/components/LoginNavbar";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Login() {
+export default function Masuk() {
     return (
         <>
             {/* Navigation Bar */}
@@ -36,14 +36,14 @@ export default function Login() {
                         <h2 className="text-basicLightBrown-10 font-medium sm:mt-4">Email</h2>
                         <input
                             type="text"
-                            placeholder="Tuliskan Namamu"
-                            className="text-basicLightGrey-10 rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"/>
+                            placeholder="Tuliskan Email"
+                            className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"/>
 
                         <h2 className="text-basicLightBrown-10 font-medium ">Password</h2>
                         <input
                             type="password"
-                            placeholder="Tuliskan Namamu"
-                            className="text-basicLightGrey-10 rounded-sm border-1 border-black font-medium mb-8 px-2 py-1 sm:py-2"/>
+                            placeholder="Tuliskan Password"
+                            className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-8 px-2 py-1 sm:py-2"/>
 
                         <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Masuk</button>
                     </div>

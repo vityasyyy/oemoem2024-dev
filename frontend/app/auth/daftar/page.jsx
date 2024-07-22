@@ -29,7 +29,7 @@ export default function Daftar() {
                 {/* Hero */}
                 <div className="flex flex-col items-center gap-4 mt-8 bg-gradient-to-t px-6 sm:px-8 from-basicBlack-10 to-basicLightGreen-10 z-30">
                     {/* Title */}
-                    <h1 className="max-w-[24rem] text-3xl text-wrap text-center text-white drop-shadow-lg font-semibold z-30">Selamat Datang Kembali di <span className="text-basicLightBrown-10">OemOem</span></h1>
+                    <h1 className="max-w-[24rem] text-3xl text-wrap text-center text-white drop-shadow-lg font-semibold z-30">Mulai Langkahmu Bersama <span className="text-basicLightBrown-10">OemOem</span></h1>
 
                     {/* Login Card */}
                     <div className="bg-basicBlack-10 w-[min(100%,24rem)] z-30 text-sm sm:text-base flex flex-col gap-1 border-[1px] border-white rounded-lg p-4 mb-2 mx-6 sm:mx-8">
@@ -38,31 +38,32 @@ export default function Daftar() {
                         <input 
                             type="text"
                             placeholder="Tuliskan Namamu"
-                            className="text-basicLightGrey-10 rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"/>
+                            className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-1 px-2 py-1 sm:py-2"/>
+                        <p className="text-white text-xs mb-2 font-normal">cth. Fahmi Shampoerna</p>
 
                         <h2 className="text-basicLightBrown-10 font-medium">Email</h2>
                         <input
                             type="text"
-                            placeholder="Tuliskan Namamu"
-                            className="text-basicLightGrey-10 rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"/>
+                            placeholder="Tuliskan Email"
+                            className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"/>
 
                         <h2 className="text-basicLightBrown-10 font-medium">Password</h2>
                         <input 
                             type="password"
-                            placeholder="Tuliskan Namamu"
-                            className="text-basicLightGrey-10 rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"/>
+                            placeholder="Tuliskan Password"
+                            className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"/>
 
                         <h2 className="text-basicLightBrown-10 font-medium">Konfirmasi Password</h2>
                         <input
                             type="password"
-                            placeholder="Tuliskan Namamu"
-                            className="text-basicLightGrey-10 rounded-sm border-1 border-black font-medium mb-8 px-2 py-1 sm:py-2"/>
+                            placeholder="Tuliskan Ulang Password"
+                            className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-8 px-2 py-1 sm:py-2"/>
 
                         <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Daftar</button>
                     </div>
 
                     {/* Belom punya akun? */}
-                    <h1 className="text-white text-xl font-medium mb-12 z-30">Sudah punya akun? <Link href="/auth/login" className="text-basicLightBrown-10">Masuk</Link></h1>
+                    <h1 className="text-white text-xl font-medium mb-12 z-30">Sudah punya akun? <Link href="/auth/masuk" className="text-basicLightBrown-10">Masuk</Link></h1>
                 </div>
 
                 {/* Card Background */}
