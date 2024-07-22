@@ -4,7 +4,7 @@ import Image from "next/image";
 const DiceAd = () => {
     return (
         <>
-        <section className="flex flex-col items-center relative gap-8 p-4 pt-32 pb-48 bg-gradient-to-b from-basicBlack-10 to-basicLightGreen-10 overflow-clip">
+        <section className="flex flex-col px-[min(10%,512px)] items-center relative gap-8 py-4 pt-32 pb-48 bg-gradient-to-b from-basicBlack-10 to-basicLightGreen-10 overflow-clip">
             {/* Dice */}
             <Image 
             src="dice.svg"

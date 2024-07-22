@@ -36,7 +36,7 @@ export default function Akun() {
                         <h2 className="text-basicLightBrown-10 font-medium">Email</h2>
                         <h2 className="text-white font-medium">andhiki28@gmail.com</h2>
 
-                        <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 mt-4 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Keluar</button>
+                        <Link href="/kelas" className="flex justify-center items-center bg-basicRed-10 text-white font-medium py-1 mt-4 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Keluar</Link>
                     </div>
 
                 </div>

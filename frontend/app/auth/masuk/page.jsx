@@ -10,10 +10,10 @@ export default function Masuk() {
             <LoginNavbar />
 
             {/* Section */}
-            <section className="bg-basicLightGreen-10 pt-20 relative">
+            <section className="bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10 px-[min(10%,512px)] pt-20 relative">
 
                 {/* Back Button*/}
-                <div className="flex gap-2 items-center px-6 sm:px-8">
+                <div className="flex gap-2 items-center">
                     <Link href="/">
                         <BackButton />
                     </Link>
@@ -21,7 +21,7 @@ export default function Masuk() {
                 </div>
 
                 {/* Hero */}
-                <div className="flex flex-col items-center gap-4 mt-8 bg-gradient-to-t px-6 sm:px-8 from-basicBlack-10 to-basicLightGreen-10 z-30">
+                <div className="flex flex-col items-center gap-4 mt-8 z-30">
                     {/* Title */}
                     <h1 className="max-w-[24rem] text-3xl text-wrap text-center text-white drop-shadow-lg font-semibold z-30">Selamat Datang Kembali di <span className="text-basicLightBrown-10">OemOem</span></h1>
 
