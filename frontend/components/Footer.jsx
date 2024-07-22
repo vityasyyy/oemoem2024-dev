@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <footer className="bg-basicLightGreen-10 p-5 border-red-600 z-20 text-white ">
-            <div className="bg-basicBlack-10 rounded-lg p-10 pt-20 flex flex-col items-center gap-4 lg:flex-row lg:justify-between lg:items-center lg:pt-10">
+        <footer className="bg-basicLightGreen-10 p-4 sm:p-8 border-red-600 z-20 text-white ">
+            <div className="bg-basicBlack-10 rounded-xl p-10 pt-20 flex flex-col items-center gap-4 lg:flex-row lg:justify-between lg:items-center lg:pt-10">
                 <div className="flex flex-col items-center gap-10">
                     {/* Logo OemOem */}
                     <Image

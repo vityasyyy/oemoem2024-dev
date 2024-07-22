@@ -11,8 +11,8 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-basicLightGreen-10">
-            <div className={`flex items-center justify-between relative mx-auto py-8 px-6 3xl:px-0 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
+        <nav className="bg-transparent z-50 sticky top-0">
+            <div className={`flex items-center justify-between relative mx-auto py-8 px-6 sm:px-8 3xl:px-0 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
                 <Link href="/">
                     <h1 className="text-white text-xl sm:text-2xl font-semibold">
                         OemOem 
@@ -25,10 +25,10 @@ const Navbar = () => {
                         Program dan Kelas
                     </h2>   
                     <div className="flex items-center justify between gap-2">
-                        <button className="flex items-center p-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
+                        <button className="flex items-center p-2 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
                             <label className="cursor-pointer">Masuk</label>
                         </button>
-                        <button className="flex items-center p-1 justify-center gap-3 border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
+                        <button className="flex items-center p-2 justify-center gap-3 border-2 border-basicRed-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
                             <label className="cursor-pointer">Daftar</label>
                         </button>
                     </div>
