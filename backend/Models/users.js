@@ -18,11 +18,6 @@ const userSchema = new Schema({
         required: true,
         unique: true
     },
-    nim: {
-        type: String,
-        required: true,
-        unique: true
-    },
     enrolledTo: [
         {
             type: Schema.Types.ObjectId,
