@@ -20,8 +20,8 @@ const Navbar = () => {
 
     return (
         <>
-            {/* Fill color behind navbar */}
-            <div className="bg-basicLightGreen-10 absolute top-0 right-0 left-0 bottom-0"></div>
+            {/* Fill color behind navbar RUSAK */}
+            {/* <div className="bg-basicLightGreen-10 absolute top-0 right-0 left-0 bottom-0"></div> */}
 
             {/* Navigation Bar */}
             <nav className="bg-transparent z-50 sticky top-0">
@@ -38,12 +38,12 @@ const Navbar = () => {
                             Program dan Kelas
                         </h2>   
                         <div className="flex items-center justify between gap-2">
-                            <button className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
+                            <Link href="auth/login" className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
                                 <label className="cursor-pointer font-medium">Masuk</label>
-                            </button>
-                            <button className="flex items-center px-2 py-1 justify-center gap-3 border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
+                            </Link>
+                            <Link href="auth/daftar" className="flex items-center px-2 py-1 justify-center gap-3 border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
                                 <label className="cursor-pointer font-medium">Daftar</label>
-                            </button>
+                            </Link>
                         </div>
                     </div>
 

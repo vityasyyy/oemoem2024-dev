@@ -3,16 +3,22 @@ import Link from "next/link";
 
 const LoginNavbar = () => {
     return (
-        <nav className="bg-basicLightGreen-10">
-            <nav className="flex items-center justify-between relative mx-auto px-6 lg:px-20 3xl:px-0 bg-basicBlack-10 h-12 rounded-b-lg">
-                <Link href="/">
-                    <h1 className="text-white font-semibold">
-                        OemOem 
-                    </h1>
-                </Link>
-
+        <>
+            {/* Fill Color */}
+            <div className="bg-basicLightGreen-10 absolute top-0 right-0 left-0 bottom-0"></div>
+            
+            {/* Navigation Bar */}
+            <nav className="bg-transparent z-50 sticky top-0">
+                <div className={`flex items-center justify-between relative z-30 mx-auto py-8 px-6 sm:px-8 3xl:px-0 bg-basicBlack-10 h-12 rounded-b-lg`}>
+                    <Link href="/">
+                        <h1 className="text-white text-xl sm:text-2xl font-semibold">
+                            OemOem 
+                        </h1>
+                    </Link>
+                </div>
             </nav>
-        </nav>
+        </> 
+
     );
 }
 
