@@ -55,7 +55,7 @@ const Navbar = () => {
     return (
         <>
             {/* Navigation Bar */}
-            <nav className="bg-transparent z-50 fixed w-screen top-0">
+            <nav className="bg-transparent z-50 fixed w-screen top-0 shadow-lg">
                 <div className={`flex px-[min(10%,512px)] items-center justify-between relative z-30 mx-auto py-8 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
                     <Link href="/">
                         <h1 className="text-white text-xl sm:text-2xl font-semibold">
