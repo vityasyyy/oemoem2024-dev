@@ -15,8 +15,29 @@ const Classes = ({ events }) => {
                 Program dan Kelas
             </div>
             
+            
+
+            {/* Slide Button Kanan */}
+            <Image
+                src="slideButton.svg"
+                alt="shape"
+                width={40}
+                height={32}
+                className="absolute top-[900px] right-[4.6rem] rotate-180"
+            />
+
             {/* Scrollable Gallery */}
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto pl-4">
+
+                {/* Slide Button Kiri */}
+                <Image
+                    src="slideButton.svg"
+                    alt="shape"
+                    width={40}
+                    height={32}
+                    className="absolute top-1/2 z-50"
+                />
+
                 <div className="flex gap-4 pb-4" style={{ width: `${events.length * 188}px` }}>
                     {events.map((event, index) => (
                         <div 
@@ -67,6 +88,9 @@ const Classes = ({ events }) => {
                     ))}
                 </div>
             </div>
+
+            
+
         </section>
     );
 }
