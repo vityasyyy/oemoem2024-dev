@@ -61,3 +61,12 @@ module.exports.getEvent = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+module.exports.getEnrolledEvent = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id).populate('enrolledTo');
+        res.json(user.enrolledTo);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

@@ -20,13 +20,19 @@ module.exports.login = (req, res) => {
     res.json({message: "Login successful", user: req.user});
 }
 
-module.exports.logout = (req, res) => {
+module.exports.logout = (req, res, next) => {
     req.logout((err) => {
-        if(err) {
+        if (err) {
             return next(err);
         }
-        res.json({message: "Logout successful"});
-    })
+        req.session.destroy((err) => {
+            if (err) {
+                return next(err);
+            }
+            res.clearCookie('connect.sid'); // Clear the session cookie
+            res.json({ message: "Logout successful" });
+        });
+    });
 }
 
 module.exports.validate = async (req, res) => {
@@ -34,5 +40,14 @@ module.exports.validate = async (req, res) => {
         res.json({message: "Authenticated", user: req.user})
     } else {
         res.status(401).json({message: "Not authenticated"})
+    }
+}
+
+module.exports.getEnrolledEvent = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id).populate('enrolledTo');
+        res.json(user.enrolledTo);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 }

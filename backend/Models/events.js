@@ -33,8 +33,9 @@ const eventsSchema = new Schema({
             ref: "User"
         }
     ],
-    image: [imageSchema],
-    shape: [imageSchema],
+    image: imageSchema,
+    imageWarna: imageSchema,
+    shape: imageSchema,
     color: String
 })
 

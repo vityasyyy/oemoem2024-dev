@@ -24,17 +24,22 @@ const sampleEvents = [
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         mentors: "Jane Smith, Bob Johnson",
         curriculum: "HTML, CSS, JavaScript",
-        image: [
+        image: 
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721564378/cp_c8t1ry.png",
-                filename: "cp_c8t1ry"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732186/cp_vrujbi.svg",
+                filename: "cp_vrujbi"
             }
-        ],
+        ,
         color: "#9B1A2E",
-        shape: [{
-            url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721657098/heart_hlx6vt.png",
-            filename: "heart_hlx6vt"
-        }]
+        shape: {
+            url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732598/heart_i4ldcx.svg",
+            filename: "heart_i4ldcx"
+        },
+        imageWarna: 
+            {
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732099/cpWarna_vnbmaw.svg",
+                filename: "cpWarna_vnbmaw"
+            }
     },
     {
         title: "Cyber Security",
@@ -48,19 +53,24 @@ const sampleEvents = [
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         mentors: "Jane Smith, Bob Johnson",
         curriculum: "HTML, CSS, JavaScript",
-        image: [
+        image: 
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721564378/cysec_tkp17a.png",
-                filename: "cysec_tkp17a"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732189/cysec_b4efrf.svg",
+                filename: "cysec_b4efrf"
             }
-        ],
+        ,
         color: "#302E2F",
-        shape: [
+        shape: 
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721657098/diamond_bp7tof.png",
-                filename: "diamond_bp7tof"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732594/diamond_i0gtkn.svg",
+                filename: "diamond_i0gtkn"
             }
-        ]
+        ,
+        imageWarna: 
+            {
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732100/cysecWarna_urho2g.svg",
+                filename: "cysecWarna_urho2g"
+            }
     },
     {
         title: "Game Development",
@@ -74,19 +84,25 @@ const sampleEvents = [
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         mentors: "Jane Smith, Bob Johnson",
         curriculum: "HTML, CSS, JavaScript",
-        image: [
+        image: 
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721564385/gamedev_gbm1d6.png",
-                filename: "gamedev_gbm1d6"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732206/gamedev_nokg0w.svg",
+                filename: "gamedev_nokg0w"
             }
-        ],
+        ,
         color: "#467448",
-        shape: [
+        shape:
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721657098/spade_ddeyl3.png",
-                filename: "spade_ddeyl3"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732620/spade_xh3gah.svg",
+                filename: "spade_xh3gah"
             }
-        ]
+        ,
+        imageWarna: 
+            {
+                url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732109/gamedevWarna_dpaqkn.svg", 
+                filename:"gamedevWarna_dpaqkn"
+            }
+
     },
     {
         title: "Back End",
@@ -100,19 +116,24 @@ const sampleEvents = [
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         mentors: "Jane Smith, Bob Johnson",
         curriculum: "HTML, CSS, JavaScript",
-        image: [
+        image: 
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721564377/backend_tyip33.png",
-                filename: "backend_tyip33"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732168/backend_ynpwey.svg",
+                filename: "backend_ynpwey"
             }
-        ],
+        ,
         color: "#4C5195",
-        shape: [
+        shape:
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721657098/club_xeohar.png",
-                filename: "club_xeohar"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732605/club_lkjjcq.svg",
+                filename: "club_lkjjcq"
             }
-        ]
+        ,
+        imageWarna: 
+            {
+                url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732099/backendWarna_hkx6zz.svg", 
+                filename:"backendWarna_hkx6zz"
+            }
     },
     {
         title: "UI/UX Design",
@@ -126,17 +147,24 @@ const sampleEvents = [
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         mentors: "Jane Smith, Bob Johnson",
         curriculum: "HTML, CSS, JavaScript",
-        image: [
+        image: 
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721564387/uiux_wtvu0s.png",
-                filename: "uiux_wtvu0s"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732170/uiux_mvuzpa.svg",
+                filename: "uiux_mvuzpa"
             }
-        ],
+        ,
         color: "#9B1A2E",
-        shape: [{
-            url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721657098/heart_hlx6vt.png",
-            filename: "heart_hlx6vt"
-        }]
+        shape:
+            {
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732598/heart_i4ldcx.svg",
+                filename: "heart_i4ldcx"
+            }
+        ,
+        imageWarna: 
+            {
+                url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732118/uiuxWarna_rhn2lj.svg", 
+                filename:"uiuxWarna_rhn2lj"
+            }
     },
     {
         title: "Mobile Apps",
@@ -150,19 +178,24 @@ const sampleEvents = [
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         mentors: "Jane Smith, Bob Johnson",
         curriculum: "HTML, CSS, JavaScript",
-        image: [
+        image: 
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721564385/mobapp_owus5o.png",
-                filename: "mobapp_owus5o"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732229/mobapp_eoe9f4.svg",
+                filename: "mobapp_eoe9f4"
             }
-        ],
+        ,
         color: "#302E2F",
-        shape: [
+        shape:
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721657098/diamond_bp7tof.png",
-                filename: "diamond_bp7tof"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732594/diamond_i0gtkn.svg",
+                filename: "diamond_i0gtkn"
             }
-        ]
+        ,
+        imageWarna: 
+            {
+                url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732117/mobappWarna_hf76tk.svg", 
+                filename:"mobappWarna_hf76tk"
+            }
     },
     {
         title: "Front End",
@@ -176,19 +209,24 @@ const sampleEvents = [
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         mentors: "Jane Smith, Bob Johnson",
         curriculum: "HTML, CSS, JavaScript",
-        image: [
+        image: 
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721564384/frontend_flhnkw.png",
-                filename: "frontend_flhnkw"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732203/frontend_fu8fal.svg",
+                filename: "frontend_fu8fal"
             }
-        ],
+        ,
         color: "#467448",
-        shape: [
+        shape:
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721657098/spade_ddeyl3.png",
-                filename: "spade_ddeyl3"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732620/spade_xh3gah.svg",
+                filename: "spade_xh3gah"
             }
-        ]
+        ,
+        imageWarna: 
+            {
+                url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732107/feWarna_qw4jtb.svg", 
+                filename:"feWarna_qw4jtb"
+            }
     },
     {
         title: "Data Science and Artificial Intelligence",
@@ -202,19 +240,24 @@ const sampleEvents = [
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         mentors: "Jane Smith, Bob Johnson",
         curriculum: "HTML, CSS, JavaScript",
-        image: [
+        image: 
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721564379/dsai_qcxlgq.png",
-                filename: "dsai_qcxlgq"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732193/dsai_y37hav.svg",
+                filename: "dsai_y37hav"
             }
-        ],
+        ,
         color: "#4C5195",
-        shape: [
+        shape:
             {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721657098/club_xeohar.png",
-                filename: "club_xeohar"
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732605/club_lkjjcq.svg",
+                filename: "club_lkjjcq"
             }
-        ]
+        ,
+        imageWarna: 
+            {
+                url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732107/dsaiWarna_ftwyhv.svg", 
+                filename:"dsaiWarna_ftwyhv"
+            }
     }
 ];
 
