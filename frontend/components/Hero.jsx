@@ -95,7 +95,7 @@ const Hero = ({user}) => {
                 <h2 className="text-xl font-semibold mb-2">Your Enrolled Classes:</h2>
                 <div className="flex flex-wrap pt-4 gap-4 mb-8">
                     {enrolledClasses.map((cls) => (
-                        <div key={cls._id} className="border-[3px] rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 flex flex-col justify-between" style={{borderColor: cls.color, backgroundColor: '#FAF0E6'}}>
+                        <div key={cls._id} className="border-[3px] rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 flex flex-col justify-between" style={{borderColor: cls.color, backgroundColor: '#EDB465'}}>
                             <div>
                                 {cls.shape && cls.shape && (
                                     <Image
@@ -108,7 +108,7 @@ const Hero = ({user}) => {
                                 <div className="flex justify-center mt-2">
                                     {cls.image && cls.image && (
                                         <Image
-                                            src={cls.image.url}
+                                            src={cls.imageWarna.url}
                                             alt="class logo"
                                             width={75}
                                             height={32}
@@ -142,7 +142,7 @@ const Hero = ({user}) => {
                                 <div className="flex justify-center mt-2">
                                     {cls.image && cls.image && (
                                         <Image
-                                            src={cls.image.url}
+                                            src={cls.imageWarna.url}
                                             alt="class logo"
                                             width={75}
                                             height={32}
