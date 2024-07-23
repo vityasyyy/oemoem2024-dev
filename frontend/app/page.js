@@ -41,16 +41,12 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero user={user} />
-      {!user && (
-        <>
-          <div className="bg-basicBlack-10 px-[min(10%,512px)]">
-            <Classes events={events} />
-          </div>
-          <Information />
-          <DiceAd />
-        </>
-      )}
+      <Hero user={user}/>
+      <div className="bg-basicBlack-10 px-[min(10%,512px)]">
+        <Classes events={events} />
+      </div>
+      <Information />
+      <DiceAd />
     </>
   );
 }
