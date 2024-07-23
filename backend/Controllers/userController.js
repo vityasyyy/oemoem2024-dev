@@ -20,13 +20,19 @@ module.exports.login = (req, res) => {
     res.json({message: "Login successful", user: req.user});
 }
 
-module.exports.logout = (req, res) => {
+module.exports.logout = (req, res, next) => {
     req.logout((err) => {
-        if(err) {
+        if (err) {
             return next(err);
         }
-        res.json({message: "Logout successful"});
-    })
+        req.session.destroy((err) => {
+            if (err) {
+                return next(err);
+            }
+            res.clearCookie('connect.sid'); // Clear the session cookie
+            res.json({ message: "Logout successful" });
+        });
+    });
 }
 
 module.exports.validate = async (req, res) => {
