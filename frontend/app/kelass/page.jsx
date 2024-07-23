@@ -40,7 +40,7 @@ export default function Kelas() {
                     </div>
 
                     {/* Program dan Kelas */}
-                    <Classes />
+                    {/* <Classes /> */}
                 </section>
             </div>
         </>
