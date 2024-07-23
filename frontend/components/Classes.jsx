@@ -17,25 +17,26 @@ const Classes = ({ events }) => {
             
             
 
-            {/* Slide Button Kanan */}
-            <Image
-                src="slideButton.svg"
-                alt="shape"
-                width={40}
-                height={32}
-                className="absolute top-[900px] right-[4.6rem] rotate-180"
-            />
 
             {/* Scrollable Gallery */}
-            <div className="overflow-x-auto pl-4">
+            <div className="overflow-x-auto relative pl-4">
 
-                {/* Slide Button Kiri */}
+                {/* Slide Button Kanan */}
                 <Image
-                    src="slideButton.svg"
+                    src="slideButtonRight.svg"
                     alt="shape"
                     width={40}
                     height={32}
-                    className="absolute top-1/2 z-50"
+                    className="absolute right-0 top-1/2 transform -translate-y-1/2"
+                />
+
+                {/* Slide Button Kiri */}
+                <Image
+                    src="slideButtonLeft.svg"
+                    alt="shape"
+                    width={40}
+                    height={32}
+                    className="absolute left-0 z-50 rotate-180 top-1/2 transform -translate-y-1/2"
                 />
 
                 <div className="flex gap-4 pb-4" style={{ width: `${events.length * 188}px` }}>
