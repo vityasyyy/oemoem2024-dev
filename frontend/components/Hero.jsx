@@ -97,18 +97,18 @@ const Hero = ({user}) => {
                     {enrolledClasses.map((cls) => (
                         <div key={cls._id} className="border-[3px] rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 flex flex-col justify-between" style={{borderColor: cls.color, backgroundColor: '#FAF0E6'}}>
                             <div>
-                                {cls.shape && cls.shape[0] && (
+                                {cls.shape && cls.shape && (
                                     <Image
-                                        src={cls.shape[0].url}
+                                        src={cls.shape.url}
                                         alt="shape"
                                         width={25}
                                         height={32}
                                     />
                                 )}
                                 <div className="flex justify-center mt-2">
-                                    {cls.image && cls.image[0] && (
+                                    {cls.image && cls.image && (
                                         <Image
-                                            src={cls.image[0].url}
+                                            src={cls.image.url}
                                             alt="class logo"
                                             width={75}
                                             height={32}
@@ -129,20 +129,20 @@ const Hero = ({user}) => {
                 <h2 className="text-xl font-semibold mb-2">All Available Classes:</h2>
                 <div className="flex flex-wrap pt-4 gap-4">
                     {allClasses.map((cls) => (
-                        <div key={cls._id} className="border-[3px] rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 flex flex-col justify-between" style={{borderColor: cls.color, backgroundColor: '#FAF0E6'}}>
+                        <div key={cls._id} className="border-[3px] rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 flex flex-col justify-between" style={{borderColor: cls.color, backgroundColor: '#EDB465'}}>
                             <div>
-                                {cls.shape && cls.shape[0] && (
+                                {cls.shape && cls.shape && (
                                     <Image
-                                        src={cls.shape[0].url}
+                                        src={cls.shape.url}
                                         alt="shape"
                                         width={25}
                                         height={32}
                                     />
                                 )}
                                 <div className="flex justify-center mt-2">
-                                    {cls.image && cls.image[0] && (
+                                    {cls.image && cls.image && (
                                         <Image
-                                            src={cls.image[0].url}
+                                            src={cls.image.url}
                                             alt="class logo"
                                             width={75}
                                             height={32}
