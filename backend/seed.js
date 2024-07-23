@@ -122,7 +122,7 @@ const sampleEvents = [
                 filename: "backend_ynpwey"
             }
         ,
-        color: "#467448",
+        color: "#4C5195",
         shape:
             {
                 url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732605/club_lkjjcq.svg",
@@ -153,7 +153,7 @@ const sampleEvents = [
                 filename: "uiux_mvuzpa"
             }
         ,
-        color: "#467448",
+        color: "#9B1A2E",
         shape:
             {
                 url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732598/heart_i4ldcx.svg",
@@ -184,7 +184,7 @@ const sampleEvents = [
                 filename: "mobapp_eoe9f4"
             }
         ,
-        color: "#467448",
+        color: "#302E2F",
         shape:
             {
                 url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732594/diamond_i0gtkn.svg",
@@ -246,7 +246,7 @@ const sampleEvents = [
                 filename: "dsai_y37hav"
             }
         ,
-        color: "#467448",
+        color: "#4C5195",
         shape:
             {
                 url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732605/club_lkjjcq.svg",
