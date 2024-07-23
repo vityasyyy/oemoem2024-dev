@@ -36,7 +36,7 @@ const Classes = ({ events }) => {
                     alt="shape"
                     width={40}
                     height={32}
-                    className="absolute left-0 z-50 rotate-180 top-1/2 transform -translate-y-1/2"
+                    className="absolute left-0 z-50 top-1/2 transform -translate-y-1/2"
                 />
 
                 <div className="flex gap-4 pb-4" style={{ width: `${events.length * 188}px` }}>
