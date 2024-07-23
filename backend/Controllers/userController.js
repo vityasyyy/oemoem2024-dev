@@ -42,3 +42,12 @@ module.exports.validate = async (req, res) => {
         res.status(401).json({message: "Not authenticated"})
     }
 }
+
+module.exports.getEnrolledEvent = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id).populate('enrolledTo');
+        res.json(user.enrolledTo);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

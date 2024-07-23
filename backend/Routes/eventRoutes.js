@@ -5,7 +5,7 @@ const isEnrolled = require('../Middlewares/isEnrolled');
 const isAssignmentAuthor = require('../Middlewares/isAssignmentAuthor');
 
 const router = express.Router({mergeParams: true})
-const {enroll, getAllEvents, getEvent} = require('../Controllers/eventController');
+const {enroll, getAllEvents, getEvent, getEnrolledEvent} = require('../Controllers/eventController');
 const {submit, updateAssignment} = require('../Controllers/assignmentController');
 
 router.get('/', getAllEvents);
