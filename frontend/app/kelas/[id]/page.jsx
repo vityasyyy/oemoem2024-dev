@@ -51,7 +51,7 @@ export default function EventPage() {
                             <h1 className="font-semibold text-xl mb-2">
                                 {event.title}
                             </h1>
-                            <ProgressBar progress={10} maxProgress={20} />
+                            <ProgressBar enrolledBy={event.enrolledBy} slots={event.slots} />
                         </div>
                     </div>
     
