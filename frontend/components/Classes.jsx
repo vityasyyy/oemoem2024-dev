@@ -6,7 +6,7 @@ const Classes = ({ events }) => {
     const router = useRouter();
 
     const handleClick = (id) => {
-        router.push(`/events/${id}`);
+        router.push(`/kelas/${id}`);
     };
 
     return (

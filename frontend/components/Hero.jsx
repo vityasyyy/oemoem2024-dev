@@ -119,7 +119,7 @@ const Hero = ({user}) => {
                                     {cls.title}
                                 </h3>
                             </div>
-                            <Link href={`/events/${cls._id}`} className="text-white py-2 mx-2 text-center rounded-xl mb-2" style={{backgroundColor: cls.color}}>
+                            <Link href={`/kelas/${cls._id}`} className="text-white py-2 mx-2 text-center rounded-xl mb-2" style={{backgroundColor: cls.color}}>
                                 View Class
                             </Link>
                         </div>
@@ -153,7 +153,7 @@ const Hero = ({user}) => {
                                     {cls.title}
                                 </h3>
                             </div>
-                            <Link href={`/events/${cls._id}`} className="text-white py-2 mx-2 text-center rounded-xl mb-2" style={{backgroundColor: cls.color}}>
+                            <Link href={`/kelas/${cls._id}`} className="text-white py-2 mx-2 text-center rounded-xl mb-2" style={{backgroundColor: cls.color}}>
                                 View Class
                             </Link>
                         </div>
