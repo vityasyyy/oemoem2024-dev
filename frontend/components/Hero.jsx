@@ -1,7 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Hero = ({user}) => {
+        const [days, setDays] = useState(0)
+        const [hours, setHours] = useState(0)
+        const [minutes, setMinutes] = useState(0)
+
+        useEffect(() => {
+            const target = new Date("8/14/2024 23:59:59")
+
+            const interval = setInterval(() => {
+                const now = new Date()
+                const difference = target.getTime() - now.getTime()
+
+                const d = Math.floor(difference / (1000 * 60 * 60 * 24))
+                setDays(d)
+
+                const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+                setHours(h)
+                
+                const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
+                setMinutes(m)
+
+            }, 1000)
+
+            return () => clearInterval(interval)
+        }, [])
+        
+
         return (
             <>
                 <section className="flex flex-col relative md:pt-24 md:pb-4 py-4 px-4 items-center w-screen h-fit bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10">
@@ -31,7 +58,7 @@ const Hero = ({user}) => {
 
                     {/* Penutupan Pendaftaran */}
                     <div className="p-2 sm:p-4 w-fit text-white bg-basicBlue-10 rounded-lg text-base md:text-xl lg:mb-72 md:mb-64 sm:mb-56 mb-48 z-30 text-center">Penutupan Pendaftaran: &nbsp; 
-                        <span className="font-bold">  00:00:00</span>
+                        <span className="font-bold">  {days}:{hours}:{minutes}</span>
                     </div>
 
                     {/* div kelompokin konten hero */}
