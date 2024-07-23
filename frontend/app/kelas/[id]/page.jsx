@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavbarKelas from "@/components/NavbarKelas";
+import Loading from '@/components/Loading';
 import ClassDetail from "@/components/ClassDetail";
 
 export default function EventPage() {
@@ -26,7 +27,7 @@ export default function EventPage() {
         }
     };
 
-    if (!event) return <div>Loading...</div>;
+    if (!event) return <Loading />;
 
     return (
         <>

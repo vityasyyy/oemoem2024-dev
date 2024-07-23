@@ -10,7 +10,7 @@ const ClassDetail = ({ event }) => {
     const [activeView, setActiveView] = useState('challenges');
 
     return (
-        <section className="h-fit bg-basicLightGreen-10 pt-24 ">
+        <section className="h-fit text-base sm:text-lg bg-basicLightGreen-10 pt-24 ">
             
             {/* Bagian Hijau Atas */}
             <div className="px-[min(10%,512px)]">
@@ -44,13 +44,13 @@ const ClassDetail = ({ event }) => {
             </div>
             
             {/* Main*/}
-            <div className="h-screen bg-basicBlack-10 mt-5 pt-5 z-50 px-[min(10%,512px)] flex flex-col gap-10">
+            <div className="h-screen bg-basicBlack-10 mt-5 pt-12 z-50 px-[min(10%,512px)] flex flex-col gap-10">
                 {activeView === 'kelas' ? (
                     <>
                         {/* Kelas */}
                         {/* Overview */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-52 px-4 py-2 rounded-md">
                                 Overview
                             </div>
                             <p>{event.description}</p>
@@ -58,7 +58,7 @@ const ClassDetail = ({ event }) => {
 
                         {/* Tanggal dan Lokasi */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-52 px-4 py-2 rounded-md">
                                 Tanggal dan lokasi
                             </div>
                             <p>{new Date(event.date).toLocaleDateString()}</p>
@@ -67,7 +67,7 @@ const ClassDetail = ({ event }) => {
 
                         {/* Kebutuhan */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-52 px-4 py-2 rounded-md">
                                 Kebutuhan
                             </div>
                             <p>{event.prerequisite}</p>
@@ -75,7 +75,7 @@ const ClassDetail = ({ event }) => {
                         
                         {/* Kurikulum */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-52 px-4 py-2 rounded-md">
                                 Kurikulum
                             </div>
                             <p>{event.curriculum}</p>
@@ -83,7 +83,7 @@ const ClassDetail = ({ event }) => {
 
                         {/* Mentor */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-52 px-4 py-2 rounded-md">
                                 Mentor
                             </div>
                             <div className="bg-basicLightBrown-10 rounded-md p-2">
@@ -93,7 +93,7 @@ const ClassDetail = ({ event }) => {
 
                         {/* Contact Person */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-52 px-4 py-2 rounded-md">
                                 Contact Person
                             </div>
                             <p>{event.contactPerson}</p>
@@ -104,7 +104,7 @@ const ClassDetail = ({ event }) => {
                         {/* Challenges */}
                         {/* Overview */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-52 px-4 py-2 rounded-md">
                                 Overview
                             </div>
                             <p>{event.description}</p>
@@ -112,7 +112,7 @@ const ClassDetail = ({ event }) => {
 
                         {/* Tenggat Pengumpulan */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-48 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit w-min-52 px-4 py-2 rounded-md">
                                 Tenggat Pengumpulan
                             </div>
                             <p>{new Date(event.date).toLocaleDateString()}</p>
@@ -120,7 +120,7 @@ const ClassDetail = ({ event }) => {
 
                         {/* Assets */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-48 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit w-min-52 px-4 py-2 rounded-md">
                                 Asset
                             </div>
                             <p>{new Date(event.date).toLocaleDateString()}</p>
@@ -128,26 +128,33 @@ const ClassDetail = ({ event }) => {
 
                         {/* Pengumpulan */}
                         <div className="flex flex-col gap-2 text-black">
-                            <div className="bg-basicBlue-10 w-48 px-3 py-1 rounded-md text-white">
+
+                            <div className="bg-basicBlue-10 w-fit w-min-52 px-4 py-2 rounded-md text-white">
                                 Pengumpulan
                             </div>
-                            <input 
-                                type="text"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="cth: link github, link web, dll"
-                            />
+
+                            {/* Input Link dan Submit */}
+                            <div className='flex gap-2 mt-2'>
+                                <input 
+                                    type="text"
+                                    className="w-full px-6 py-4 border text-sm sm:text-base border-gray-300 rounded-2xl focus:outline-none focus:text-basicBlack-10 focus:ring-2 focus:ring-blue-500"
+                                    placeholder="cth: link github, link web, dll"
+                                />
+                                <input 
+                                    type="submit"
+                                    className="w-fit min-w-28 shrink-0 px-3 py-4 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white cursor-pointer"
+                                />
+                            </div>
+
                             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                 <svg className="h-5 w-5 text-basicBlack-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </div>
-                            <p className="text-white">
+
+                            <p className="text-white text-sm">
                                 Tugas dikumpulkan dalam bentuk link sesuai dengan arahan mentor pada hari pembelajaran
                             </p>
-                            <input 
-                                type="submit"
-                                className="w-full px-3 py-1 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md focus:outline-none focus:ring-2 focus:ring-white cursor-pointer"
-                            />
                         </div>
                     </>
                 )}
