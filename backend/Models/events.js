@@ -11,6 +11,7 @@ imageSchema.virtual('thumbnail').get(function() {
 
 const eventsSchema = new Schema({
     title: String,
+    assignmentDetail: String,
     description: String,
     location: String,
     contactPerson: String,

@@ -39,7 +39,8 @@ const sampleEvents = [
             {
                 url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732099/cpWarna_vnbmaw.svg",
                 filename: "cpWarna_vnbmaw"
-            }
+            },
+        assignmentDetail: "Lorem ipsum dolor sit jamet comisaris adipipising elit"
     },
     {
         title: "Cyber Security",
@@ -70,7 +71,8 @@ const sampleEvents = [
             {
                 url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732100/cysecWarna_urho2g.svg",
                 filename: "cysecWarna_urho2g"
-            }
+            },
+        assignmentDetail: "Lorem ipsum dolor sit jamet comisaris adipipising elit"
     },
     {
         title: "Game Development",
@@ -101,7 +103,8 @@ const sampleEvents = [
             {
                 url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732109/gamedevWarna_dpaqkn.svg", 
                 filename:"gamedevWarna_dpaqkn"
-            }
+            },
+        assignmentDetail: "Lorem ipsum dolor sit jamet comisaris adipipising elit"
 
     },
     {
@@ -133,7 +136,8 @@ const sampleEvents = [
             {
                 url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732099/backendWarna_hkx6zz.svg", 
                 filename:"backendWarna_hkx6zz"
-            }
+            },
+            assignmentDetail: "Lorem ipsum dolor sit jamet comisaris adipipising elit"
     },
     {
         title: "UI/UX Design",
@@ -164,7 +168,8 @@ const sampleEvents = [
             {
                 url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732118/uiuxWarna_rhn2lj.svg", 
                 filename:"uiuxWarna_rhn2lj"
-            }
+            },
+            assignmentDetail: "Lorem ipsum dolor sit jamet comisaris adipipising elit"
     },
     {
         title: "Mobile Apps",
@@ -195,7 +200,8 @@ const sampleEvents = [
             {
                 url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732117/mobappWarna_hf76tk.svg", 
                 filename:"mobappWarna_hf76tk"
-            }
+            },
+            assignmentDetail: "Lorem ipsum dolor sit jamet comisaris adipipising elit"
     },
     {
         title: "Front End",
@@ -226,7 +232,8 @@ const sampleEvents = [
             {
                 url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732107/feWarna_qw4jtb.svg", 
                 filename:"feWarna_qw4jtb"
-            }
+            },
+            assignmentDetail: "Lorem ipsum dolor sit jamet comisaris adipipising elit"
     },
     {
         title: "Data Science and Artificial Intelligence",
@@ -257,7 +264,8 @@ const sampleEvents = [
             {
                 url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732107/dsaiWarna_ftwyhv.svg", 
                 filename:"dsaiWarna_ftwyhv"
-            }
+            },
+            assignmentDetail: "Lorem ipsum dolor sit jamet comisaris adipipising elit"
     }
 ];
 
