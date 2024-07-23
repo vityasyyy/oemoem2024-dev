@@ -1,20 +1,56 @@
 "use client";
+import { useState, useEffect } from 'react';
 import LoginNavbar from "@/components/LoginNavbar";
-import { a } from "react-spring"
 import Link from "next/link";
 import Image from "next/image";
 import BackButton from "@/components/BackButton";
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 export default function Akun() {
+    const [user, setUser] = useState(null);
+    const router = useRouter();
+
+    useEffect(() => {
+        fetchUser();
+    }, []);
+
+    const fetchUser = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/auth/validate', { withCredentials: true });
+            if (response.data.user) {
+                setUser(response.data.user);
+            } else {
+                // Redirect to login if not authenticated
+                router.push('/auth/masuk');
+            }
+        } catch (error) {
+            console.error('Error fetching user:', error);
+            router.push('/auth/masuk');
+        }
+    };
+
+    const handleLogout = async () => {
+        try {
+            const response = await axios.post('http://localhost:8080/auth/logout', {}, { withCredentials: true });
+            if (response.data.message === "Logout successful") {
+                // Clear any client-side storage if you're using any
+                localStorage.removeItem('user'); // If you're storing user data in localStorage
+                // Redirect to login page
+                router.push('/auth/masuk');
+            }
+        } catch (error) {
+            console.error('Error logging out:', error);
+        }
+    };
+
+    if (!user) return <div>Loading...</div>;
+
     return (
         <>
-            {/* Navigation Bar */}
             <LoginNavbar />
 
-            {/* Main Section */}
             <section className="bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10 px-[min(10%,512px)] pt-20 relative">
-
-                {/* Back Button*/}
                 <div className="flex gap-2 items-center">
                     <Link href="/">
                         <BackButton />
@@ -22,26 +58,20 @@ export default function Akun() {
                     <h2 className="font-bold text-black text-lg sm:text-xl sm:ml-2">Akun</h2>
                 </div>
 
-                {/* Hero */}
                 <div className="flex flex-col items-center gap-4 mt-8 pb-24 sm:pb-42 z-30">
-                    {/* Title */}
                     <h1 className="max-w-[24rem] text-3xl text-wrap text-center text-white drop-shadow-lg font-semibold z-30">Informasi Akun</h1>
 
-                    {/* Card */}
                     <div className="bg-basicBlack-10 w-[min(100%,32rem)] z-30 text-sm sm:text-xl flex flex-col gap-1 border-[1px] border-white rounded-xl px-6 py-4 mb-2 mx-6 sm:mx-8">
-                        {/* Form */}
                         <h2 className="text-basicLightBrown-10 font-medium sm:mt-4">Nama</h2>
-                        <h2 className="text-white font-medium sm">Fahmi Shampoerna</h2>
+                        <h2 className="text-white font-medium sm">{user.username}</h2>
 
                         <h2 className="text-basicLightBrown-10 font-medium">Email</h2>
-                        <h2 className="text-white font-medium">andhiki28@gmail.com</h2>
+                        <h2 className="text-white font-medium">{user.email}</h2>
 
-                        <Link href="/kelas" className="flex justify-center items-center bg-basicRed-10 text-white font-medium py-1 mt-4 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Keluar</Link>
+                        <button onClick={handleLogout} className="flex justify-center items-center bg-basicRed-10 text-white font-medium py-1 mt-4 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Keluar</button>
                     </div>
-
                 </div>
 
-                {/* Card Background */}
                 <div>
                     <Image 
                     src="heroCardsMD.svg"
@@ -51,9 +81,7 @@ export default function Akun() {
                     />
                 </div>
 
-                {/* Black Background */}
                 <div className="bg-basicBlack-10 absolute z-10 bottom-0 left-0 right-0 top-[60%]"></div>
-
             </section>
         </>
     );
