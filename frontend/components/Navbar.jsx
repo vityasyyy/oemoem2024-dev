@@ -65,7 +65,7 @@ const Navbar = () => {
 
                     {/* Program dan Kelas & Button */}
                     <div className="hidden md:flex text-xl items-center space-x-5">
-                        <Link href="/events" className="text-white px-4">
+                        <Link href="/kelas" className="text-white px-4">
                             Program dan Kelas
                         </Link>
                         {isLoggedIn ? (

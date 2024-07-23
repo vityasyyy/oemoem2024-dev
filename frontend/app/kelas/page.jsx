@@ -1,29 +1,43 @@
 "use client"
 
 import { useState, useEffect } from 'react';
-import EventList from '../../components/EventList';
-import api from '../../lib/axios';
+import axios from 'axios';
+import Class from '../../components/Class'; // Adjust the import path as needed
 
 export default function Events() {
-  const [events, setEvents] = useState([]);
-
+  const [user, setUser] = useState(null); // Add state for user
   useEffect(() => {
+    const checkUserLoggedIn = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/auth/validate', { withCredentials: true });
+        console.log(response);
+        if (response.data.user) {
+          setUser(response.data.user);
+        }
+      } catch (error) {
+        console.error('Error checking authentication status:', error);
+      }
+    };
+
     const fetchEvents = async () => {
       try {
-        const response = await api.get('/event');
+        const response = await axios.get('http://localhost:8080/event');
         setEvents(response.data);
       } catch (error) {
         console.error('Error fetching events:', error);
       }
     };
 
-    fetchEvents();
+    checkUserLoggedIn();
   }, []);
 
   return (
     <section>
-      <h1>Events</h1>
-      <EventList events={events} />
+      {user ? (
+        <Class user={user} />
+      ) : (
+        <p>Please log in to view your classes.</p>
+      )}
     </section>
   );
 }
