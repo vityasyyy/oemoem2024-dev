@@ -131,8 +131,8 @@ const sampleEvents = [
         ,
         imageWarna: 
             {
-                url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732109/gamedevWarna_dpaqkn.svg", 
-                filename:"gamedevWarna_dpaqkn"
+                url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732099/backendWarna_hkx6zz.svg", 
+                filename:"backendWarna_hkx6zz"
             }
     },
     {
