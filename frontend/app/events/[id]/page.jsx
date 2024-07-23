@@ -32,7 +32,7 @@ export default function EventPage() {
   }, [id]);
 
   if (!id) {
-    return <section>Loading...</section>;
+    return <Loading />;
   }
 
   if (error) {

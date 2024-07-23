@@ -17,8 +17,8 @@ const DiceAd = () => {
             <h1 className="text-white text-2xl sm:text-4xl sm:max-w-6xl font-semibold text-center z-20">Mari Bergabung dan Tentukan Jalanmu dalam Dunia Teknologi</h1>
 
             {/* Tombol Daftar Sekarang */}
-            <Link href="/auth/daftar" className="sm:rounded-2xl rounded-md bg-basicRed-10 z-20 text-white md:text-2xl text-lg text-center sm:px-28 px-16 md:py-3 py-1 mb-5 border-4 border-basicDarkBrown-10 w-fit">Daftar Sekarang</Link>
-            
+            <Link href="/auth/daftar" className="sm:rounded-2xl rounded-md bg-basicRed-10 text-white md:text-2xl text-lg text-center sm:px-28 px-14 md:py-3 py-1 mb-5 z-30 border-4 border-basicDarkBrown-10">Daftar Sekarang</Link>
+    
         </section>
         </>
     );

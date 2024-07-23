@@ -1,6 +1,7 @@
 'use client'
 
 import DiceAd from "@/components/DiceAd";
+import Ads from "@/components/Ads";
 import Hero from "@/components/Hero";
 import Information from "@/components/Information";
 import Classes from "@/components/Classes";
@@ -46,6 +47,7 @@ export default function Home() {
         <Classes events={events} />
       </div>
       <Information />
+      <Ads />
       <DiceAd />
     </>
   );
