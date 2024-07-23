@@ -27,9 +27,9 @@ const Classes = ({ events }) => {
                             {/* Upper part: Shape and Class Logo */}
                             <div>
                                 {/* Logo Kiri Atas */}
-                                {event.shape && event.shape[0] && (
+                                {event.shape && event.shape && (
                                     <Image
-                                        src={event.shape[0].url}
+                                        src={event.shape.url}
                                         alt="shape"
                                         width={25}
                                         height={32}
@@ -39,9 +39,9 @@ const Classes = ({ events }) => {
 
                                 {/* Logo Kelas */}
                                 <div className="flex justify-center mt-2">
-                                    {event.image && event.image[0] && (
+                                    {event.image && event.image && (
                                         <Image
-                                            src={event.image[0].url}
+                                            src={event.imageWarna.url}
                                             alt="class logo"
                                             width={75}
                                             height={32}
