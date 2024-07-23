@@ -51,7 +51,7 @@ const Classes = ({ events }) => {
                                 </div>
 
                                 {/* Nama Kelas */}
-                                <h1 className="text-center font-medium text-base mt-1">
+                                <h1 className="text-center font-medium text-base mt-1" style={{color: event.color}}>
                                     {event.title}
                                 </h1>
                             </div>
