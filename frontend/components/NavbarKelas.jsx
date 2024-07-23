@@ -33,7 +33,7 @@ const NavbarKelas = () => {
 
                     {/* Program dan Kelas & Button */}
                     <div className="hidden md:flex text-xl items-center space-x-5">
-                        <Link href="https://wa.me/85259343364" className="text-white px-4">
+                        <Link href="https://wa.me/6285259343364" className="text-white px-4">
                             Kontak dan Bantuan
                         </Link>   
                         <Link href="/akun" className="text-white px-4">

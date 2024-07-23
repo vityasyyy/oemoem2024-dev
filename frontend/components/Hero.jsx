@@ -8,7 +8,7 @@ const Hero = ({user}) => {
         const [minutes, setMinutes] = useState(0)
 
         useEffect(() => {
-            const target = new Date("8/14/2024 23:59:59")
+            const target = new Date("8/14/2024 18:00:00")
 
             const interval = setInterval(() => {
                 const now = new Date()
