@@ -7,7 +7,6 @@ module.exports.submit = async (req, res) => {
         const eventId = req.params.id;
         const { assignmentLink, assignmentComment } = req.body;
         const userId = req.user._id;
-
         // Create a new assignment
         const newAssignment = new Assignment({
             assignmentLink,
@@ -19,6 +18,7 @@ module.exports.submit = async (req, res) => {
         await newAssignment.save();
 
         // Retrieve the event from the database
+
         const event = await Event.findById(eventId);
         if (!event) {
             return res.status(404).json({ error: 'Event not found' });
@@ -35,7 +35,7 @@ module.exports.submit = async (req, res) => {
         }
 
         // Add the assignment to the user's assignments list
-        user.assignments.push(newAssignment._id);
+        user.assignment.push(newAssignment._id);
         await user.save();
 
         res.status(200).json({ message: 'Assignment submitted successfully', assignment: newAssignment });
@@ -70,7 +70,7 @@ module.exports.updateAssignment = async (req, res) => {
 
         res.status(200).json({ message: 'Assignment updated successfully', assignment });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error });
     }
 };
 

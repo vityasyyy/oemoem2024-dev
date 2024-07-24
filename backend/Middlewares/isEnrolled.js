@@ -1,3 +1,5 @@
+const Event = require('../Models/events')
+
 module.exports = async (req, res, next) => {
     try {
         const eventId = req.params.id;

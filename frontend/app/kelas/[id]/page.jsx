@@ -11,10 +11,11 @@ export default function EventPage() {
     const params = useParams();
     const id = params.id;
     const [event, setEvent] = useState(null);
-
+    const[user, setUser] = useState(null)
     useEffect(() => {
         if (id) {
             fetchEvent();
+            fetchUser();
         }
     }, [id]);
 
@@ -27,12 +28,25 @@ export default function EventPage() {
         }
     };
 
+<<<<<<< Updated upstream
     if (!event) return <Loading />;
+=======
+    const fetchUser = async() => {
+        try{
+            const response = await axios.get('http://localhost:8080/auth/validate', {withCredentials: true})
+            if(response.data.user) setUser(response.data.user)
+        } catch(error) {
+            console.error('error fetching user', error)
+        }
+    }
+
+    if (!event) return <div>Loading...</div>;
+>>>>>>> Stashed changes
 
     return (
         <>
             <NavbarKelas />
-            <ClassDetail event={event} />
+            <ClassDetail event={event} user={user} />
         </>
     );
 }
