@@ -1,21 +1,23 @@
 require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
+const LocalStrategy = require('passport-local');
+const mongoSanitize = require('express-mongo-sanitize');
 const passport = require('passport');
 const session = require('express-session');
-const mongoSanitize = require('express-mongo-sanitize');
+const { default: mongoose } = require('mongoose');
 const MongoStore = require('connect-mongo');
-const User = require('./Models/users');
-const Event = require('./Models/events');
+const cors = require('cors');
+
 const connectDB = require('./Models/connectDB');
 const ExpressError = require('./Middlewares/ExpressError');
-const { default: mongoose } = require('mongoose');
-const SECRET = process.env.SECRET;
-const LocalStrategy = require('passport-local')
+const User = require('./Models/users');
 const userRoutes = require('./Routes/userRoutes');
 const eventRoutes = require('./Routes/eventRoutes');
+
+const SECRET = process.env.SECRET;
 const app = express();
-const cors = require('cors')
+
 mongoose.set('strictQuery', true);
 connectDB();
 

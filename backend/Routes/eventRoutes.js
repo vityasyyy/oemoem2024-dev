@@ -14,5 +14,5 @@ router.post('/:id/submit', isAuthenticated, isEnrolled, submit);
 router.put('/:id/update', isAuthenticated, isAssignmentAuthor, updateAssignment);
 
 router.get('/:id', getEvent);
-router.get('/:id/submission', checkExistingSubmission);
+router.get('/:id/submission', isAuthenticated, checkExistingSubmission);
 module.exports = router;
