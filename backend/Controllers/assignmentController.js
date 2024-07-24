@@ -7,18 +7,29 @@ module.exports.submit = async (req, res) => {
         const eventId = req.params.id;
         const { assignmentLink, assignmentComment } = req.body;
         const userId = req.user._id;
+
+        // Check if the user has already submitted an assignment for this event
+        const existingAssignment = await Assignment.findOne({ 
+            submittedBy: userId, 
+            assignmentOn: eventId 
+        });
+
+        if (existingAssignment) {
+            return res.status(400).json({ error: 'You have already submitted an assignment for this event' });
+        }
+
         // Create a new assignment
         const newAssignment = new Assignment({
             assignmentLink,
             assignmentComment,
-            submittedBy: userId
+            submittedBy: userId,
+            assignmentOn: eventId
         });
 
         // Save the new assignment
         await newAssignment.save();
 
-        // Retrieve the event from the database
-
+        // Retrieve the event from the database 
         const event = await Event.findById(eventId);
         if (!event) {
             return res.status(404).json({ error: 'Event not found' });
@@ -70,7 +81,39 @@ module.exports.updateAssignment = async (req, res) => {
 
         res.status(200).json({ message: 'Assignment updated successfully', assignment });
     } catch (error) {
-        res.status(500).json({ error: error });
+        res.status(500).json({ error: error.message });
     }
 };
 
+module.exports.checkExistingSubmission = async (req, res) => {
+    try {
+        const eventId = req.params.id;
+        const userId = req.user._id;
+
+        // Find the assignment for this user and event
+        const assignment = await Assignment.findOne({
+            submittedBy: userId,
+            assignmentOn: eventId
+        });
+
+        if (assignment) {
+            // If an assignment exists, return it
+            res.status(200).json({
+                message: 'Existing assignment found',
+                assignment: {
+                    _id: assignment._id,
+                    assignmentLink: assignment.assignmentLink,
+                    assignmentComment: assignment.assignmentComment
+                }
+            });
+        } else {
+            // If no assignment exists, return null
+            res.status(200).json({
+                message: 'No existing assignment found',
+                assignment: null
+            });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};

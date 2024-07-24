@@ -7,6 +7,10 @@ const assignmentSchema = new Schema({
     submittedBy: {
         type: Schema.Types.ObjectId,
         ref: "User"
+    },
+    submittedOn: {
+        type: Schema.Types.ObjectId,
+        ref: "Event"
     }
 })
 
