@@ -18,7 +18,7 @@ const Class = ({ user }) => {
 
     const fetchEnrolledClasses = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/auth/${user._id}/enrolled`, { withCredentials: true });
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/${user._id}/enrolled`, { withCredentials: true });
             setEnrolledClasses(response.data);
         } catch (error) {
             console.error('Error fetching enrolled classes:', error);
@@ -27,7 +27,7 @@ const Class = ({ user }) => {
 
     const fetchAllClasses = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/event', { withCredentials: true });
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event`, { withCredentials: true });
             setAllClasses(response.data);
         } catch (error) {
             console.error('Error fetching all classes:', error);

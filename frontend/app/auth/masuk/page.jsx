@@ -19,13 +19,13 @@ export default function Masuk() {
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:8080/auth/login', {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
                 email,
                 password
             }, {withCredentials: true});
             console.log(response)
             if (response.status === 200) {
-                const validateResponse = await axios.get('http://localhost:8080/auth/validate', {
+                const validateResponse = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, {
                     withCredentials: true
                 });
                 console.log(validateResponse)

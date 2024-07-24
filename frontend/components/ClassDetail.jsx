@@ -33,7 +33,7 @@ const ClassDetail = ({ event, user }) => {
 
     const handleEnroll = async () => {
         try {
-            const response = await axios.post(`http://localhost:8080/event/${event._id}/enroll`, {}, {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/enroll`, {}, {
                 withCredentials: true
             });
             if (response.status === 200) {
@@ -51,12 +51,12 @@ const ClassDetail = ({ event, user }) => {
         try {
             let response;
             if (hasSubmitted) {
-                response = await axios.put(`http://localhost:8080/event/${assignmentId}/update`, {
+                response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/event/${assignmentId}/update`, {
                     assignmentLink: submissionLink,
                     assignmentComment: submissionComment
                 }, { withCredentials: true });
             } else {
-                response = await axios.post(`http://localhost:8080/event/${event._id}/submit`, {
+                response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submit`, {
                     assignmentLink: submissionLink,
                     assignmentComment: submissionComment
                 }, { withCredentials: true });
@@ -78,7 +78,7 @@ const ClassDetail = ({ event, user }) => {
 
     const checkExistingSubmission = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/event/${event._id}/submission`, {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submission`, {
                 withCredentials: true
             });
             if (response.data.assignment) {

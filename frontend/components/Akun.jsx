@@ -16,7 +16,7 @@ const Akun = () => {
 
     const fetchUser = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/auth/validate', { withCredentials: true });
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true });
             if (response.data.user) {
                 setUser(response.data.user);
             } else {
@@ -31,7 +31,7 @@ const Akun = () => {
 
     const handleLogout = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/auth/logout', {}, { withCredentials: true });
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {}, { withCredentials: true });
             if (response.data.message === "Logout successful") {
                 // Clear any client-side storage if you're using any
                 localStorage.removeItem('user'); // If you're storing user data in localStorage

@@ -21,7 +21,7 @@ export default function EventPage() {
 
     const fetchEvent = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/event/${id}`);
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event/${id}`);
             setEvent(response.data);
         } catch (error) {
             console.error('Error fetching event:', error);
@@ -30,7 +30,7 @@ export default function EventPage() {
 
     const fetchUser = async() => {
         try{
-            const response = await axios.get('http://localhost:8080/auth/validate', {withCredentials: true})
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, {withCredentials: true})
             if(response.data.user) setUser(response.data.user)
         } catch(error) {
             console.error('error fetching user', error)
