@@ -11,8 +11,6 @@ export default function Daftar() {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [nim, setNim] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
 
@@ -22,19 +20,17 @@ export default function Daftar() {
     
         try {
             // Register the user
-            const registerResponse = await axios.post('http://localhost:8080/auth/register', {
+            const registerResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
                 email,
                 username,
                 password,
-                nim,
-                phoneNumber
             });
     
             if (registerResponse.data.message === "Register succesful") {
                 console.log('Registration successful');
     
                 // Automatically log in the user after registration
-                const loginResponse = await axios.post('http://localhost:8080/auth/login', {
+                const loginResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
                     email,
                     password
                 }, { withCredentials: true }); // Ensure cookies are included
@@ -109,27 +105,6 @@ export default function Daftar() {
                             className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"
                             required
                         />
-
-                        <h2 className="text-basicLightBrown-10 font-medium">NIM</h2>
-                        <input
-                            type="text"
-                            placeholder="Tuliskan NIM"
-                            value={nim}
-                            onChange={(e) => setNim(e.target.value)}
-                            className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"
-                            required
-                        />
-
-                        <h2 className="text-basicLightBrown-10 font-medium">Nomor Telepon</h2>
-                        <input
-                            type="tel"
-                            placeholder="Tuliskan Nomor Telepon"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-8 px-2 py-1 sm:py-2"
-                            required
-                        />
-
                         <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Daftar</button>
                     </form>
 
