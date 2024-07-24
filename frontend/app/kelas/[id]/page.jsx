@@ -28,9 +28,6 @@ export default function EventPage() {
         }
     };
 
-<<<<<<< Updated upstream
-    if (!event) return <Loading />;
-=======
     const fetchUser = async() => {
         try{
             const response = await axios.get('http://localhost:8080/auth/validate', {withCredentials: true})
@@ -40,8 +37,7 @@ export default function EventPage() {
         }
     }
 
-    if (!event) return <div>Loading...</div>;
->>>>>>> Stashed changes
+    if (!event) return <Loading/>;
 
     return (
         <>
