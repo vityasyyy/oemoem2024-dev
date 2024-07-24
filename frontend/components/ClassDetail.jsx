@@ -7,17 +7,27 @@ import KelasButton from "@/components/KelasButton";
 import ChallengesButton from "@/components/ChallengesButton";
 import axios from 'axios'; // Import axios for making API requests
 
-const ClassDetail = ({ event, user}) => {
+const ClassDetail = ({ event, user }) => {
     const [activeView, setActiveView] = useState('kelas');
     const [submissionLink, setSubmissionLink] = useState(''); // State for the submission link
     const [submissionComment, setSubmissionComment] = useState(''); // State for the submission comment
     const [submissionMessage, setSubmissionMessage] = useState(''); // State for success/error message
     const [isEnrolled, setIsEnrolled] = useState(false);
     const [enrollmentError, setEnrollmentError] = useState(null);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [assignmentId, setAssignmentId] = useState(null);
 
     useEffect(() => {
-        if(user && event) {
-            setIsEnrolled(event.enrolledBy.includes(user._id));
+        if (user && event) {
+            console.log(user._id)   
+            const enrolled = event.enrolledBy.some(enrolledUser => 
+                enrolledUser._id.toString() === user._id.toString()
+            );
+            console.log('User ID:', user._id);
+            console.log('Enrolled By:', event.enrolledBy);
+            console.log('Is Enrolled:', enrolled);
+            setIsEnrolled(enrolled);
+            checkExistingSubmission();
         }
     }, [user, event]);
 
@@ -35,28 +45,58 @@ const ClassDetail = ({ event, user}) => {
             setEnrollmentError(error.response?.data?.error || 'An error occurred during enrollment');
         }
     };
+
     const handleSubmission = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:8080/event/${event._id}/submit`, { 
-                assignmentLink: submissionLink,
-                assignmentComment: submissionComment
-            });
-            if (response.status === 200) {
-                setSubmissionMessage('Submission successful!');
+            let response;
+            if (hasSubmitted) {
+                response = await axios.put(`http://localhost:8080/event/${assignmentId}/update`, {
+                    assignmentLink: submissionLink,
+                    assignmentComment: submissionComment
+                }, { withCredentials: true });
             } else {
-                setSubmissionMessage('Submission failed. Please try again.');
+                response = await axios.post(`http://localhost:8080/event/${event._id}/submit`, {
+                    assignmentLink: submissionLink,
+                    assignmentComment: submissionComment
+                }, { withCredentials: true });
+            }
+
+            if (response.status === 200) {
+                setSubmissionMessage(hasSubmitted ? 'Assignment updated successfully!' : 'Assignment submitted successfully!');
+                setHasSubmitted(true);
+                if (!hasSubmitted) {
+                    setAssignmentId(response.data.assignment._id);
+                }
+            } else {
+                setSubmissionMessage(hasSubmitted ? 'Update failed. Please try again.' : 'Submission failed. Please try again.');
             }
         } catch (error) {
-            setSubmissionMessage(error ||'An error occurred. Please try again.');
+            setSubmissionMessage(error.response?.data?.error || 'An error occurred. Please try again.');
+        }
+    };
+
+    const checkExistingSubmission = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/event/${event._id}/submission`, {
+                withCredentials: true
+            });
+            if (response.data.assignment) {
+                setHasSubmitted(true);
+                setAssignmentId(response.data.assignment._id);
+                setSubmissionLink(response.data.assignment.assignmentLink);
+                setSubmissionComment(response.data.assignment.assignmentComment);
+            }
+        } catch (error) {
+            console.error('Error checking existing submission:', error);
         }
     };
 
     return (
-        <section className="h-fit bg-basicLightGreen-10 pt-24 ">
+        <section className="h-fit bg-basicLightGreen-10 pt-24">
             {/* Bagian Hijau Atas */}
             <div className="px-[min(10%,512px)]">
-                <div className=" bg-basicBlack-10 max-w-xs flex p-3 rounded-lg z-10 relative">
+                <div className="bg-basicBlack-10 max-w-xs flex p-3 rounded-lg z-10 relative">
                     <Image
                         src={event.image ? event.image.url : "/default-image.svg"}
                         alt={event.title}
@@ -85,7 +125,7 @@ const ClassDetail = ({ event, user}) => {
                 </div>
             </div>
             
-            {/* Main*/}
+            {/* Main */}
             <div className="h-screen bg-basicBlack-10 mt-5 pt-5 z-50 px-[min(10%,512px)] flex flex-col gap-10">
                 {activeView === 'kelas' ? (
                     <>
@@ -205,7 +245,7 @@ const ClassDetail = ({ event, user}) => {
                                     type="submit"
                                     className="w-full px-3 py-1 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md focus:outline-none focus:ring-2 focus:ring-white cursor-pointer"
                                 >
-                                    Submit
+                                    {hasSubmitted ? 'Update Assignment' : 'Submit Assignment'}
                                 </button>
                             </form>
                             {submissionMessage && <p className="text-white mt-2">{submissionMessage}</p>}
