@@ -6,6 +6,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import GabungGrup from "@/components/GabungGrup";
 
 export default function Daftar() {
     const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ export default function Daftar() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
+    const [showModal, setShowModal] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,7 +41,7 @@ export default function Daftar() {
     
                 if (loginResponse.status === 200) {
                     console.log('Login successful');
-                    router.push('/'); // Redirect to home page after successful login
+                    setShowModal(true);
                 } else {
                     console.log('Login failed:', loginResponse.data);
                 }
@@ -50,6 +52,11 @@ export default function Daftar() {
             console.error('Error during registration or login:', error);
             setError(error.response?.data?.error || 'An error occurred during registration');
         }
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+        router.push('/'); // Redirect to home page after closing the modal
     };
 
     return (
@@ -115,11 +122,11 @@ export default function Daftar() {
                 {/* Card Background */}
                 <div>
                     <Image 
-                    src="heroCardsMD.svg"
-                    height={500}
-                    width={500}
-                    className="absolute top-0 bottom-0 right-0 left-0 m-auto z-0 opacity-50"
-                    alt="Hero Cards"
+                        src="heroCardsMD.svg"
+                        height={500}
+                        width={500}
+                        className="absolute top-0 bottom-0 right-0 left-0 m-auto z-0 opacity-50"
+                        alt="Hero Cards"
                     />
                 </div>
 
@@ -127,6 +134,24 @@ export default function Daftar() {
                 <div className="bg-basicBlack-10 absolute z-10 bottom-0 left-0 right-0 top-[60%]"></div>
 
             </section>
+
+            {/* Modal */}
+            {showModal && (
+                <>
+                    <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+                    <div className="fixed inset-0 flex items-center justify-center z-50">
+                        <div className="relative bg-basicBlack-10 rounded-lg w-56 text-white flex flex-col items-center text-center p-2">
+                            <GabungGrup />
+                            <button
+                                onClick={handleCloseModal}
+                                className="absolute top-2 right-2 text-basicLightBrown-10 text-lg"
+                            >
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                </>
+            )}
         </>
     );
 }
