@@ -1,16 +1,17 @@
-const KelasButton = ({ onClick, isActive }) => {
+
+const ChallengesButton = ({ onClick, isActive }) => {
     return (
         <button 
             onClick={onClick} 
-            className={`rounded-md py-1 px-3 ${
+            className={`flex items-center text-sm sm:text-lg justify-center px-4 py-1 rounded-md 10 ${
                 isActive 
                     ? 'bg-basicBlack-10 text-white border-basicBlack-10 border-2' 
                     : 'bg-white text-basicBlack-10 border-basicBlack-10 border-2'
             }`}
         >
-            Kelas
+            Champions
         </button>
     );
 }
 
-export default KelasButton;
+export default ChallengesButton;

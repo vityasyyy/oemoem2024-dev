@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from "next/image";
+import Link from 'next/link';
 import ProgressBar from "@/components/ProgressBar";
 import KelasButton from "@/components/KelasButton";
 import ChallengesButton from "@/components/ChallengesButton";
@@ -132,7 +133,7 @@ const ClassDetail = ({ event, user }) => {
                         {/* Kelas */}
                         {/* Overview */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 text-lg rounded-md">
                                 Overview
                             </div>
                             <p>{event.description}</p>
@@ -140,7 +141,7 @@ const ClassDetail = ({ event, user }) => {
 
                         {/* Tanggal dan Lokasi */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 text-lg rounded-md">
                                 Tanggal dan lokasi
                             </div>
                             <p>{new Date(event.date).toLocaleDateString()}</p>
@@ -149,7 +150,7 @@ const ClassDetail = ({ event, user }) => {
 
                         {/* Kebutuhan */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 rounded-md">
                                 Kebutuhan
                             </div>
                             <p>{event.prerequisite}</p>
@@ -157,7 +158,7 @@ const ClassDetail = ({ event, user }) => {
                         
                         {/* Kurikulum */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 rounded-md">
                                 Kurikulum
                             </div>
                             <p>{event.curriculum}</p>
@@ -165,7 +166,7 @@ const ClassDetail = ({ event, user }) => {
 
                         {/* Mentor */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 rounded-md">
                                 Mentor
                             </div>
                             <div className="bg-basicLightBrown-10 rounded-md p-2">
@@ -175,7 +176,7 @@ const ClassDetail = ({ event, user }) => {
 
                         {/* Contact Person */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 rounded-md">
                                 Contact Person
                             </div>
                             <p>{event.contactPerson}</p>
@@ -200,15 +201,15 @@ const ClassDetail = ({ event, user }) => {
                         {/* Challenges */}
                         {/* Overview */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-40 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
                                 Overview
                             </div>
-                            <p>{event.assignmentDetail}</p>
+                            <p className='text-wrap'>{event.assignmentDetail}</p>
                         </div>
 
                         {/* Tenggat Pengumpulan */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-48 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
                                 Tenggat Pengumpulan
                             </div>
                             <p>{new Date(event.date).toLocaleDateString()}</p>
@@ -216,15 +217,15 @@ const ClassDetail = ({ event, user }) => {
 
                         {/* Assets */}
                         <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 w-48 px-3 py-1 rounded-md">
+                            <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
                                 Asset
                             </div>
                             <p>{new Date(event.date).toLocaleDateString()}</p>
                         </div>
 
                         {/* Pengumpulan */}
-                        <div className="flex flex-col gap-2 text-black">
-                            <div className="bg-basicBlue-10 w-48 px-3 py-1 rounded-md text-white">
+                        <div className="flex flex-col gap-4 text-black">
+                            <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md text-white">
                                 Pengumpulan
                             </div>
                             <form onSubmit={handleSubmission} className="flex flex-col gap-2">
@@ -232,26 +233,26 @@ const ClassDetail = ({ event, user }) => {
                                     type="text"
                                     value={submissionLink}
                                     onChange={(e) => setSubmissionLink(e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-3 py-2 border border-gray-300 text-sm sm:text-base rounded-lg focus:text-basicBlack-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     placeholder="cth: link github, link web, dll"
                                 />
                                 <textarea
                                     value={submissionComment}
                                     onChange={(e) => setSubmissionComment(e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-3 py-2 border text-sm sm:text-base border-gray-300 rounded-lg focus:text-basicBlack-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     placeholder="Add a comment"
                                 />
+                                <p className="text-white mt-2 text-xs sm:text-sm">
+                                    Tugas dikumpulkan dalam bentuk link sesuai dengan arahan mentor pada hari pembelajaran
+                                </p>
                                 <button 
                                     type="submit"
-                                    className="w-full px-3 py-1 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md focus:outline-none focus:ring-2 focus:ring-white cursor-pointer"
+                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer"
                                 >
-                                    {hasSubmitted ? 'Update Assignment' : 'Submit Assignment'}
+                                    {hasSubmitted ? 'Update' : 'Submit'}
                                 </button>
                             </form>
                             {submissionMessage && <p className="text-white mt-2">{submissionMessage}</p>}
-                            <p className="text-white">
-                                Tugas dikumpulkan dalam bentuk link sesuai dengan arahan mentor pada hari pembelajaran
-                            </p>
                         </div>
                     </>
                 )}

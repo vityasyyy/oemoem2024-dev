@@ -4,8 +4,11 @@ import Link from "next/link";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavbarKelas from "./NavbarKelas";
+import KelasButton from "./KelasButton";
+import ChampionsButton from "./ChampionsButton";
 
 const Class = ({ user }) => {
+    const [activeView, setActiveView] = useState('kelas')
     const [enrolledClasses, setEnrolledClasses] = useState([]);
     const [allClasses, setAllClasses] = useState([]);
 
@@ -61,8 +64,14 @@ const Class = ({ user }) => {
 
                             {/* Tombol Kelas dan Champions */}
                             <div className="flex gap-2">
-                                <div className="flex items-center text-lg justify-center px-4 py-1 rounded-md text-white bg-basicBlack-10 border-black border-2">Kelas</div>
-                                <div className="flex items-center text-lg justify-center px-4 py-1 rounded-md text-basicBlack-10 bg-white border-black border-2">Champions</div>
+                                <KelasButton 
+                                    onClick={() => setActiveView('kelas')}
+                                    isActive={activeView === 'kelas'}
+                                />
+                                <ChampionsButton
+                                    onClick={() => setActiveView('champions')}
+                                    isActive={activeView === 'champions'}
+                                />
                             </div>
                         </div>
 
