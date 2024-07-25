@@ -6,6 +6,7 @@ import axios from "axios";
 import NavbarKelas from "./NavbarKelas";
 import KelasButton from "./KelasButton";
 import Champions from "./Champions";
+import ChampionsBelom from "./ChampionsBelom";
 import ChampionsButton from "./ChampionsButton";
 import DiceAd from "./DiceAd";
 
@@ -135,35 +136,47 @@ const Class = ({ user }) => {
                                 </div>
 
                                 {/* Gallery */}
-                                <div className="flex flex-wrap pt-4 gap-4">
+                                <div className="flex flex-wrap mt-4 gap-4">
                                     {allClasses.map((cls) => (
-                                        <div key={cls._id} className="border-[3px] rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 flex flex-col justify-between" style={{borderColor: cls.color, backgroundColor: '#EDB465'}}>
-                                            <div>
-                                                {cls.shape && (
-                                                    <Image
-                                                        src={cls.shape.url}
-                                                        alt="shape"
-                                                        width={25}
-                                                        height={32}
-                                                    />
-                                                )}
-                                                <div className="flex justify-center mt-2">
+                                        <div key={cls._id} className="relative border-[3px] rounded-xl w-44 h-56 py-2 px-2 flex flex-col items-center justify-end" style={{borderColor: cls.color, backgroundColor: '#EDB465'}}>
+                                            {/* Logo Kiri Atas */}
+                                            {cls.shape && (
+                                                <Image
+                                                    src={cls.shape.url}
+                                                    alt="shape"
+                                                    width={25}
+                                                    height={32}
+                                                    className="absolute top-2 left-2"
+                                                />
+                                            )}
+
+                                            {/* Kumpulin gambar, nama, dan tombol */}
+                                            <div className="flex flex-col w-full gap-2 justify-end items-center">
+                                            
+                                                {/* Logo Kelas */}
+                                                <div className="flex justify-center">
                                                     {cls.image && (
                                                         <Image
-                                                            src={cls.imageWarna.url}
-                                                            alt="class logo"
-                                                            width={75}
-                                                            height={32}
+                                                        src={cls.imageWarna.url}
+                                                        alt="class logo"
+                                                        width={75}
+                                                        height={32}
+                                                        className="w-20"
                                                         />
                                                     )}
                                                 </div>
-                                                <h3 className="text-center font-medium text-base mt-1 text-black">
+
+                                                {/* Nama Kelas */}
+                                                <h3 className="text-center font-medium text-base" style={{color: cls.color}}>
                                                     {cls.title}
                                                 </h3>
+
+                                                {/* Tombol Lihat Kelas */}
+                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer" style={{backgroundColor: cls.color}}>
+                                                    Lihat Kelas
+                                                </Link>
+
                                             </div>
-                                            <Link href={`/kelas/${cls._id}`} className="text-white py-2 mx-2 text-center rounded-xl mb-2" style={{backgroundColor: cls.color}}>
-                                                View Class
-                                            </Link>
                                         </div>
                                     ))}
                                 </div>
@@ -173,7 +186,8 @@ const Class = ({ user }) => {
                         <>
                             {/* Champions Section */}
                             <section className="flex flex-col z-30 text-lg rounded-t-xl py-8 px-[min(10%,512px)] bg-basicBlack-10">
-                                <Champions />
+                                {/* <Champions /> */}
+                                <ChampionsBelom />
                             </section>
                             <DiceAd />
                         </>

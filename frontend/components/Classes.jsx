@@ -68,6 +68,7 @@ const Classes = ({ events }) => {
                         className="absolute left-[-1rem] z-20 top-1/2 transform -translate-y-1/2"
                     />
 
+                    {/* Cards */}
                     <div className="flex gap-4 pb-4" style={{ width: `${events.length * 188}px` }}>
                         {events.map((event, index) => (
                             <div 
