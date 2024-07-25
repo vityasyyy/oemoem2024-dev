@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Class from '../../components/Class'; // Adjust the import path as needed
-import { useRouter } from 'next/navigation';
+import Loading from '@/components/Loading';
 export default function Events() {
-  const router = useRouter();
   const [user, setUser] = useState(null); // Add state for user
+  const[events, setEvents] = useState([]);
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true });
+        const response = await axios.get('http://localhost:8080/auth/validate', { withCredentials: true });
         console.log(response);
         if (response.data.user) {
           setUser(response.data.user);
@@ -19,7 +19,18 @@ export default function Events() {
         console.error('Error checking authentication status:', error);
       }
     };
+
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/event');
+        setEvents(response.data);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
+
     checkUserLoggedIn();
+    fetchEvents();
   }, []);
 
   return (
@@ -27,7 +38,7 @@ export default function Events() {
       {user ? (
         <Class user={user} />
       ) : (
-        router.push('/auth/masuk')
+        <Loading/>
       )}
     </section>
   );
