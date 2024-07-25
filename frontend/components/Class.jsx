@@ -128,7 +128,7 @@ const Class = ({ user }) => {
                                                 </h1>
 
                                                 {/* Tombol Lihat Kelas */}
-                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer" style={{backgroundColor: cls.color}}>
+                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer transition-all hover:rounded-2xl hover:shadow-lg" style={{backgroundColor: cls.color}}>
                                                     Lihat Kelas
                                                 </Link>
                                             </div>

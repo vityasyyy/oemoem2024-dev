@@ -55,7 +55,7 @@ const Classes = ({ events }) => {
                         width={40}
                         height={32}
                         onClick={scrollRight}
-                        className="absolute right-[-1rem] z-20 top-1/2 transform -translate-y-1/2 cursor-pointer hover:scale-110 transition-all"
+                        className="absolute right-[-1rem] z-20 top-1/2 transform -translate-y-1/2 cursor-pointer hover:scale-110 transition-all shadow-xl"
                     />
 
                     {/* Slide Button Kiri */}
@@ -65,7 +65,7 @@ const Classes = ({ events }) => {
                         width={40}
                         height={32}
                         onClick={scrollLeft}
-                        className="absolute left-[-1rem] z-20 top-1/2 transform -translate-y-1/2 cursor-pointer hover:scale-110 transition-all"
+                        className="absolute left-[-1rem] z-20 top-1/2 transform -translate-y-1/2 cursor-pointer hover:scale-110 transition-all shadow-xl"
                     />
 
                     {/* Cards */}
@@ -110,7 +110,7 @@ const Classes = ({ events }) => {
                                     {/* Tombol Lihat Kelas */}
                                     <button 
                                         onClick={() => handleClick(event._id)} 
-                                        className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer" 
+                                        className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer transition-all hover:rounded-2xl hover:shadow-2xl" 
                                         style={{ backgroundColor: event.color }}
                                         >
                                         Lihat Kelas

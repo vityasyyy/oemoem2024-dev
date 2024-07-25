@@ -94,7 +94,14 @@ const ClassDetail = ({ event, user }) => {
     };
 
     return (
-        <section className="bg-basicLightGreen-10 pt-24 pb-6">
+        <section className="bg-basicLightGreen-10 pt-24 pb-6 relative">
+            {/* 4 Cards Background Image */}
+            <Image
+                src="4cards.svg"
+                width={300}
+                height={300}
+                className='absolute top-[5rem] right-0 lg:right-48'
+            />
             {/* Bagian Hijau Atas */}
             <div className="px-[min(10%,512px)]">
                 <div className="bg-basicBlack-10 max-w-xs flex p-3 rounded-lg z-10 relative">
@@ -127,7 +134,7 @@ const ClassDetail = ({ event, user }) => {
             </div>
             
             {/* Main */}
-            <div className="h-fit bg-basicBlack-10 mt-5 pt-8 pb-48 z-50 px-[min(10%,512px)] text-lg flex flex-col gap-10">
+            <div className="h-fit bg-basicBlack-10 mt-5 pt-8 pb-48 z-50 px-[min(10%,512px)] text-lg relative flex flex-col gap-10">
                 {activeView === 'kelas' ? (
                     <>
                         {/* Kelas */}
@@ -198,9 +205,13 @@ const ClassDetail = ({ event, user }) => {
                             </div>
                         )}
                     </>
+
                 ) : (
                     <>
-                        {/* Challenges */}
+
+
+                        {/* Challenges Section */}
+
                         {/* Overview */}
                         <div className="flex flex-col gap-2 text-white">
                             <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
