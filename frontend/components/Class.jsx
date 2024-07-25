@@ -9,6 +9,7 @@ import Champions from "./Champions";
 import ChampionsBelom from "./ChampionsBelom";
 import ChampionsButton from "./ChampionsButton";
 import DiceAd from "./DiceAd";
+import GabungGrupMini from "./GabungGrupMini";
 
 const Class = ({ user }) => {
     const [activeView, setActiveView] = useState('kelas');
@@ -56,9 +57,11 @@ const Class = ({ user }) => {
                 />
 
                 {/* Header */}
-                <div className="flex pb-8">
+                <div className="flex pb-6">
+
                     {/* Greeting and Buttons */}
                     <div className="flex z-30 flex-col gap-5">
+
                         {/* Hello, User */}
                         <h1 className="text-basicBlack-10 text-3xl sm:text-4xl font-bold">Hello, {user.username}!</h1>
 
@@ -74,6 +77,9 @@ const Class = ({ user }) => {
                             />
                         </div>
                     </div>
+
+                    {/* Whatsapp */}
+                    <GabungGrupMini />
                 </div>
             </section>
 
@@ -81,7 +87,7 @@ const Class = ({ user }) => {
             <div className="bg-basicDarkGreen-10 relative z-30">
                     {activeView === 'kelas' ? (
                         <>
-                            <section className="flex flex-col z-30 text-lg rounded-t-xl py-8 px-[min(10%,512px)] bg-basicBlack-10">
+                            <section className="flex flex-col z-30 text-lg rounded-t-3xl py-8 px-[min(10%,512px)] bg-basicBlack-10">
                                 {/* Kelas Pilihanmu */}
                                 <div className="flex">
                                     <div className="bg-basicBlue-10 text-white rounded-md px-4 py-2">Kelas Pilihanmu</div>
@@ -185,7 +191,7 @@ const Class = ({ user }) => {
                     ) : (
                         <>
                             {/* Champions Section */}
-                            <section className="flex flex-col z-30 text-lg rounded-t-xl py-8 px-[min(10%,512px)] bg-basicBlack-10">
+                            <section className="flex flex-col z-30 text-lg rounded-t-3xl py-8 pb-32 px-[min(10%,512px)] bg-basicBlack-10">
                                 {/* <Champions /> */}
                                 <ChampionsBelom />
                             </section>
