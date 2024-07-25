@@ -94,7 +94,7 @@ const ClassDetail = ({ event, user }) => {
     };
 
     return (
-        <section className="h-fit bg-basicLightGreen-10 pt-24">
+        <section className="bg-basicLightGreen-10 pt-24 pb-6">
             {/* Bagian Hijau Atas */}
             <div className="px-[min(10%,512px)]">
                 <div className="bg-basicBlack-10 max-w-xs flex p-3 rounded-lg z-10 relative">
@@ -127,7 +127,7 @@ const ClassDetail = ({ event, user }) => {
             </div>
             
             {/* Main */}
-            <div className="h-screen bg-basicBlack-10 mt-5 pt-5 z-50 px-[min(10%,512px)] flex flex-col gap-10">
+            <div className="h-fit bg-basicBlack-10 mt-5 pt-8 pb-48 z-50 px-[min(10%,512px)] text-lg flex flex-col gap-10">
                 {activeView === 'kelas' ? (
                     <>
                         {/* Kelas */}
@@ -183,13 +183,15 @@ const ClassDetail = ({ event, user }) => {
                         </div>
                         {/* ENROLL BUTTON */}
                         {!isEnrolled ? (
-                            <button 
-                                onClick={handleEnroll}
-                                className="bg-basicRed-10 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300"
-                                disabled={event.slots <= 0}
-                            >
-                                {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
-                            </button>
+                            <div className='flex justify-center items-center'>
+                                <button 
+                                    onClick={handleEnroll}
+                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-500 transition-all"
+                                    disabled={event.slots <= 0}
+                                    >
+                                    {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
+                                </button>
+                            </div>
                         ) : (
                             <div className="text-white bg-green-500 py-2 px-4 rounded-md">
                                 You are enrolled in this class
@@ -247,7 +249,7 @@ const ClassDetail = ({ event, user }) => {
                                 </p>
                                 <button 
                                     type="submit"
-                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer"
+                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-500 transition-all"
                                 >
                                     {hasSubmitted ? 'Update' : 'Submit'}
                                 </button>

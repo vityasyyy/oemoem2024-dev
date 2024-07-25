@@ -55,7 +55,7 @@ const Classes = ({ events }) => {
                         width={40}
                         height={32}
                         onClick={scrollRight}
-                        className="absolute right-[-1rem] z-20 top-1/2 transform -translate-y-1/2"
+                        className="absolute right-[-1rem] z-20 top-1/2 transform -translate-y-1/2 cursor-pointer hover:scale-110 transition-all"
                     />
 
                     {/* Slide Button Kiri */}
@@ -65,7 +65,7 @@ const Classes = ({ events }) => {
                         width={40}
                         height={32}
                         onClick={scrollLeft}
-                        className="absolute left-[-1rem] z-20 top-1/2 transform -translate-y-1/2"
+                        className="absolute left-[-1rem] z-20 top-1/2 transform -translate-y-1/2 cursor-pointer hover:scale-110 transition-all"
                     />
 
                     {/* Cards */}

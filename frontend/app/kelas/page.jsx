@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Class from '../../components/Class'; // Adjust the import path as needed
-import Loading from '@/components/Loading';
+import { redirect } from 'next/navigation';
 export default function Events() {
   const [user, setUser] = useState(null); // Add state for user
   const[events, setEvents] = useState([]);
@@ -38,7 +38,7 @@ export default function Events() {
       {user ? (
         <Class user={user} />
       ) : (
-        <Loading/>
+        redirect('/auth/masuk')
       )}
     </section>
   );
