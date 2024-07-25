@@ -57,7 +57,7 @@ const Class = ({ user }) => {
                 />
 
                 {/* Header */}
-                <div className="flex pb-6">
+                <div className="flex gap-2 items-center pb-6 pt-4">
 
                     {/* Greeting and Buttons */}
                     <div className="flex z-30 flex-col gap-5">
@@ -87,7 +87,7 @@ const Class = ({ user }) => {
             <div className="bg-basicDarkGreen-10 relative z-30">
                     {activeView === 'kelas' ? (
                         <>
-                            <section className="flex flex-col z-30 text-lg rounded-t-3xl py-8 px-[min(10%,512px)] bg-basicBlack-10">
+                            <section className="flex flex-col z-30 text-lg rounded-t-3xl py-8 pb-40 px-[min(10%,512px)] bg-basicBlack-10">
                                 {/* Kelas Pilihanmu */}
                                 <div className="flex">
                                     <div className="bg-basicBlue-10 text-white rounded-md px-4 py-2">Kelas Pilihanmu</div>
