@@ -1,12 +1,39 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
+import { useRef, useState } from "react";
 
 const Classes = ({ events }) => {
     const router = useRouter();
 
     const handleClick = (id) => {
         router.push(`/kelas/${id}`);
+    };
+
+    const scrollRef = useRef(null);
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+    const scrollLeft = () => {
+        if (scrollRef.current) {
+            const newPosition = Math.max(scrollPosition - 200, 0);
+            scrollRef.current.scrollTo({
+                left: newPosition,
+                behavior: 'smooth'
+            });
+            setScrollPosition(newPosition);
+        }
+    };
+
+    const scrollRight = () => {
+        if (scrollRef.current) {
+            const maxScroll = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+            const newPosition = Math.min(scrollPosition + 200, maxScroll);
+            scrollRef.current.scrollTo({
+                left: newPosition,
+                behavior: 'smooth'
+            });
+            setScrollPosition(newPosition);
+        }
     };
 
     return (
@@ -19,7 +46,7 @@ const Classes = ({ events }) => {
             {/* Wrapper */}
             <div className="relative">
                 {/* Scrollable Gallery */}
-                <div className="overflow-x-auto">
+                <div ref={scrollRef} className="overflow-x-auto no-scrollbar">
 
                     {/* Slide Button Kanan */}
                     <Image
@@ -27,6 +54,7 @@ const Classes = ({ events }) => {
                         alt="shape"
                         width={40}
                         height={32}
+                        onClick={scrollRight}
                         className="absolute right-[-1rem] z-20 top-1/2 transform -translate-y-1/2"
                     />
 
@@ -36,6 +64,7 @@ const Classes = ({ events }) => {
                         alt="shape"
                         width={40}
                         height={32}
+                        onClick={scrollLeft}
                         className="absolute left-[-1rem] z-20 top-1/2 transform -translate-y-1/2"
                     />
 

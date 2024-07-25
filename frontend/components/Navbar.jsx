@@ -100,7 +100,7 @@ const Navbar = () => {
                     item && (
                         <animated.div style={style} className="absolute z-[51] w-screen md:hidden bg-basicWhite-10 rounded-b-lg shadow-lg">
                             <div className="flex justify-center py-2">
-                                <h2 className="text-basicBlack-10 font-semibold">
+                                <h2 href="/" className="text-basicBlack-10 font-semibold cursor-pointer">
                                     Program dan Kelas
                                 </h2>
                             </div>
