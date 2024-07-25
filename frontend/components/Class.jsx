@@ -2,10 +2,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from "axios";
 import NavbarKelas from "./NavbarKelas";
+import KelasButton from "./KelasButton";
+import Champions from "./Champions";
+import ChampionsButton from "./ChampionsButton";
+import DiceAd from "./DiceAd";
 
 const Class = ({ user }) => {
+    const [activeView, setActiveView] = useState('kelas');
     const [enrolledClasses, setEnrolledClasses] = useState([]);
     const [allClasses, setAllClasses] = useState([]);
 
@@ -33,7 +38,6 @@ const Class = ({ user }) => {
             console.error('Error fetching all classes:', error);
         }
     };
-
     return (
         <>
             {/* Navigation Bar */}
@@ -41,118 +45,139 @@ const Class = ({ user }) => {
 
             {/* Main Section */}
             <section className="bg-gradient-to-t from-basicDarkGreen-10 to-basicLightGreen-10 px-[min(10%,512px)] pt-20 relative">
-                    {/* Dice Background */}
-                    <Image 
-                        src="diceloading.svg"
-                        width={300}
-                        height={300}
-                        alt="dice"
-                        className="absolute opacity-50 z-0 right-[min(10%,512px)]"
-                    />
+                {/* Dice Background */}
+                <Image 
+                    src="diceloading.svg"
+                    width={300}
+                    height={300}
+                    alt="dice"
+                    className="absolute opacity-50 z-0 right-[min(10%,512px)]"
+                />
 
-                    {/* Header */}
-                    <div className="flex pb-8">
+                {/* Header */}
+                <div className="flex pb-8">
+                    {/* Greeting and Buttons */}
+                    <div className="flex z-30 flex-col gap-5">
+                        {/* Hello, User */}
+                        <h1 className="text-basicBlack-10 text-3xl sm:text-4xl font-bold">Hello, {user.username}!</h1>
 
-                        {/* Greeting dan Tombol */}
-                        <div className="flex z-30 flex-col gap-5">
-
-                            {/* Hello, User */}
-                            <h1 className="text-basicBlack-10 text-3xl sm:text-4xl font-bold">Hello, {user.username}!</h1>
-
-                            {/* Tombol Kelas dan Champions */}
-                            <div className="flex gap-2">
-                                <div className="flex items-center text-lg justify-center px-4 py-1 rounded-md text-white bg-basicBlack-10 border-black border-2">Kelas</div>
-                                <div className="flex items-center text-lg justify-center px-4 py-1 rounded-md text-basicBlack-10 bg-white border-black border-2">Champions</div>
-                            </div>
+                        {/* Kelas and Champions Buttons */}
+                        <div className="flex gap-2">
+                            <KelasButton 
+                                onClick={() => setActiveView('kelas')}
+                                isActive={activeView === 'kelas'}
+                            />
+                            <ChampionsButton
+                                onClick={() => setActiveView('champions')}
+                                isActive={activeView === 'champions'}
+                            />
                         </div>
-
-                        {/* Whatsapp */}
                     </div>
+                </div>
             </section>
-                    
-            {/* Section Utama dipake Wrapper */}
+
+            {/* Main Content */}
             <div className="bg-basicDarkGreen-10 relative z-30">
-
-                <section className="flex flex-col z-30 text-lg rounded-t-xl py-8 px-[min(10%,512px)] bg-basicBlack-10">
-
-                    {/* Kelas Pilihanmu */}
-                    <div className="flex">
-                        <div className="bg-basicBlue-10 text-white rounded-md px-4 py-2">Kelas Pilihanmu</div>
-                    </div>
-
-                    {/* Galeri */}
-                    <div className="flex flex-wrap pt-4 gap-4 mb-8">
-                        {enrolledClasses.map((cls) => (
-                            <div key={cls._id} className="border-[3px] rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 flex flex-col justify-between" style={{borderColor: cls.color, backgroundColor: '#EDB465'}}>
-                                <div>
-                                    {cls.shape && cls.shape && (
-                                        <Image
-                                            src={cls.shape.url}
-                                            alt="shape"
-                                            width={25}
-                                            height={32}
-                                        />
-                                    )}
-                                    <div className="flex justify-center mt-2">
-                                        {cls.image && cls.image && (
-                                            <Image
-                                                src={cls.imageWarna.url}
-                                                alt="class logo"
-                                                width={75}
-                                                height={32}
-                                            />
-                                        )}
-                                    </div>
-                                    <h3 className="text-center font-medium text-base mt-1 text-black">
-                                        {cls.title}
-                                    </h3>
+                    {activeView === 'kelas' ? (
+                        <>
+                            <section className="flex flex-col z-30 text-lg rounded-t-xl py-8 px-[min(10%,512px)] bg-basicBlack-10">
+                                {/* Kelas Pilihanmu */}
+                                <div className="flex">
+                                    <div className="bg-basicBlue-10 text-white rounded-md px-4 py-2">Kelas Pilihanmu</div>
                                 </div>
-                                <Link href={`/kelas/${cls._id}`} className="text-white py-2 mx-2 text-center rounded-xl mb-2" style={{backgroundColor: cls.color}}>
-                                    View Class
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
 
-                    {/* Program dan Kelas */}
-                    <div className="flex">
-                        <div className="bg-basicBlue-10 text-white rounded-md px-4 py-2">Program dan Kelas</div>
-                    </div>
+                                {/* Gallery */}
+                                <div className="flex flex-wrap pt-4 gap-4 mb-8">
+                                    {enrolledClasses.map((cls) => (
+                                        <div key={cls._id} className="relative border-[3px] rounded-xl w-44 h-56 py-2 px-2 flex flex-col items-center justify-end" style={{borderColor: cls.color, backgroundColor: '#EDB465'}}>
+                                            {/* Logo Kiri Atas (heart, spade, dll) */}
+                                            {cls.shape && (
+                                                <Image
+                                                    src={cls.shape.url}
+                                                    alt="shape"
+                                                    width={25}
+                                                    height={32}
+                                                    className="absolute top-2 left-2"
+                                                />
+                                            )}
+                                            {/* Kumpulin Logo, Nama, Tombol Join */}
+                                            <div className="flex flex-col w-full gap-2 border-8 justify-end items-center">
 
-                    {/* Galeri */}
-                    <div className="flex flex-wrap pt-4 gap-4">
-                        {allClasses.map((cls) => (
-                            <div key={cls._id} className="border-[3px] rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 flex flex-col justify-between" style={{borderColor: cls.color, backgroundColor: '#EDB465'}}>
-                                <div>
-                                    {cls.shape && cls.shape && (
-                                        <Image
-                                            src={cls.shape.url}
-                                            alt="shape"
-                                            width={25}
-                                            height={32}
-                                        />
-                                    )}
-                                    <div className="flex justify-center mt-2">
-                                        {cls.image && cls.image && (
-                                            <Image
-                                                src={cls.imageWarna.url}
-                                                alt="class logo"
-                                                width={75}
-                                                height={32}
-                                            />
-                                        )}
-                                    </div>
-                                    <h3 className="text-center font-medium text-base mt-1 text-black">
-                                        {cls.title}
-                                    </h3>
+                                                {/* Logo Kelas */}
+                                                <div className="flex justify-center">
+                                                    {cls.image && (
+                                                        <Image
+                                                        src={cls.imageWarna.url}
+                                                            alt="class logo"
+                                                            width={75}
+                                                            height={32}
+                                                        />
+                                                    )}
+                                                </div>
+
+                                                {/* Nama Kelas */}
+                                                <h1 className="text-center font-medium text-base" style={{ color: cls.color }}>
+                                                    {cls.title}
+                                                </h1>
+
+                                                {/* Tombol Lihat Kelas */}
+                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer" style={{backgroundColor: cls.color}}>
+                                                    Lihat Kelas
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                                <Link href={`/kelas/${cls._id}`} className="text-white py-2 mx-2 text-center rounded-xl mb-2" style={{backgroundColor: cls.color}}>
-                                    View Class
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+
+                                {/* Program dan Kelas */}
+                                <div className="flex">
+                                    <div className="bg-basicBlue-10 text-white rounded-md px-4 py-2">Program dan Kelas</div>
+                                </div>
+
+                                {/* Gallery */}
+                                <div className="flex flex-wrap pt-4 gap-4">
+                                    {allClasses.map((cls) => (
+                                        <div key={cls._id} className="border-[3px] rounded-xl w-44 h-56 pt-2 pr-2 pb-1 pl-2 flex flex-col justify-between" style={{borderColor: cls.color, backgroundColor: '#EDB465'}}>
+                                            <div>
+                                                {cls.shape && (
+                                                    <Image
+                                                        src={cls.shape.url}
+                                                        alt="shape"
+                                                        width={25}
+                                                        height={32}
+                                                    />
+                                                )}
+                                                <div className="flex justify-center mt-2">
+                                                    {cls.image && (
+                                                        <Image
+                                                            src={cls.imageWarna.url}
+                                                            alt="class logo"
+                                                            width={75}
+                                                            height={32}
+                                                        />
+                                                    )}
+                                                </div>
+                                                <h3 className="text-center font-medium text-base mt-1 text-black">
+                                                    {cls.title}
+                                                </h3>
+                                            </div>
+                                            <Link href={`/kelas/${cls._id}`} className="text-white py-2 mx-2 text-center rounded-xl mb-2" style={{backgroundColor: cls.color}}>
+                                                View Class
+                                            </Link>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        </>
+                    ) : (
+                        <>
+                            {/* Champions Section */}
+                            <section className="flex flex-col z-30 text-lg rounded-t-xl py-8 px-[min(10%,512px)] bg-basicBlack-10">
+                                <Champions />
+                            </section>
+                            <DiceAd />
+                        </>
+                    )}
             </div>
         </>
     );
