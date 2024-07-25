@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import PresentedBy from "./PresentedBy";
 
 const Hero = ({user}) => {
         const [days, setDays] = useState(0)
@@ -68,15 +69,10 @@ const Hero = ({user}) => {
                         <h2 className="text-white lg:text-2xl md:text-xl text-lg text-center">Pelatihan hardskill komputer gratis dan offline bersama Ilmu Komputer Universitas Gadjah Mada</h2>
 
                         {/* Tombol Daftar Sekarang */}
-                        <Link href="/auth/daftar" className="sm:rounded-2xl rounded-md bg-basicRed-10 text-white md:text-2xl text-lg text-center sm:px-28 px-16 md:py-3 py-1 mb-5 border-4 border-basicDarkBrown-10">Daftar Sekarang</Link>
-                        
+                        <Link href="/auth/daftar" className="sm:rounded-2xl rounded-md bg-basicRed-10 text-white md:text-2xl text-lg text-center sm:px-28 px-16 md:py-3 py-1 mb-5 border-4 border-basicDarkBrown-10 hover:bg-red-900 transition-all">Daftar Sekarang</Link>
+
                         {/* Presented By */}
-                        <Image
-                            src="presented.svg"
-                            alt="menu"
-                            width={320}
-                            height={32}
-                        />
+                        <PresentedBy /> 
 
                     </div>
                 </section>

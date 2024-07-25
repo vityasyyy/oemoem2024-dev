@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import PresentedBy from "./PresentedBy";
 
 const Footer = () => {
     return (
         <footer className="bg-basicLightGreen-10 px-[min(10%,512px)] h-[min(90%,72rem)] py-4 sm:py-8 border-red-600 z-20 text-white ">
-            <div className="bg-basicBlack-10 rounded-xl h-full py-24 flex flex-col items-center gap-4 lg:flex-row lg:place-content-around lg:items-center">
+            <div className="bg-basicBlack-10 rounded-xl h-full py-24 px-8 lg:px-24 flex flex-col items-center gap-4 lg:flex-row lg:place-content-between lg:items-center">
                 <div className="flex flex-col items-center gap-10">
                     {/* Logo OemOem */}
                     <Image
@@ -16,13 +17,7 @@ const Footer = () => {
                     />
 
                     {/* Presented By */}
-                    <Image
-                        src="presented.svg"
-                        alt="menu"
-                        width={280}
-                        height={280}
-                        className="inline-block cursor-pointer"
-                    />
+                    <PresentedBy /> 
                 </div>
 
                 {/* Socials */}
