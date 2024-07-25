@@ -6,6 +6,6 @@ Then, u can test the endpoint in http://localhost:8080, u can use postman to tes
 
 ## Frontend Test
 run 
-npm install react-spring 
+```npm install react-spring```
 for navbar animation
 tytyty
