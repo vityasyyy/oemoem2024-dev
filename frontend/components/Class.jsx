@@ -72,7 +72,7 @@ const Class = ({ user }) => {
             <NavbarKelas />
 
             {/* Main Section */}
-            <section className="bg-gradient-to-t from-basicDarkGreen-10 to-basicLightGreen-10 px-[min(10%,512px)] pt-20 relative">
+            <section className="bg-gradient-to-t from-[#777A69] to-[#99A27F] px-[min(10%,512px)] pt-20 relative">
                 {/* Dice Background */}
                 <Image 
                     src="diceloading.svg"
@@ -110,7 +110,7 @@ const Class = ({ user }) => {
             </section>
 
             {/* Main Content */}
-            <div className="bg-basicDarkGreen-10 relative z-30">
+            <div className="bg-[#777A69] relative z-30">
                 {activeView === 'kelas' ? (
                     <>
                         <section className="flex flex-col z-30 text-lg rounded-t-3xl py-8 pb-40 px-[min(10%,512px)] bg-basicBlack-10">
