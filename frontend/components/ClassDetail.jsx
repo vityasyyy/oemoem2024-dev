@@ -260,7 +260,7 @@ const ClassDetail = ({ event, user }) => {
                                 </p>
                                 <button 
                                     type="submit"
-                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-500 transition-all"
+                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
                                 >
                                     {hasSubmitted ? 'Update' : 'Submit'}
                                 </button>

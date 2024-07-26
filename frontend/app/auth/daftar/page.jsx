@@ -112,11 +112,11 @@ export default function Daftar() {
                             className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-2 px-2 py-1 sm:py-2"
                             required
                         />
-                        <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Daftar</button>
+                        <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 rounded-md border-[2px] border-basicDarkBrown-10 hover:bg-red-900 transition-all sm:py-2">Daftar</button>
                     </form>
 
                     {/* Belom punya akun? */}
-                    <h1 className="text-white text-xl font-medium mb-12 z-30">Sudah punya akun? <Link href="/auth/masuk" className="text-basicLightBrown-10">Masuk</Link></h1>
+                    <h1 className="text-white text-xl font-medium mb-12 z-30">Sudah punya akun? <Link href="/auth/masuk" className="text-basicLightBrown-10 hover:text-basicDarkBrown-10 transition-all">Masuk</Link></h1>
                 </div>
 
                 {/* Card Background */}

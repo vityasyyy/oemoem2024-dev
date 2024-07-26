@@ -84,11 +84,11 @@ export default function Masuk() {
                             required
                         />
 
-                        <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Masuk</button>
+                        <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 rounded-md border-[2px] border-basicDarkBrown-10 hover:bg-red-900 transition-all sm:py-2">Masuk</button>
                     </form>
 
                     {/* Belom punya akun? */}
-                    <h1 className="text-white text-xl font-medium mb-12 z-30">Belom punya akun? <Link href="/auth/daftar" className="text-basicLightBrown-10">Daftar</Link></h1>
+                    <h1 className="text-white text-xl font-medium mb-12 z-30">Belom punya akun? <Link href="/auth/daftar" className="text-basicLightBrown-10 hover:text-basicDarkBrown-10 transition-all">Daftar</Link></h1>
                 </div>
 
                 {/* Card Background */}

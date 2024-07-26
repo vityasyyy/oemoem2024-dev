@@ -4,7 +4,7 @@ import Image from "next/image";
 const BackButton = () => {
     return (
         <>
-            <div href="/" className="flex items-center justify-center bg-white rounded-md py-0.5 px-2">
+            <div href="/" className="flex items-center justify-center bg-white rounded-md py-0.5 px-2 transition-all hover:scale-110">
                 <Image
                     src="back.svg"
                     alt="back"

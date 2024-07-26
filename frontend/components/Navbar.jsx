@@ -65,22 +65,22 @@ const Navbar = () => {
 
                     {/* Program dan Kelas & Button */}
                     <div className="hidden md:flex text-xl items-center space-x-5">
-                        <Link href="/kelas" className="text-white px-4">
+                        <Link href="/kelas" className="text-white px-4 hover:text-basicLightGrey-10 transition-all">
                             Program dan Kelas
                         </Link>
                         {isLoggedIn ? (
                             <button
                                 onClick={handleLogout}
-                                className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10"
+                                className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10 hover:bg-red-900 transition-all"
                             >
                                 <label className="cursor-pointer font-medium">Logout</label>
                             </button>
                         ) : (
                             <div className="flex items-center justify between gap-2">
-                                <Link href="auth/masuk" className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10" type='login'>
+                                <Link href="auth/masuk" className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10 hover:bg-red-900 transition-all" type='login'>
                                     <label className="cursor-pointer font-medium">Masuk</label>
                                 </Link>
-                                <Link href="auth/daftar" className="flex items-center px-2 py-1 justify-center gap-3 border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded" type='login'>
+                                <Link href="auth/daftar" className="flex items-center px-2 py-1 justify-center gap-3 border-basicWhite-10 bg-basicWhite-10 text-basicRed-10 rounded hover:bg-basicLightGrey-10 transition-all" type='login'>
                                     <label className="cursor-pointer font-medium">Daftar</label>
                                 </Link>
                             </div>

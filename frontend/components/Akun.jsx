@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import BackButton from "@/components/BackButton";
+import Loading from './Loading';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
@@ -43,7 +44,7 @@ const Akun = () => {
         }
     };
 
-    if (!user) return <div>Loading...</div>;
+    if (!user) return <Loading />;
 
     return (
         <section className="bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10 px-[min(10%,512px)] pt-20 relative">
@@ -64,7 +65,7 @@ const Akun = () => {
                     <h2 className="text-basicLightBrown-10 font-medium">Email</h2>
                     <h2 className="text-white font-medium">{user.email}</h2>
 
-                    <button onClick={handleLogout} className="flex justify-center items-center bg-basicRed-10 text-white font-medium py-1 mt-4 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2">Keluar</button>
+                    <button onClick={handleLogout} className="flex justify-center items-center bg-basicRed-10 text-white font-medium py-1 mt-4 rounded-md border-[2px] border-basicDarkBrown-10 sm:py-2 hover:bg-red-900 transition-all">Keluar</button>
                 </div>
             </div>
 
