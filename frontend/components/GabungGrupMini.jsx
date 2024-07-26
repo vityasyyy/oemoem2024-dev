@@ -15,7 +15,7 @@ const GabungGrupMini = () => {
                 alt="WhatsApp Logo"
             />
 
-            <Link href="https://youtube.com" className="text-white text-xs sm:text-sm flex place-content-center w-full py-1 rounded-lg -basicLightBrown-1 bg-basicRed-10">
+            <Link href="https://youtube.com" className="text-white text-xs sm:text-sm flex place-content-center w-full py-1 rounded-lg -basicLightBrown-1 bg-basicRed-10 hover:bg-red-900 transition-all">
                 Gabung
             </Link>
         </div>

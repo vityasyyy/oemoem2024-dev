@@ -46,7 +46,7 @@ export default function Events() {
   }, [loading, user, router]);
 
   if (loading) {
-    return <div>Loading...</div>; // Show a loading message while checking authentication
+    return <Loading />; // Show a loading message while checking authentication
   }
 
   return (

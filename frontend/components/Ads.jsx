@@ -6,7 +6,7 @@ const Ads = () => {
             <section className="flex flex-col bg-basicBlack-10 px-[min(10%,512px)] gap-8 pt-48 pb-4 sm:pb-8 sm:pt-64 lg:pt-24 text-white">
                 {/* Kartu Pertama */}
                 <div className="flex flex-col justify-center w-[min(100%,1123px)] gap-2 bg-basicLightBrown-10 rounded-lg lg:ml-auto sm:rounded-xl relative px-8 py-8 min-h-52 lg:pl-48">
-                    {/* Cards */}
+                    {/* Cards Image */}
                     <div className="w-[300px] h-[300px] sm:w-[410px] sm:h-[410px] absolute left-1/2 transform -translate-x-1/2 top-[-14rem] sm:top-[-19rem] lg:left-[2rem] lg:top-[-9rem]">
                         <Image 
                             src="cardsKontol.svg"

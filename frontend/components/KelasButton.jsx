@@ -4,8 +4,8 @@ const KelasButton = ({ onClick, isActive }) => {
             onClick={onClick} 
             className={`rounded-md py-1 px-3 ${
                 isActive 
-                    ? 'bg-basicBlack-10 text-white border-basicBlack-10 border-2' 
-                    : 'bg-white text-basicBlack-10 border-basicBlack-10 border-2'
+                    ? 'bg-basicBlack-10 text-white border-basicBlack-10 border-2 transition-all' 
+                    : 'bg-white text-basicBlack-10 border-basicBlack-10 border-2 hover:bg-basicLightGrey-10 transition-all'
             }`}
         >
             Kelas
