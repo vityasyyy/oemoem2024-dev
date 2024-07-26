@@ -128,7 +128,7 @@ const Class = ({ user }) => {
                                                 </h1>
 
                                                 {/* Tombol Lihat Kelas */}
-                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer transition-all hover:rounded-2xl hover:shadow-2xl" style={{backgroundColor: cls.color}}>
+                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-base text-center rounded-xl cursor-pointer transition-all hover:rounded-2xl hover:shadow-2xl" style={{backgroundColor: cls.color}}>
                                                     Lihat Kelas
                                                 </Link>
                                             </div>
@@ -178,7 +178,7 @@ const Class = ({ user }) => {
                                                 </h3>
 
                                                 {/* Tombol Lihat Kelas */}
-                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer hover:rounded-2xl hover:shadow-2xl transition-all" style={{backgroundColor: cls.color}}>
+                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-base text-center rounded-xl cursor-pointer hover:rounded-2xl hover:shadow-2xl transition-all" style={{backgroundColor: cls.color}}>
                                                     Lihat Kelas
                                                 </Link>
 
