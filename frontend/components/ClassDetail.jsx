@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
+import Mentor from './Mentor';
 import ProgressBar from "@/components/ProgressBar";
 import KelasButton from "@/components/KelasButton";
 import ChallengesButton from "@/components/ChallengesButton";
@@ -172,13 +173,12 @@ const ClassDetail = ({ event, user }) => {
                         </div>
 
                         {/* Mentor */}
-                        <div className="flex flex-col gap-2 text-white">
+                        <div className="flex flex-col gap-5 text-white">
                             <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 rounded-md">
                                 Mentor
                             </div>
-                            <div className="bg-basicLightBrown-10 rounded-md p-2">
-                                {event.mentors}
-                            </div>
+                            {/* Belom fetching nama component nya */}
+                            <Mentor />
                         </div>
 
                         {/* Contact Person */}
