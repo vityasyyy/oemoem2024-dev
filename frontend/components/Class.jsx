@@ -128,7 +128,7 @@ const Class = ({ user }) => {
                                                 </h1>
 
                                                 {/* Tombol Lihat Kelas */}
-                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer transition-all hover:rounded-2xl hover:shadow-lg" style={{backgroundColor: cls.color}}>
+                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer transition-all hover:rounded-2xl hover:shadow-2xl" style={{backgroundColor: cls.color}}>
                                                     Lihat Kelas
                                                 </Link>
                                             </div>
@@ -178,7 +178,7 @@ const Class = ({ user }) => {
                                                 </h3>
 
                                                 {/* Tombol Lihat Kelas */}
-                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer" style={{backgroundColor: cls.color}}>
+                                                <Link href={`/kelas/${cls._id}`} className="text-white w-[90%] py-1.5 text-center rounded-xl cursor-pointer hover:rounded-2xl hover:shadow-2xl transition-all" style={{backgroundColor: cls.color}}>
                                                     Lihat Kelas
                                                 </Link>
 
@@ -192,7 +192,8 @@ const Class = ({ user }) => {
                         <>
                             {/* Champions Section */}
                             <section className="flex flex-col z-30 text-lg rounded-t-3xl py-8 pb-32 px-[min(10%,512px)] bg-basicBlack-10">
-                                {/* <Champions /> */}
+                                {/* NANTI INI DIUNCOMMENT/COMMENT SESUAI KEBUTUHAN, UNTUK AWAL PRODUCTION PAKE YANG BELOM */}
+                                {/* <Champions />  */}
                                 <ChampionsBelom />
                             </section>
                             <DiceAd />

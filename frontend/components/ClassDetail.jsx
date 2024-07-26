@@ -193,7 +193,7 @@ const ClassDetail = ({ event, user }) => {
                             <div className='flex justify-center items-center'>
                                 <button 
                                     onClick={handleEnroll}
-                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-500 transition-all"
+                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
                                     disabled={event.slots <= 0}
                                     >
                                     {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
