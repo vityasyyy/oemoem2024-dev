@@ -16,13 +16,24 @@ const sampleEvents = [
         title: "Competitive Programming",
         description: "Sapiente rem quidem eum ullam atque maxime. Nihil asperiores et ut pariatur cupiditate ut laborum. Enim rerum perferendis expedita veritatis repellat totam. Deserunt nostrum tempore provident nemo. Quas dolor placeat a qui quae ex. Cupiditate voluptas nihil ut eos.…",
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
-        contactPerson: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
+        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
         deadline: new Date('2024-08-14'), // 5 days before the event
-        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
-        mentors: "Jane Smith, Bob Johnson",
+        contactPerson: {
+            namaCP: "Contact Person Name", // Replace with the actual contact person's name
+            linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
+        },
+        mentors: {
+            namaMentor: "Jane Smith, Bob Johnson", // Replace with the actual mentor names if possible
+            gambarMentor: {
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732229/mobapp_eoe9f4.svg",
+                filename: "mobapp_eoe9f4"
+            },
+            divisiMentor: "Mentor Division", // Replace with actual division if available
+            tahunAjaran: "2024" // Replace with the actual academic year if available
+        },
         curriculum: "HTML, CSS, JavaScript",
         image: 
             {
@@ -46,13 +57,24 @@ const sampleEvents = [
         title: "Cyber Security",
         description: "Sapiente rem quidem eum ullam atque maxime. Nihil asperiores et ut pariatur cupiditate ut laborum. Enim rerum perferendis expedita veritatis repellat totam. Deserunt nostrum tempore provident nemo. Quas dolor placeat a qui quae ex. Cupiditate voluptas nihil ut eos.…",
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
-        contactPerson: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
+        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
         deadline: new Date('2024-08-14'), // 5 days before the event
-        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
-        mentors: "Jane Smith, Bob Johnson",
+        contactPerson: {
+            namaCP: "Contact Person Name", // Replace with the actual contact person's name
+            linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
+        },
+        mentors: {
+            namaMentor: "Jane Smith, Bob Johnson", // Replace with the actual mentor names if possible
+            gambarMentor: {
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732229/mobapp_eoe9f4.svg",
+                filename: "mobapp_eoe9f4"
+            },
+            divisiMentor: "Mentor Division", // Replace with actual division if available
+            tahunAjaran: "2024" // Replace with the actual academic year if available
+        },
         curriculum: "HTML, CSS, JavaScript",
         image: 
             {
@@ -78,13 +100,24 @@ const sampleEvents = [
         title: "Game Development",
         description: "Sapiente rem quidem eum ullam atque maxime. Nihil asperiores et ut pariatur cupiditate ut laborum. Enim rerum perferendis expedita veritatis repellat totam. Deserunt nostrum tempore provident nemo. Quas dolor placeat a qui quae ex. Cupiditate voluptas nihil ut eos.…",
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
-        contactPerson: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
+        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
         deadline: new Date('2024-08-14'), // 5 days before the event
-        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
-        mentors: "Jane Smith, Bob Johnson",
+        contactPerson: {
+            namaCP: "Contact Person Name", // Replace with the actual contact person's name
+            linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
+        },
+        mentors: {
+            namaMentor: "Jane Smith, Bob Johnson", // Replace with the actual mentor names if possible
+            gambarMentor: {
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732229/mobapp_eoe9f4.svg",
+                filename: "mobapp_eoe9f4"
+            },
+            divisiMentor: "Mentor Division", // Replace with actual division if available
+            tahunAjaran: "2024" // Replace with the actual academic year if available
+        },
         curriculum: "HTML, CSS, JavaScript",
         image: 
             {
@@ -111,13 +144,24 @@ const sampleEvents = [
         title: "Back End",
         description: "Sapiente rem quidem eum ullam atque maxime. Nihil asperiores et ut pariatur cupiditate ut laborum. Enim rerum perferendis expedita veritatis repellat totam. Deserunt nostrum tempore provident nemo. Quas dolor placeat a qui quae ex. Cupiditate voluptas nihil ut eos.…",
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
-        contactPerson: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
+        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
         deadline: new Date('2024-08-14'), // 5 days before the event
-        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
-        mentors: "Jane Smith, Bob Johnson",
+        contactPerson: {
+            namaCP: "Contact Person Name", // Replace with the actual contact person's name
+            linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
+        },
+        mentors: {
+            namaMentor: "Jane Smith, Bob Johnson", // Replace with the actual mentor names if possible
+            gambarMentor: {
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732229/mobapp_eoe9f4.svg",
+                filename: "mobapp_eoe9f4"
+            },
+            divisiMentor: "Mentor Division", // Replace with actual division if available
+            tahunAjaran: "2024" // Replace with the actual academic year if available
+        },
         curriculum: "HTML, CSS, JavaScript",
         image: 
             {
@@ -143,13 +187,24 @@ const sampleEvents = [
         title: "UI/UX Design",
         description: "Sapiente rem quidem eum ullam atque maxime. Nihil asperiores et ut pariatur cupiditate ut laborum. Enim rerum perferendis expedita veritatis repellat totam. Deserunt nostrum tempore provident nemo. Quas dolor placeat a qui quae ex. Cupiditate voluptas nihil ut eos.…",
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
-        contactPerson: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
+        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
         deadline: new Date('2024-08-14'), // 5 days before the event
-        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
-        mentors: "Jane Smith, Bob Johnson",
+        contactPerson: {
+            namaCP: "Contact Person Name", // Replace with the actual contact person's name
+            linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
+        },
+        mentors: {
+            namaMentor: "Jane Smith, Bob Johnson", // Replace with the actual mentor names if possible
+            gambarMentor: {
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732229/mobapp_eoe9f4.svg",
+                filename: "mobapp_eoe9f4"
+            },
+            divisiMentor: "Mentor Division", // Replace with actual division if available
+            tahunAjaran: "2024" // Replace with the actual academic year if available
+        },
         curriculum: "HTML, CSS, JavaScript",
         image: 
             {
@@ -175,45 +230,64 @@ const sampleEvents = [
         title: "Mobile Apps",
         description: "Sapiente rem quidem eum ullam atque maxime. Nihil asperiores et ut pariatur cupiditate ut laborum. Enim rerum perferendis expedita veritatis repellat totam. Deserunt nostrum tempore provident nemo. Quas dolor placeat a qui quae ex. Cupiditate voluptas nihil ut eos.…",
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
-        contactPerson: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
+        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
         deadline: new Date('2024-08-14'), // 5 days before the event
-        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
-        mentors: "Jane Smith, Bob Johnson",
-        curriculum: "HTML, CSS, JavaScript",
-        image: 
-            {
+        contactPerson: {
+            namaCP: "Contact Person Name", // Replace with the actual contact person's name
+            linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
+        },
+        mentors: {
+            namaMentor: "Jane Smith, Bob Johnson", // Replace with the actual mentor names if possible
+            gambarMentor: {
                 url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732229/mobapp_eoe9f4.svg",
                 filename: "mobapp_eoe9f4"
-            }
-        ,
-        color: "#302E2F",
-        shape:
-            {
-                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732594/diamond_i0gtkn.svg",
-                filename: "diamond_i0gtkn"
-            }
-        ,
-        imageWarna: 
-            {
-                url:"https://res.cloudinary.com/dlfriigdo/image/upload/v1721732117/mobappWarna_hf76tk.svg", 
-                filename:"mobappWarna_hf76tk"
             },
-            assignmentDetail: "Lorem ipsum dolor sit jamet comisaris adipipising elit"
+            divisiMentor: "Mentor Division", // Replace with actual division if available
+            tahunAjaran: "2024" // Replace with the actual academic year if available
+        },
+        curriculum: "HTML, CSS, JavaScript",
+        assignments: [], // Add any ObjectId references to assignments here
+        enrolledBy: [], // Add any ObjectId references to users here
+        image: {
+            url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732229/mobapp_eoe9f4.svg",
+            filename: "mobapp_eoe9f4"
+        },
+        imageWarna: {
+            url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732117/mobappWarna_hf76tk.svg",
+            filename: "mobappWarna_hf76tk"
+        },
+        shape: {
+            url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732594/diamond_i0gtkn.svg",
+            filename: "diamond_i0gtkn"
+        },
+        color: "#302E2F",
+        assignmentDetail: "Lorem ipsum dolor sit jamet comisaris adipipising elit"
     },
     {
         title: "Front End",
         description: "Sapiente rem quidem eum ullam atque maxime. Nihil asperiores et ut pariatur cupiditate ut laborum. Enim rerum perferendis expedita veritatis repellat totam. Deserunt nostrum tempore provident nemo. Quas dolor placeat a qui quae ex. Cupiditate voluptas nihil ut eos.…",
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
-        contactPerson: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
+        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
         deadline: new Date('2024-08-14'), // 5 days before the event
-        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
-        mentors: "Jane Smith, Bob Johnson",
+        contactPerson: {
+            namaCP: "Contact Person Name", // Replace with the actual contact person's name
+            linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
+        },
+        mentors: {
+            namaMentor: "Jane Smith, Bob Johnson", // Replace with the actual mentor names if possible
+            gambarMentor: {
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732229/mobapp_eoe9f4.svg",
+                filename: "mobapp_eoe9f4"
+            },
+            divisiMentor: "Mentor Division", // Replace with actual division if available
+            tahunAjaran: "2024" // Replace with the actual academic year if available
+        },
         curriculum: "HTML, CSS, JavaScript",
         image: 
             {
@@ -239,13 +313,24 @@ const sampleEvents = [
         title: "Data Science and Artificial Intelligence",
         description: "Sapiente rem quidem eum ullam atque maxime. Nihil asperiores et ut pariatur cupiditate ut laborum. Enim rerum perferendis expedita veritatis repellat totam. Deserunt nostrum tempore provident nemo. Quas dolor placeat a qui quae ex. Cupiditate voluptas nihil ut eos.…",
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
-        contactPerson: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
+        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
         deadline: new Date('2024-08-14'), // 5 days before the event
-        groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
-        mentors: "Jane Smith, Bob Johnson",
+        contactPerson: {
+            namaCP: "Contact Person Name", // Replace with the actual contact person's name
+            linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
+        },
+        mentors: {
+            namaMentor: "Jane Smith, Bob Johnson", // Replace with the actual mentor names if possible
+            gambarMentor: {
+                url: "https://res.cloudinary.com/dlfriigdo/image/upload/v1721732229/mobapp_eoe9f4.svg",
+                filename: "mobapp_eoe9f4"
+            },
+            divisiMentor: "Mentor Division", // Replace with actual division if available
+            tahunAjaran: "2024" // Replace with the actual academic year if available
+        },
         curriculum: "HTML, CSS, JavaScript",
         image: 
             {

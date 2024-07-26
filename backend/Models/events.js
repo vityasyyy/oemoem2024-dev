@@ -9,18 +9,30 @@ imageSchema.virtual('thumbnail').get(function() {
     return this.url.replace('/upload', '/upload/w_200')
 })
 
+const contactPersonSchema = new Schema({
+    namaCP: String,
+    linkCP: String
+});
+
+const mentorSchema = new Schema({
+    namaMentor: String,
+    gambarMentor: imageSchema,
+    divisiMentor: String,
+    tahunAjaran: String
+});
+
 const eventsSchema = new Schema({
     title: String,
     assignmentDetail: String,
     description: String,
     location: String,
-    contactPerson: String,
+    contactPerson: contactPersonSchema,
     prerequisite: String,
     slots: Number,
     date: Date,
     deadline: Date,
     groupChat: String,
-    mentors: String,
+    mentors: mentorSchema,
     curriculum: String,
     assignments: [
         {
