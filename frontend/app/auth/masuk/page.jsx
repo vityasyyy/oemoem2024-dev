@@ -3,7 +3,7 @@
 import LoginNavbar from "@/components/LoginNavbar";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import BackButton from "@/components/BackButton";
@@ -13,6 +13,21 @@ export default function Masuk() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
+
+    useEffect(() => {
+        const checkUserLoggedIn = async () => {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true });
+                if (response.data.user) {
+                    router.push('/'); // Redirect to home page if user is logged in
+                }
+            } catch (error) {
+                console.error('Error checking authentication status:', error);
+            }
+        };
+
+        checkUserLoggedIn();
+    }, [router]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

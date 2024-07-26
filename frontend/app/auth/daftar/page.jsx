@@ -3,7 +3,7 @@ import BackButton from "@/components/BackButton"; // Keep this from the original
 import LoginNavbar from "@/components/LoginNavbar";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import GabungGrup from "@/components/GabungGrup";
@@ -16,10 +16,25 @@ export default function Daftar() {
     const router = useRouter();
     const [showModal, setShowModal] = useState(false);
 
+    useEffect(() => {
+        const checkUserLoggedIn = async () => {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true });
+                if (response.data.user) {
+                    router.push('/'); // Redirect to home page if user is logged in
+                }
+            } catch (error) {
+                console.error('Error checking authentication status:', error);
+            }
+        };
+
+        checkUserLoggedIn();
+    }, [router]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-    
+
         try {
             // Register the user
             const registerResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
@@ -27,18 +42,18 @@ export default function Daftar() {
                 username,
                 password,
             });
-    
-            if (registerResponse.data.message === "Register succesful") {
+
+            if (registerResponse.data.message === "Register successful") {
                 console.log('Registration successful');
-    
+
                 // Automatically log in the user after registration
                 const loginResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
                     email,
                     password
                 }, { withCredentials: true }); // Ensure cookies are included
-    
+
                 console.log('Login response:', loginResponse);
-    
+
                 if (loginResponse.status === 200) {
                     console.log('Login successful');
                     setShowModal(true);
@@ -98,7 +113,7 @@ export default function Daftar() {
                             type="text"
                             placeholder="Tuliskan Username"
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setUsername.setValue(e.target.value)}
                             className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-1 px-2 py-1 sm:py-2"
                             required
                         />
