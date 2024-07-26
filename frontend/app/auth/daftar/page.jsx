@@ -1,5 +1,5 @@
 "use client"
-import BackButton from "@/components/BackButton"; // Keep this from the original change
+import BackButton from "@/components/BackButton";
 import LoginNavbar from "@/components/LoginNavbar";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,8 +13,8 @@ export default function Daftar() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const router = useRouter();
     const [showModal, setShowModal] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         const checkUserLoggedIn = async () => {
@@ -50,7 +50,7 @@ export default function Daftar() {
                 const loginResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
                     email,
                     password
-                }, { withCredentials: true }); // Ensure cookies are included
+                }, { withCredentials: true });
 
                 console.log('Login response:', loginResponse);
 
@@ -78,10 +78,7 @@ export default function Daftar() {
         <>
             <LoginNavbar />
 
-            {/* Section */}
             <section className="bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10 px-[min(10%,512px)] pt-20 relative">
-
-                {/* Back Button*/}
                 <div className="flex gap-2 items-center">
                     <Link href="/">
                         <BackButton />
@@ -89,12 +86,9 @@ export default function Daftar() {
                     <h2 className="font-bold text-black text-lg sm:text-xl sm:ml-2">Daftar</h2>
                 </div>
 
-                {/* Hero */}
                 <div className="flex flex-col items-center gap-4 mt-8 z-30">
-                    {/* Title */}
                     <h1 className="max-w-[24rem] text-3xl text-wrap text-center text-white drop-shadow-lg font-semibold z-30">Mulai Langkahmu Bersama <span className="text-basicLightBrown-10">OemOem</span></h1>
 
-                    {/* Register Card */}
                     <form onSubmit={handleSubmit} className="bg-basicBlack-10 w-[min(32rem,100%)] z-30 text-sm sm:text-base flex flex-col gap-1 border-[1px] border-white rounded-xl px-6 py-4 mb-2 mx-6 sm:mx-8">
                         {error && <p className="text-red-500 text-xs mb-2">{error}</p>}
                         
@@ -113,7 +107,7 @@ export default function Daftar() {
                             type="text"
                             placeholder="Tuliskan Username"
                             value={username}
-                            onChange={(e) => setUsername.setValue(e.target.value)}
+                            onChange={(e) => setUsername(e.target.value)}
                             className="text-basicLightGrey-10 focus:text-basicBlack-10 focus:outline-none rounded-sm border-1 border-black font-medium mb-1 px-2 py-1 sm:py-2"
                             required
                         />
@@ -130,11 +124,9 @@ export default function Daftar() {
                         <button type="submit" className="bg-basicRed-10 text-white font-medium py-1 rounded-md border-[2px] border-basicDarkBrown-10 hover:bg-red-900 transition-all sm:py-2">Daftar</button>
                     </form>
 
-                    {/* Belom punya akun? */}
                     <h1 className="text-white text-xl font-medium mb-12 z-30">Sudah punya akun? <Link href="/auth/masuk" className="text-basicLightBrown-10 hover:text-basicDarkBrown-10 transition-all">Masuk</Link></h1>
                 </div>
 
-                {/* Card Background */}
                 <div>
                     <Image 
                         src="heroCardsMD.svg"
@@ -145,12 +137,9 @@ export default function Daftar() {
                     />
                 </div>
 
-                {/* Black Background */}
                 <div className="bg-basicBlack-10 absolute z-10 bottom-0 left-0 right-0 top-[60%]"></div>
-
             </section>
 
-            {/* Modal */}
             {showModal && (
                 <>
                     <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
