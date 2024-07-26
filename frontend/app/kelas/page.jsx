@@ -50,12 +50,14 @@ export default function Events() {
   }
 
   return (
-    <section>
+    <>
+      <section>
       {user ? (
         <Class user={user} events={events} />
       ) : (
         <Loading />
       )}
     </section>
+    </>
   );
 }

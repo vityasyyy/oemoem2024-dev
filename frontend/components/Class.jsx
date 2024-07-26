@@ -96,6 +96,7 @@ const Class = ({ user }) => {
                                 {/* Gallery */}
                                 <div className="flex flex-wrap pt-4 gap-4 mb-8">
                                     {enrolledClasses.map((cls) => (
+                                        
                                         <div key={cls._id} className="relative border-[3px] rounded-xl w-44 h-56 py-2 px-2 flex flex-col items-center justify-end" style={{borderColor: cls.color, backgroundColor: '#EDB465'}}>
                                             {/* Logo Kiri Atas (heart, spade, dll) */}
                                             {cls.shape && (
@@ -108,7 +109,7 @@ const Class = ({ user }) => {
                                                 />
                                             )}
                                             {/* Kumpulin Logo, Nama, Tombol Join */}
-                                            <div className="flex flex-col w-full gap-2 border-8 justify-end items-center">
+                                            <div className="flex flex-col w-full gap-2 justify-end items-center">
 
                                                 {/* Logo Kelas */}
                                                 <div className="flex justify-center">
@@ -191,10 +192,10 @@ const Class = ({ user }) => {
                     ) : (
                         <>
                             {/* Champions Section */}
-                            <section className="flex flex-col z-30 text-lg rounded-t-3xl py-8 pb-32 px-[min(10%,512px)] bg-basicBlack-10">
+                            <section className="flex flex-col z-30 text-lg rounded-t-3xl py-8 pb-32 px-[min(10%,512px)] bg-basicBlack-10 h-screen">
                                 {/* NANTI INI DIUNCOMMENT/COMMENT SESUAI KEBUTUHAN, UNTUK AWAL PRODUCTION PAKE YANG BELOM */}
-                                {/* <Champions />  */}
-                                <ChampionsBelom />
+                                <Champions /> 
+                                {/* <ChampionsBelom /> */}
                             </section>
                             <DiceAd />
                         </>
