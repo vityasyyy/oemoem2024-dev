@@ -31,20 +31,6 @@ const Navbar = () => {
         setisClick(!isClick);
     };
 
-    const handleLogout = async () => {
-        try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {}, { withCredentials: true });
-            if (response.data.message === "Logout successful") {
-                // Clear any client-side storage if you're using any
-                localStorage.removeItem('user'); // If you're storing user data in localStorage
-                // Redirect to login page
-                router.push('/auth/masuk');
-            }
-        } catch (error) {
-            console.error('Error logging out:', error);
-        }
-    };
-
     const transitions = useTransition(isClick, {
         from: { transform: 'translateY(-100%)', opacity: 0 },
         enter: { transform: 'translateY(0%)', opacity: 1 },
@@ -69,12 +55,9 @@ const Navbar = () => {
                             Program dan Kelas
                         </Link>
                         {isLoggedIn ? (
-                            <button
-                                onClick={handleLogout}
-                                className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10 hover:bg-red-900 transition-all"
-                            >
-                                <label className="cursor-pointer font-medium">Logout</label>
-                            </button>
+                            <Link href="/akun" className="text-white px-4 hover:text-basicLightGrey-10 transition-all">
+                                Akun
+                            </Link>
                         ) : (
                             <div className="flex items-center justify between gap-2">
                                 <Link href="auth/masuk" className="flex items-center px-2 py-1 rounded justify-center gap-3 bg-basicRed-10 text-white border-basicRed-10 hover:bg-red-900 transition-all" type='login'>

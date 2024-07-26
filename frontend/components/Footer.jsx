@@ -24,7 +24,7 @@ const Footer = () => {
                 <div className=" flex flex-col gap-5 mb-5 mt-12 items-center lg:items-stretch lg:mt-0 lg:mr-10 md:flex-row lg:flex-col lg:font-lg">
 
                     {/* Link Instagram */}
-                    <Link href="https://www.instagram.com/omahti_ugm" className="flex items-center gap-2">
+                    <Link href="https://www.instagram.com/omahti_ugm" className="flex items-center gap-2 sm:gap-4 transition-all hover:underline">
                         <Image
                             src="instagram.svg"
                             alt="menu"
@@ -36,7 +36,7 @@ const Footer = () => {
                     </Link>
 
                     {/* Link TikTok */}
-                    <Link href="https://www.tiktok.com/@omahti_ugm" className="flex items-center gap-2">
+                    <Link href="https://www.tiktok.com/@omahti_ugm" className="flex items-center gap-2 sm:gap-4 transition-all hover:underline">
                         <Image
                             src="tiktok.svg"
                             alt="menu"
@@ -48,7 +48,7 @@ const Footer = () => {
                     </Link>
 
                     {/* Link Website */}
-                    <Link href="https://www.omahti.web.id" className="flex items-center gap-2">
+                    <Link href="https://www.omahti.web.id" className="flex items-center gap-2 sm:gap-4 transition-all hover:underline">
                         <Image
                             src="web.svg"
                             alt="menu"
