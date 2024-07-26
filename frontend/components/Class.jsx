@@ -167,13 +167,14 @@ const Class = ({ user }) => {
 
                             {/* Program dan Kelas */}
                             <div className="flex">
-                                <div className="bg-basicBlue-10 text-white rounded-md px-4 py-2">Program dan Kelas</div>
+                                <div className="bg-basicBlue-10 text-white rounded-md px-4 py-2 mb-4">Program dan Kelas</div>
                             </div>
 
                             {/* Wrapper */}
                             <div className="relative">
                                 {/* Gallery */}
-                                <div ref={scrollRef} className="flex overflow-x-auto no-scrollbar mt-4 gap-4">
+                                <div ref={scrollRef} className="flex overflow-x-auto no-scrollbar gap-4">
+
                                     {/* Slide Button Kanan */}
                                     <Image
                                         src="slideButtonRight.svg"
@@ -183,6 +184,7 @@ const Class = ({ user }) => {
                                         onClick={scrollRight}
                                         className="absolute right-[-1rem] z-20 top-1/2 transform -translate-y-1/2 cursor-pointer hover:scale-110 transition-all shadow-xl"
                                     />
+
                                     {/* Slide Button Kiri */}
                                     <Image
                                         src="slideButtonLeft.svg"
