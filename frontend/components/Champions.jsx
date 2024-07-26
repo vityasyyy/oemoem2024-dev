@@ -98,7 +98,28 @@ const Champions = () => {
                     <h1 className="text-center text-basicRed-10 font-semibold justify-end">
                         Comp. Programming
                     </h1>
-                    
+                </div>
+
+                {/* UI/UX */}
+                <div className="flex flex-col border-4 w-56 h-72 border-basicBlack-10 bg-basicLightBrown-10 rounded-xl">
+                    <Image
+                        src="/heart.svg"
+                        width={20}
+                        height={20}
+                        className={`m-2`}
+                        alt="Dropdown"
+                    />
+                    <Image
+                        src="/uiux.svg"
+                        width={100}
+                        height={20}
+                        className={`m-2`}
+                        alt="Dropdown"
+                        style={{ fill: 'basicRed-10' }}
+                    />
+                    <h1 className="text-center text-basicRed-10 font-semibold justify-end">
+                        UI/UX Design
+                    </h1>
                 </div>
             
 

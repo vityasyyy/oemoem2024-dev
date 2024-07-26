@@ -241,8 +241,8 @@ const Class = ({ user }) => {
                         {/* Champions Section */}
                         <section className="flex flex-col z-30 text-lg rounded-t-3xl py-8 pb-32 px-[min(10%,512px)] bg-basicBlack-10">
                             {/* NANTI INI DIUNCOMMENT/COMMENT SESUAI KEBUTUHAN, UNTUK AWAL PRODUCTION PAKE YANG BELOM */}
-                            {/* <Champions />  */}
-                            <ChampionsBelom />
+                            <Champions /> 
+                            {/* <ChampionsBelom /> */}
                         </section>
                         <DiceAd />
                     </>
