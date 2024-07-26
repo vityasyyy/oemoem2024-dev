@@ -47,7 +47,7 @@ const Hero = ({ user }) => {
 
     return (
         <>
-            <section className="flex flex-col relative md:pt-24 md:pb-4 py-4 px-4 items-center w-screen h-fit bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10">
+            <section className="flex flex-col relative pt-24 md:pb-4 pb-4 px-4 items-center w-screen h-fit bg-gradient-to-t from-basicBlack-10 to-basicLightGreen-10">
                 {/* White Shine */}
                 <Image 
                     src="heroShine.svg"
@@ -74,7 +74,7 @@ const Hero = ({ user }) => {
 
                 {/* Penutupan Pendaftaran */}
                 <div className="p-2 sm:p-4 w-fit text-white bg-basicBlue-10 rounded-lg text-base md:text-xl lg:mb-72 md:mb-64 sm:mb-56 mb-48 z-30 text-center">Penutupan Pendaftaran: &nbsp; 
-                    <span className="font-bold">  {days}:{hours}:{minutes}</span>
+                    <span className="font-bold text-lg">  {days}:{hours}:{minutes}</span>
                 </div>
 
                 {/* div kelompokin konten hero */}

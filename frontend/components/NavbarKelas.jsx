@@ -54,12 +54,12 @@ const NavbarKelas = () => {
                     item && (
                         <animated.div style={style} className="absolute z-[51] w-screen md:hidden bg-basicWhite-10 rounded-b-lg shadow-lg">
                             <div className="flex flex-col justify-center pb-2 text-center text-lg bg-basicBlack-10 rounded-b-lg">
-                                <h2 className="text-basicBlack-10 bg-basicWhite-10 py-1 font-semibold cursor-pointer">
+                                <Link href="https://wa.me/6285259343364" className="text-basicBlack-10 bg-basicWhite-10 py-1 font-semibold cursor-pointer">
                                     Kontak dan Bantuan
-                                </h2>
-                                <h2 className="text-basicWhite-10 bg-basicBlack-10 pt-1 font-semibold cursor-pointer">
+                                </Link>
+                                <Link href="/akun" className="text-basicWhite-10 bg-basicBlack-10 pt-1 font-semibold cursor-pointer">
                                     Akun
-                                </h2>
+                                </Link>
                             </div>
                         </animated.div>
                     )

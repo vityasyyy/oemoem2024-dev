@@ -83,19 +83,19 @@ const Navbar = () => {
                     item && (
                         <animated.div style={style} className="absolute z-[51] w-screen md:hidden bg-basicWhite-10 rounded-b-lg shadow-lg">
                             <div className="flex justify-center py-2">
-                                <h2 href="/kelas" className="text-basicBlack-10 font-semibold cursor-pointer">
+                                <Link href="/kelas" className="text-basicBlack-10 font-semibold cursor-pointer">
                                     Program dan Kelas
-                                </h2>
+                                </Link>
                             </div>
 
                             <div className="flex justify-center flex-col">
                                 {isLoggedIn ? (
-                                    <button
-                                        onClick={handleLogout}
+                                    <Link
+                                        href="/akun"
                                         className="flex items-center justify-center py-2 bg-basicRed-10 text-white border-basicRed-10"
                                     >
-                                        <label className="cursor-pointer">Logout</label>
-                                    </button>
+                                        Akun
+                                    </Link>
                                 ) : (
                                     <>
                                         <button className="flex items-center justify-center py-2 bg-basicRed-10 text-white border-basicRed-10 " type='login'>
