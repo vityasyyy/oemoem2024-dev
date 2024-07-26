@@ -53,11 +53,11 @@ const Class = ({ user }) => {
                     width={300}
                     height={300}
                     alt="dice"
-                    className="absolute opacity-50 z-0 right-[min(10%,512px)]"
+                    className="absolute opacity-50 z-0 w-64 sm:w-auto right-0 sm:right-[min(10%,512px)]"
                 />
 
                 {/* Header */}
-                <div className="flex gap-2 items-center pb-6 pt-4">
+                <div className="flex gap-2 pb-6 pt-4">
 
                     {/* Greeting and Buttons */}
                     <div className="flex z-30 flex-col gap-5">
