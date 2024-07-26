@@ -100,7 +100,7 @@ const ClassDetail = ({ event, user }) => {
                 src="4cards.svg"
                 width={300}
                 height={300}
-                className='absolute top-[5rem] right-0 lg:right-48'
+                className='absolute top-[5rem] w-64 right-0 sm:w-fit sm:right-[min(10%,512px)]'
             />
             {/* Bagian Hijau Atas */}
             <div className="px-[min(10%,512px)]">
