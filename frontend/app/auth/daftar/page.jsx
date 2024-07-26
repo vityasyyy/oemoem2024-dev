@@ -41,9 +41,9 @@ export default function Daftar() {
                 email,
                 username,
                 password,
-            });
+            }, {withCredentials: true});
 
-            if (registerResponse.data.message === "Register successful") {
+            if (registerResponse.data.message === "Register succesful") {
                 console.log('Registration successful');
 
                 // Automatically log in the user after registration
@@ -56,7 +56,7 @@ export default function Daftar() {
 
                 if (loginResponse.status === 200) {
                     console.log('Login successful');
-                    setShowModal(true);
+                    router.push('/');
                 } else {
                     console.log('Login failed:', loginResponse.data);
                 }
@@ -67,11 +67,6 @@ export default function Daftar() {
             console.error('Error during registration or login:', error);
             setError(error.response?.data?.error || 'An error occurred during registration');
         }
-    };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-        router.push('/'); // Redirect to home page after closing the modal
     };
 
     return (

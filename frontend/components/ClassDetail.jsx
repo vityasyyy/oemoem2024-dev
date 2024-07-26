@@ -178,7 +178,7 @@ const ClassDetail = ({ event, user }) => {
                                 Mentor
                             </div>
                             {/* Belom fetching nama component nya */}
-                            <Mentor />
+                            <Mentor event={event}/>
                         </div>
 
                         {/* Contact Person */}
@@ -186,7 +186,9 @@ const ClassDetail = ({ event, user }) => {
                             <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 rounded-md">
                                 Contact Person
                             </div>
-                            <p>{event.contactPerson}</p>
+                            <Link href={event.contactPerson.linkCP}>
+                                <p>{event.contactPerson.namaCP}</p>
+                            </Link>
                         </div>
                         {/* ENROLL BUTTON */}
                         {!isEnrolled ? (
