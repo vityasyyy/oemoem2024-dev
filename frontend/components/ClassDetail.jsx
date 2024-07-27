@@ -223,17 +223,22 @@ const ClassDetail = ({ event, user }) => {
                                     </div>
                                 ) : !isEnrolled ? (
                                     <div className='flex justify-center items-center z-30'>
-                                        <button 
-                                            onClick={handleEnrollClick}
-                                            className="text-xl w-full max-w-screen-sm py-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-xl sm:text-2xl cursor-pointer hover:bg-red-900 transition-all"
-                                            disabled={event.slots <= 0}
-                                        >
-                                            {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
-                                        </button>
+                                        {/* IF there are slots, show button, else hide */}
+                                        {event.slots > 0 ? (
+                                            <button 
+                                                onClick={handleEnrollClick}
+                                                className="text-xl w-full max-w-screen-sm py-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-xl sm:text-2xl cursor-pointer hover:bg-red-900 transition-all"
+                                                disabled={event.slots <= 0}
+                                            >
+                                                Enroll
+                                            </button>
+                                        ) : (
+                                            <h1 className='text-xl sm:text-2xl text-white font-medium'>Yah, kelas telah penuh</h1>
+                                        )}
                                     </div>
                                 ) : (
                                     <div className="text-white bg-green-500 py-2 px-4 z-30 relative rounded-md">
-                                        You are enrolled in this class
+                                        Anda sudah terdaftar dalam kelas ini
                                     </div>
                                 )}
 
@@ -242,7 +247,7 @@ const ClassDetail = ({ event, user }) => {
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                         <div className="bg-white p-6 max-w-[90%] rounded-lg shadow-xl">
                             <h2 className="text-xl font-bold mb-4">Confirm Enrollment</h2>
-                            <p className="mb-6">Apakah anda yakin akan enroll ke dalam kelas ini? Kami mohon komitmen dan tanggung jawab anda.</p>
+                            <p className="mb-6">Apakah anda yakin akan enroll ke dalam kelas ini? Kami mohon komitmen dan tanggung jawab anda</p>
                             <div className="flex justify-end space-x-4">
                                 <button 
                                     onClick={handleCancelEnroll}
@@ -260,6 +265,8 @@ const ClassDetail = ({ event, user }) => {
                         </div>
                     </div>
                 )}
+                        {/* Gradient Black to White */}
+                        <div className='w-full bg-gradient-to-t from-white to-basicBlack-10 absolute h-64 bottom-0 left-0 right-0 z-0 opacity-50'></div>
                     </>
 
                 ) : (
@@ -336,8 +343,6 @@ const ClassDetail = ({ event, user }) => {
                     </>
                 )}
 
-                {/* Gradient Black to White */}
-                <div className='w-full bg-gradient-to-t from-white to-basicBlack-10 absolute h-64 bottom-0 left-0 right-0 z-0 opacity-50'></div>
             </div>
         </section>
     );
