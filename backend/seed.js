@@ -21,6 +21,7 @@ const sampleEvents = [
         slots: 40,
         date: new Date('2024-08-14'),
         deadline: new Date('2024-08-14'), // 5 days before the event
+        openAssignment: new Date('2024-08-14'),
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -61,7 +62,8 @@ const sampleEvents = [
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
-        deadline: new Date('2024-08-14'), // 5 days before the event
+        deadline: new Date('2024-08-14'),
+        openAssignment: new Date('2024-08-14'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -104,7 +106,8 @@ const sampleEvents = [
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
-        deadline: new Date('2024-08-14'), // 5 days before the event
+        deadline: new Date('2024-08-14'),
+        openAssignment: new Date('2024-08-14'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -148,7 +151,8 @@ const sampleEvents = [
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
-        deadline: new Date('2024-08-14'), // 5 days before the event
+        deadline: new Date('2024-08-14'),
+        openAssignment: new Date('2024-08-14'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -191,7 +195,8 @@ const sampleEvents = [
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
-        deadline: new Date('2024-08-14'), // 5 days before the event
+        deadline: new Date('2024-08-14'),
+        openAssignment: new Date('2024-08-14'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -234,7 +239,8 @@ const sampleEvents = [
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
-        deadline: new Date('2024-08-14'), // 5 days before the event
+        deadline: new Date('2024-08-14'),
+        openAssignment: new Date('2024-08-14'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -274,7 +280,8 @@ const sampleEvents = [
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
-        deadline: new Date('2024-08-14'), // 5 days before the event
+        deadline: new Date('2024-08-14'), 
+        openAssignment: new Date('2024-08-14'),// 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -317,7 +324,8 @@ const sampleEvents = [
         prerequisite: "Basic programming knowledge",
         slots: 40,
         date: new Date('2024-08-14'),
-        deadline: new Date('2024-08-14'), // 5 days before the event
+        deadline: new Date('2024-08-14'),
+        openAssignment: new Date('2024-08-14'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"

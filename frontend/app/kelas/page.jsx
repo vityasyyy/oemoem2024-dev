@@ -5,6 +5,7 @@ import axios from 'axios';
 import Class from '../../components/Class'; // Adjust the import path as needed
 import { useRouter } from 'next/navigation'; // Import useRouter
 import Loading from '@/components/Loading';
+import Link from 'next/link'; // Import Link
 
 export default function Events() {
   const [user, setUser] = useState(null);
@@ -52,12 +53,20 @@ export default function Events() {
   return (
     <>
       <section>
-      {user ? (
-        <Class user={user} events={events} />
-      ) : (
-        <Loading />
-      )}
-    </section>
+        {user ? (
+          <Class user={user} events={events} />
+        ) : (
+          <div className="flex flex-col items-center justify-center mt-8 bg-basicBlack-10">
+            <h1 className="text-black text-lg mb-4">
+              Kamu belum terdaftar, silakan{' '}
+              <Link href="/auth/daftar">
+                <p className="text-blue-500 underline">klik disini</p>
+              </Link>{' '}
+              untuk pergi ke pendaftaran.
+            </h1>
+          </div>
+        )}
+      </section>
     </>
   );
 }

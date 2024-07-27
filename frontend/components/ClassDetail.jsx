@@ -8,6 +8,7 @@ import ProgressBar from "@/components/ProgressBar";
 import KelasButton from "@/components/KelasButton";
 import ChallengesButton from "@/components/ChallengesButton";
 import axios from 'axios'; // Import axios for making API requests
+import { useRouter } from 'next/navigation';
 
 const ClassDetail = ({ event, user }) => {
     const [activeView, setActiveView] = useState('kelas');
@@ -18,7 +19,8 @@ const ClassDetail = ({ event, user }) => {
     const [enrollmentError, setEnrollmentError] = useState(null);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [assignmentId, setAssignmentId] = useState(null);
-
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const router = useRouter();
     useEffect(() => {
         if (user && event) {
             console.log(user._id)   
@@ -45,6 +47,7 @@ const ClassDetail = ({ event, user }) => {
             }
         } catch (error) {
             setEnrollmentError(error.response?.data?.error || 'An error occurred during enrollment');
+            router.push('/auth/masuk')
         }
     };
 
@@ -93,7 +96,24 @@ const ClassDetail = ({ event, user }) => {
             console.error('Error checking existing submission:', error);
         }
     };
+    const isChallengeOpen = () => {
+        if (!event.openAssignment) return false;
+        const challengeOpenDate = new Date(event.openAssignment);
+        const currentDate = new Date();
+        return currentDate >= challengeOpenDate;
+    };
+    const handleEnrollClick = () => {
+        setShowConfirmation(true);
+    };
 
+    const handleConfirmEnroll = () => {
+        handleEnroll();
+        setShowConfirmation(false);
+    };
+
+    const handleCancelEnroll = () => {
+        setShowConfirmation(false);
+    };
     return (
         <section className="bg-basicLightGreen-10 pt-24 pb-6 relative">
             {/* 4 Cards Background Image */}
@@ -191,84 +211,118 @@ const ClassDetail = ({ event, user }) => {
                             </Link>
                         </div>
                         {/* ENROLL BUTTON */}
-                        {!isEnrolled ? (
-                            <div className='flex justify-center items-center'>
+                {!isEnrolled ? (
+                    <div className='flex justify-center items-center'>
+                        <button 
+                            onClick={handleEnrollClick}
+                            className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
+                            disabled={event.slots <= 0}
+                        >
+                            {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
+                        </button>
+                    </div>
+                ) : (
+                    <div className="text-white bg-green-500 py-2 px-4 rounded-md">
+                        You are enrolled in this class
+                    </div>
+                )}
+
+                {/* Confirmation Popup */}
+                {showConfirmation && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                        <div className="bg-white p-6 rounded-lg shadow-xl">
+                            <h2 className="text-xl font-bold mb-4">Confirm Enrollment</h2>
+                            <p className="mb-6">Apakah anda yakin akan enroll ke dalam kelas ini? Kami mohon komitmen dan tanggung jawab anda.</p>
+                            <div className="flex justify-end space-x-4">
                                 <button 
-                                    onClick={handleEnroll}
-                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
-                                    disabled={event.slots <= 0}
-                                    >
-                                    {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
+                                    onClick={handleCancelEnroll}
+                                    className="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
+                                >
+                                    Cancel
+                                </button>
+                                <button 
+                                    onClick={handleConfirmEnroll}
+                                    className="px-4 py-2 bg-basicRed-10 text-white rounded hover:bg-red-700"
+                                >
+                                    Confirm
                                 </button>
                             </div>
-                        ) : (
-                            <div className="text-white bg-green-500 py-2 px-4 rounded-md">
-                                You are enrolled in this class
-                            </div>
-                        )}
+                        </div>
+                    </div>
+                )}
                     </>
 
-                ) : (
+                ) :(
                     <>
-
-
-                        {/* Challenges Section */}
-
-                        {/* Overview */}
-                        <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
-                                Overview
-                            </div>
-                            <p className='text-wrap'>{event.assignmentDetail}</p>
-                        </div>
-
-                        {/* Tenggat Pengumpulan */}
-                        <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
-                                Tenggat Pengumpulan
-                            </div>
-                            <p>{new Date(event.date).toLocaleDateString()}</p>
-                        </div>
-
-                        {/* Assets */}
-                        <div className="flex flex-col gap-2 text-white">
-                            <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
-                                Asset
-                            </div>
-                            <p>{new Date(event.date).toLocaleDateString()}</p>
-                        </div>
-
-                        {/* Pengumpulan */}
-                        <div className="flex flex-col gap-4 text-black">
-                            <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md text-white">
-                                Pengumpulan
-                            </div>
-                            <form onSubmit={handleSubmission} className="flex flex-col gap-2">
-                                <input 
-                                    type="text"
-                                    value={submissionLink}
-                                    onChange={(e) => setSubmissionLink(e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 text-sm sm:text-base rounded-lg focus:text-basicBlack-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    placeholder="cth: link github, link web, dll"
-                                />
-                                <textarea
-                                    value={submissionComment}
-                                    onChange={(e) => setSubmissionComment(e.target.value)}
-                                    className="w-full px-3 py-2 border text-sm sm:text-base border-gray-300 rounded-lg focus:text-basicBlack-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    placeholder="Add a comment"
-                                />
-                                <p className="text-white mt-2 text-xs sm:text-sm">
-                                    Tugas dikumpulkan dalam bentuk link sesuai dengan arahan mentor pada hari pembelajaran
+                        {isChallengeOpen() ? (
+                            <>
+                                {/* Challenges Section */}
+                
+                                {/* Overview */}
+                                <div className="flex flex-col gap-2 text-white">
+                                    <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
+                                        Overview
+                                    </div>
+                                    <p className='text-wrap'>{event.assignmentDetail}</p>
+                                </div>
+                
+                                {/* Tenggat Pengumpulan */}
+                                <div className="flex flex-col gap-2 text-white">
+                                    <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
+                                        Tenggat Pengumpulan
+                                    </div>
+                                    <p>{new Date(event.date).toLocaleDateString()}</p>
+                                </div>
+                
+                                {/* Assets */}
+                                <div className="flex flex-col gap-2 text-white">
+                                    <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
+                                        Asset
+                                    </div>
+                                    <p>{new Date(event.date).toLocaleDateString()}</p>
+                                </div>
+                
+                                {/* Pengumpulan */}
+                                <div className="flex flex-col gap-4 text-black">
+                                    <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md text-white">
+                                        Pengumpulan
+                                    </div>
+                                    <form onSubmit={handleSubmission} className="flex flex-col gap-2">
+                                        <input 
+                                            type="text"
+                                            value={submissionLink}
+                                            onChange={(e) => setSubmissionLink(e.target.value)}
+                                            className="w-full px-3 py-2 border border-gray-300 text-sm sm:text-base rounded-lg focus:text-basicBlack-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            placeholder="cth: link github, link web, dll"
+                                        />
+                                        <textarea
+                                            value={submissionComment}
+                                            onChange={(e) => setSubmissionComment(e.target.value)}
+                                            className="w-full px-3 py-2 border text-sm sm:text-base border-gray-300 rounded-lg focus:text-basicBlack-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            placeholder="Add a comment"
+                                        />
+                                        <p className="text-white mt-2 text-xs sm:text-sm">
+                                            Tugas dikumpulkan dalam bentuk link sesuai dengan arahan mentor pada hari pembelajaran
+                                        </p>
+                                        <button 
+                                            type="submit"
+                                            className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
+                                        >
+                                            {hasSubmitted ? 'Update' : 'Submit'}
+                                        </button>
+                                    </form>
+                                    {submissionMessage && <p className="text-white mt-2">{submissionMessage}</p>}
+                                </div>
+                            </>
+                        ) : (
+                            // Display message when challenge is not open
+                            <div className="flex flex-col items-center justify-center text-white h-full">
+                                <p className="text-2xl font-bold mb-4">Challenge belum dibuka</p>
+                                <p className="text-lg">
+                                    Challenge akan dibuka pada: {new Date(event.openAssignment).toLocaleString()}
                                 </p>
-                                <button 
-                                    type="submit"
-                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
-                                >
-                                    {hasSubmitted ? 'Update' : 'Submit'}
-                                </button>
-                            </form>
-                            {submissionMessage && <p className="text-white mt-2">{submissionMessage}</p>}
-                        </div>
+                            </div>
+                        )}
                     </>
                 )}
             </div>

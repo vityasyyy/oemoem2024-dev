@@ -7,8 +7,8 @@ const ProgressBar = ({ enrolledBy, slots }) => {
     return (
         <div className="w-full">
             <div className="flex justify-between text-xs text-white mb-1">
-                <span>Participant</span>
-                <span>{enrolledBy.length}/{slots}</span>
+                <span>Participant: {enrolledBy.length}</span>
+                <span>Slots left: {slots}</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
                 <div 

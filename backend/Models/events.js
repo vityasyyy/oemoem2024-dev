@@ -29,6 +29,7 @@ const eventsSchema = new Schema({
     contactPerson: contactPersonSchema,
     prerequisite: String,
     slots: Number,
+    openAssignment: Date,
     date: Date,
     deadline: Date,
     groupChat: String,
