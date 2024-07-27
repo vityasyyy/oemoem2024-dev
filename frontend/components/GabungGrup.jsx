@@ -9,7 +9,7 @@ const GabungGrup = () => {
                 <h1 className="text-white text-center text-lg sm:text-xl">
                     Selamat bergabung <br></br> bersama <span className="text-basicLightBrown-10">OemOem</span>
                 </h1>
-                <p className="text-sm mt-1 text-center text-white">
+                <p className="text-sm mt-1 text-center font-normal text-white">
                     Gabung grup chat untuk informasi lebih lanjut
                 </p>
             </div>
