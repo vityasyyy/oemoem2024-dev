@@ -211,21 +211,31 @@ const ClassDetail = ({ event, user }) => {
                             </Link>
                         </div>
                         {/* ENROLL BUTTON */}
-                {!isEnrolled ? (
-                    <div className='flex justify-center items-center'>
-                        <button 
-                            onClick={handleEnrollClick}
-                            className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
-                            disabled={event.slots <= 0}
-                        >
-                            {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
-                        </button>
-                    </div>
-                ) : (
-                    <div className="text-white bg-green-500 py-2 px-4 rounded-md">
-                        You are enrolled in this class
-                    </div>
-                )}
+                        {!user ? (
+                                    <div className='flex justify-center items-center'>
+                                        <Link href="/auth/masuk" className="fixed top-1/3 left-0 right-0 z-10 flex justify-center">
+                                            <button 
+                                                className="px-20 py-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md text-base focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
+                                            >
+                                                Masuk
+                                            </button>
+                                        </Link>
+                                    </div>
+                                ) : !isEnrolled ? (
+                                    <div className='flex justify-center items-center'>
+                                        <button 
+                                            onClick={handleEnrollClick}
+                                            className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
+                                            disabled={event.slots <= 0}
+                                        >
+                                            {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div className="text-white bg-green-500 py-2 px-4 rounded-md">
+                                        You are enrolled in this class
+                                    </div>
+                                )}
 
                 {/* Confirmation Popup */}
                 {showConfirmation && (
