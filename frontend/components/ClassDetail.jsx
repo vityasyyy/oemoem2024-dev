@@ -19,6 +19,7 @@ const ClassDetail = ({ event, user }) => {
     const [enrollmentError, setEnrollmentError] = useState(null);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [assignmentId, setAssignmentId] = useState(null);
+    const [showConfirmation, setShowConfirmation] = useState(false);
     const router = useRouter();
     useEffect(() => {
         if (user && event) {
@@ -101,7 +102,18 @@ const ClassDetail = ({ event, user }) => {
         const currentDate = new Date();
         return currentDate >= challengeOpenDate;
     };
+    const handleEnrollClick = () => {
+        setShowConfirmation(true);
+    };
 
+    const handleConfirmEnroll = () => {
+        handleEnroll();
+        setShowConfirmation(false);
+    };
+
+    const handleCancelEnroll = () => {
+        setShowConfirmation(false);
+    };
     return (
         <section className="bg-basicLightGreen-10 pt-24 pb-6 relative">
             {/* 4 Cards Background Image */}
@@ -199,21 +211,45 @@ const ClassDetail = ({ event, user }) => {
                             </Link>
                         </div>
                         {/* ENROLL BUTTON */}
-                        {!isEnrolled ? (
-                            <div className='flex justify-center items-center'>
+                {!isEnrolled ? (
+                    <div className='flex justify-center items-center'>
+                        <button 
+                            onClick={handleEnrollClick}
+                            className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
+                            disabled={event.slots <= 0}
+                        >
+                            {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
+                        </button>
+                    </div>
+                ) : (
+                    <div className="text-white bg-green-500 py-2 px-4 rounded-md">
+                        You are enrolled in this class
+                    </div>
+                )}
+
+                {/* Confirmation Popup */}
+                {showConfirmation && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                        <div className="bg-white p-6 rounded-lg shadow-xl">
+                            <h2 className="text-xl font-bold mb-4">Confirm Enrollment</h2>
+                            <p className="mb-6">Apakah anda yakin akan enroll ke dalam kelas ini? Kami mohon komitmen dan tanggung jawab anda.</p>
+                            <div className="flex justify-end space-x-4">
                                 <button 
-                                    onClick={handleEnroll}
-                                    className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
-                                    disabled={event.slots <= 0}
-                                    >
-                                    {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
+                                    onClick={handleCancelEnroll}
+                                    className="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
+                                >
+                                    Cancel
+                                </button>
+                                <button 
+                                    onClick={handleConfirmEnroll}
+                                    className="px-4 py-2 bg-basicRed-10 text-white rounded hover:bg-red-700"
+                                >
+                                    Confirm
                                 </button>
                             </div>
-                        ) : (
-                            <div className="text-white bg-green-500 py-2 px-4 rounded-md">
-                                You are enrolled in this class
-                            </div>
-                        )}
+                        </div>
+                    </div>
+                )}
                     </>
 
                 ) :(
