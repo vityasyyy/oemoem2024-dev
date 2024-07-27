@@ -230,7 +230,7 @@ const ClassDetail = ({ event, user }) => {
                 {/* Confirmation Popup */}
                 {showConfirmation && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                        <div className="bg-white p-6 rounded-lg shadow-xl">
+                        <div className="bg-white p-6 max-w-[90%] rounded-lg shadow-xl">
                             <h2 className="text-xl font-bold mb-4">Confirm Enrollment</h2>
                             <p className="mb-6">Apakah anda yakin akan enroll ke dalam kelas ini? Kami mohon komitmen dan tanggung jawab anda.</p>
                             <div className="flex justify-end space-x-4">
