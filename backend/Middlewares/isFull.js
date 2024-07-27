@@ -2,8 +2,7 @@ const Event = require('../Models/events');
 
 module.exports = async (req, res, next) => {
     try{
-        const event = await Event.findById(req.params._id);
-
+        const event = await Event.findById(req.params.id);
         if(!event) return res.status(404).json({message: "Event not found"});
 
         if (event.slots <= event.enrolledBy.length) {
