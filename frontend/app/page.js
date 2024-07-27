@@ -7,11 +7,13 @@ import Information from "@/components/Information";
 import Classes from "@/components/Classes";
 import Navbar from "@/components/Navbar";
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 export default function Home() {
   const [user, setUser] = useState(null);
   const [events, setEvents] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const checkUserLoggedIn = async () => {
@@ -38,6 +40,12 @@ export default function Home() {
     checkUserLoggedIn();
     fetchEvents();
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      router.push('/kelas');
+    }
+  }, [user]);
 
   return (
     <>
