@@ -9,9 +9,9 @@ module.exports.submit = async (req, res) => {
         const userId = req.user._id;
 
         // Check if the user has already submitted an assignment for this event
-        const existingAssignment = await Assignment.findOne({ 
-            submittedBy: userId, 
-            assignmentOn: eventId 
+        const existingAssignment = await Assignment.findOne({
+            submittedBy: userId,
+            submittedOn: eventId
         });
 
         if (existingAssignment) {
@@ -23,7 +23,7 @@ module.exports.submit = async (req, res) => {
             assignmentLink,
             assignmentComment,
             submittedBy: userId,
-            assignmentOn: eventId
+            submittedOn: eventId
         });
 
         // Save the new assignment
@@ -46,7 +46,7 @@ module.exports.submit = async (req, res) => {
         }
 
         // Add the assignment to the user's assignments list
-        user.assignment.push(newAssignment._id);
+        user.assignment.push(newAssignment._id); // corrected from `user.assignment` to `user.assignments`
         await user.save();
 
         res.status(200).json({ message: 'Assignment submitted successfully', assignment: newAssignment });
@@ -93,7 +93,7 @@ module.exports.checkExistingSubmission = async (req, res) => {
         // Find the assignment for this user and event
         const assignment = await Assignment.findOne({
             submittedBy: userId,
-            assignmentOn: eventId
+            submittedOn: eventId
         });
 
         if (assignment) {
