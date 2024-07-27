@@ -232,7 +232,7 @@ const ClassDetail = ({ event, user }) => {
                                         </button>
                                     </div>
                                 ) : (
-                                    <div className="text-white bg-green-500 py-2 px-4 rounded-md">
+                                    <div className="text-white bg-green-500 py-2 px-4 z-30 relative rounded-md">
                                         You are enrolled in this class
                                     </div>
                                 )}
