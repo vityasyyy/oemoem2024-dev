@@ -45,7 +45,7 @@ export default function Masuk() {
                 });
                 console.log(validateResponse)
                 // Login successful, redirect to home page
-                router.push('/');
+                router.push('/kelas');
             }
         } catch (error) {
             console.log(error)

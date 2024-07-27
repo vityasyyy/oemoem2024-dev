@@ -56,7 +56,7 @@ export default function Daftar() {
 
                 if (loginResponse.status === 200) {
                     console.log('Login successful');
-                    router.push('/');
+                    router.push('/kelas');
                 } else {
                     console.log('Login failed:', loginResponse.data);
                 }
