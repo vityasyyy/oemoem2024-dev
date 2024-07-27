@@ -71,7 +71,7 @@ const ChampsDSAI = () => {
                 </div>
 
                 {/* Merah-merah bawah */}
-                <div className="flex flex-col gap-2 text-white mt-10 w-96 text-center">
+                <div className="flex flex-col gap-2 text-white w-96 text-center">
                     <div className="rounded-lg border-4 border-basicRed-10 p-4">
                         Andreandhiki
                     </div>

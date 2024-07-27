@@ -97,7 +97,7 @@ const Champions = () => {
             </div>
 
             {/* Render selected champion component */}
-            <div className="flex flex-col md:flex-row mt-10 items-center">
+            <div className="flex flex-col md:flex-row mt-10 items-center justify-center gap-10">
                 {renderChampionComponent()}
             </div>
         </>
