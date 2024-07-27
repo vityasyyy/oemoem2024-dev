@@ -155,7 +155,7 @@ const ClassDetail = ({ event, user }) => {
             </div>
             
             {/* Main */}
-            <div className="h-fit bg-basicBlack-10 mt-5 pt-8 pb-48 z-50 px-[min(10%,512px)] text-lg relative flex flex-col gap-10">
+            <div className="h-fit bg-basicBlack-10 mt-5 pt-8 pb-24 z-50 px-[min(10%,512px)] text-lg relative flex flex-col gap-10">
                 {activeView === 'kelas' ? (
                     <>
                         {/* Kelas */}
@@ -202,7 +202,7 @@ const ClassDetail = ({ event, user }) => {
                         </div>
 
                         {/* Contact Person */}
-                        <div className="flex flex-col gap-2 text-white">
+                        <div className="flex flex-col gap-2 z-30 text-white">
                             <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 rounded-md">
                                 Contact Person
                             </div>
@@ -212,20 +212,20 @@ const ClassDetail = ({ event, user }) => {
                         </div>
                         {/* ENROLL BUTTON */}
                         {!user ? (
-                                    <div className='flex justify-center items-center'>
-                                        <Link href="/auth/masuk" className="fixed top-1/3 left-0 right-0 z-10 flex justify-center">
+                                    <div className='flex justify-center items-center z-30'>
+                                        <Link href="/auth/masuk" className="text-xl w-full max-w-screen-sm z-10 flex justify-center">
                                             <button 
-                                                className="px-20 py-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md text-base focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
+                                                className="text-xl w-full max-w-screen-sm py-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-xl sm:text-2xl cursor-pointer hover:bg-red-900 transition-all"
                                             >
-                                                Masuk
+                                                Masuk/Daftar
                                             </button>
                                         </Link>
                                     </div>
                                 ) : !isEnrolled ? (
-                                    <div className='flex justify-center items-center'>
+                                    <div className='flex justify-center items-center z-30'>
                                         <button 
                                             onClick={handleEnrollClick}
-                                            className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
+                                            className="text-xl w-full max-w-screen-sm py-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-xl sm:text-2xl cursor-pointer hover:bg-red-900 transition-all"
                                             disabled={event.slots <= 0}
                                         >
                                             {event.slots > 0 ? 'Enroll in this class' : 'No slots available'}
@@ -262,7 +262,7 @@ const ClassDetail = ({ event, user }) => {
                 )}
                     </>
 
-                ) :(
+                ) : (
                     <>
                         {isChallengeOpen() ? (
                             <>
@@ -335,6 +335,9 @@ const ClassDetail = ({ event, user }) => {
                         )}
                     </>
                 )}
+
+                {/* Gradient Black to White */}
+                <div className='w-full bg-gradient-to-t from-white to-basicBlack-10 absolute h-64 bottom-0 left-0 right-0 z-0 opacity-50'></div>
             </div>
         </section>
     );
