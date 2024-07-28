@@ -18,10 +18,13 @@ const sampleEvents = [
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
+        assets: "MMMMMM FOOD",
         slots: 40,
-        date: new Date('2024-07-27T22:57:00'),
-        deadline: new Date('2025-07-27T23:00:00'), // 5 days before the event
-        openAssignment: new Date('2024-07-27T22:57:00'),
+        dateClose: new Date('2024-07-30T23:59:00'),
+        displayDate: new Date('2024-07-31T00:00:00'),
+        date: new Date('2024-07-27T23:48:00'),
+        deadline: new Date('2025-07-27T23:52:00'), // 5 days before the event
+        openAssignment: new Date('2024-07-27T23:50:00'),
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -60,10 +63,13 @@ const sampleEvents = [
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
+        assets: "MMMMMM FOOD",
         slots: 40,
-        date: new Date('2024-07-27T22:57:00'),
-        deadline: new Date('2025-07-27T23:00:00'),
-        openAssignment: new Date('2024-07-27T22:57:00'), // 5 days before the event
+        dateClose: new Date('2024-07-28T17:57:00'),
+        displayDate: new Date('2024-07-31T00:00:00'),
+        date: new Date('2024-07-27T23:48:00'),
+        deadline: new Date('2025-07-27T23:52:00'),
+        openAssignment: new Date('2024-07-27T23:50:00'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -104,10 +110,13 @@ const sampleEvents = [
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
+        assets: "MMMMMM FOOD",
         slots: 40,
-        date: new Date('2024-07-27T22:57:00'),
-        deadline: new Date('2025-07-27T23:00:00'),
-        openAssignment: new Date('2024-07-27T22:57:00'), // 5 days before the event
+        dateClose: new Date('2024-07-30T23:59:00'),
+        displayDate: new Date('2024-07-31T00:00:00'),
+        date: new Date('2024-07-27T23:48:00'),
+        deadline: new Date('2025-07-27T23:52:00'),
+        openAssignment: new Date('2024-07-27T23:50:00'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -149,10 +158,13 @@ const sampleEvents = [
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
+        assets: "MMMMMM FOOD",
         slots: 40,
-        date: new Date('2024-07-27T22:57:00'),
-        deadline: new Date('2025-07-27T23:00:00'),
-        openAssignment: new Date('2024-07-27T22:57:00'), // 5 days before the event
+        dateClose: new Date('2024-07-30T23:59:00'),
+        displayDate: new Date('2024-07-31T00:00:00'),
+        date: new Date('2024-07-27T23:48:00'),
+        deadline: new Date('2025-07-27T23:52:00'),
+        openAssignment: new Date('2024-07-27T23:50:00'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -193,10 +205,13 @@ const sampleEvents = [
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
+        assets: "MMMMMM FOOD",
         slots: 40,
-        date: new Date('2024-07-27T22:57:00'),
-        deadline: new Date('2025-07-27T23:00:00'),
-        openAssignment: new Date('2024-07-27T22:57:00'), // 5 days before the event
+        dateClose: new Date('2024-07-30T23:59:00'),
+        displayDate: new Date('2024-07-31T00:00:00'),
+        date: new Date('2024-07-27T23:48:00'),
+        deadline: new Date('2025-07-27T23:52:00'),
+        openAssignment: new Date('2024-07-27T23:50:00'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -237,10 +252,13 @@ const sampleEvents = [
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
+        assets: "MMMMMM FOOD",
         slots: 40,
-        date: new Date('2024-07-27T22:57:00'),
-        deadline: new Date('2025-07-27T23:00:00'),
-        openAssignment: new Date('2024-07-27T22:57:00'), // 5 days before the event
+        dateClose: new Date('2024-07-30T23:59:00'),
+        displayDate: new Date('2024-07-31T00:00:00'),
+        date: new Date('2024-07-27T23:48:00'),
+        deadline: new Date('2025-07-27T23:52:00'),
+        openAssignment: new Date('2024-07-27T23:50:00'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -278,10 +296,13 @@ const sampleEvents = [
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
+        assets: "MMMMMM FOOD",
         slots: 40,
-        date: new Date('2024-07-27T22:57:00'),
-        deadline: new Date('2025-07-27T23:00:00'), 
-        openAssignment: new Date('2024-07-27T22:57:00'),// 5 days before the event
+        dateClose: new Date('2024-07-30T23:59:00'),
+        displayDate: new Date('2024-07-31T00:00:00'),
+        date: new Date('2024-07-27T23:48:00'),
+        deadline: new Date('2025-07-27T23:52:00'), 
+        openAssignment: new Date('2024-07-27T23:50:00'),// 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
@@ -322,10 +343,13 @@ const sampleEvents = [
         location: "https://maps.app.goo.gl/AjDwpSEP2Asf58QQ9",
         groupChat: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc",
         prerequisite: "Basic programming knowledge",
+        assets: "MMMMMM FOOD",
         slots: 40,
-        date: new Date('2024-07-27T22:57:00'),
-        deadline: new Date('2025-07-27T23:00:00'),
-        openAssignment: new Date('2024-07-27T22:57:00'), // 5 days before the event
+        dateClose: new Date('2024-07-30T23:59:00'),
+        displayDate: new Date('2024-07-31T00:00:00'),
+        date: new Date('2024-07-27T23:48:00'),
+        deadline: new Date('2025-07-27T23:52:00'),
+        openAssignment: new Date('2024-07-27T23:50:00'), // 5 days before the event
         contactPerson: {
             namaCP: "Contact Person Name", // Replace with the actual contact person's name
             linkCP: "https://chat.whatsapp.com/HlRToLUOaQ5JkI5IP4ViYc"
