@@ -4,7 +4,7 @@ const User = require('../Models/users');
 
 module.exports.submit = async (req, res) => {
     try {
-        const eventId = req.params.id;
+        const { id: eventId } = req.params;
         const { assignmentLink, assignmentComment } = req.body;
         const userId = req.user._id;
 
@@ -18,7 +18,7 @@ module.exports.submit = async (req, res) => {
             return res.status(400).json({ error: 'You have already submitted an assignment for this event' });
         }
 
-        // Create a new assignment
+        // Create and save a new assignment
         const newAssignment = new Assignment({
             assignmentLink,
             assignmentComment,
@@ -26,28 +26,26 @@ module.exports.submit = async (req, res) => {
             submittedOn: eventId
         });
 
-        // Save the new assignment
         await newAssignment.save();
 
-        // Retrieve the event from the database 
-        const event = await Event.findById(eventId);
+        // Use Promise.all to fetch event and user concurrently
+        const [event, user] = await Promise.all([
+            Event.findById(eventId),
+            User.findById(userId)
+        ]);
+
         if (!event) {
             return res.status(404).json({ error: 'Event not found' });
         }
-
-        // Add the assignment to the event's assignments list
-        event.assignments.push(newAssignment._id);
-        await event.save();
-
-        // Retrieve the user from the database
-        const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
 
-        // Add the assignment to the user's assignments list
-        user.assignment.push(newAssignment._id); // corrected from `user.assignment` to `user.assignments`
-        await user.save();
+        // Update event and user assignments lists
+        event.assignments.push(newAssignment._id);
+        user.assignment.push(newAssignment._id); // Correct field name
+
+        await Promise.all([event.save(), user.save()]);
 
         res.status(200).json({ message: 'Assignment submitted successfully', assignment: newAssignment });
     } catch (error) {
@@ -57,12 +55,13 @@ module.exports.submit = async (req, res) => {
 
 module.exports.updateAssignment = async (req, res) => {
     try {
-        const assignmentId = req.params.id;
+        const { id: assignmentId } = req.params;
         const { assignmentLink, assignmentComment } = req.body;
         const userId = req.user._id;
 
         // Find the assignment by ID
         const assignment = await Assignment.findById(assignmentId);
+
         if (!assignment) {
             return res.status(404).json({ error: 'Assignment not found' });
         }
@@ -87,7 +86,7 @@ module.exports.updateAssignment = async (req, res) => {
 
 module.exports.checkExistingSubmission = async (req, res) => {
     try {
-        const eventId = req.params.id;
+        const { id: eventId } = req.params;
         const userId = req.user._id;
 
         // Find the assignment for this user and event
@@ -97,7 +96,6 @@ module.exports.checkExistingSubmission = async (req, res) => {
         });
 
         if (assignment) {
-            // If an assignment exists, return it
             res.status(200).json({
                 message: 'Existing assignment found',
                 assignment: {
@@ -107,7 +105,6 @@ module.exports.checkExistingSubmission = async (req, res) => {
                 }
             });
         } else {
-            // If no assignment exists, return null
             res.status(200).json({
                 message: 'No existing assignment found',
                 assignment: null
