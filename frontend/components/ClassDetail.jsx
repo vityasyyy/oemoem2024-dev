@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import Mentor from './Mentor';
@@ -12,28 +12,40 @@ import { useRouter } from 'next/navigation';
 
 const ClassDetail = ({ event, user }) => {
     const [activeView, setActiveView] = useState('kelas');
-    const [submissionLink, setSubmissionLink] = useState(''); // State for the submission link
-    const [submissionComment, setSubmissionComment] = useState(''); // State for the submission comment
-    const [submissionMessage, setSubmissionMessage] = useState(''); // State for success/error message
+    const [submissionLink, setSubmissionLink] = useState('');
+    const [submissionComment, setSubmissionComment] = useState('');
+    const [submissionMessage, setSubmissionMessage] = useState('');
     const [isEnrolled, setIsEnrolled] = useState(false);
     const [enrollmentError, setEnrollmentError] = useState(null);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [assignmentId, setAssignmentId] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const router = useRouter();
+
+    // Memoized checkExistingSubmission to avoid unnecessary re-renders
+    const checkExistingSubmission = useCallback(async () => {
+        try {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submission`, { withCredentials: true });
+            if (response.data.assignment) {
+                setHasSubmitted(true);
+                setAssignmentId(response.data.assignment._id);
+                setSubmissionLink(response.data.assignment.assignmentLink);
+                setSubmissionComment(response.data.assignment.assignmentComment);
+            }
+        } catch (error) {
+            console.error('Error checking existing submission:', error);
+        }
+    }, [event._id]);
+
     useEffect(() => {
         if (user && event) {
-            console.log(user._id)   
-            const enrolled = event.enrolledBy.some(enrolledUser => 
+            const enrolled = event.enrolledBy.some(enrolledUser =>
                 enrolledUser._id.toString() === user._id.toString()
             );
-            console.log('User ID:', user._id);
-            console.log('Enrolled By:', event.enrolledBy);
-            console.log('Is Enrolled:', enrolled);
             setIsEnrolled(enrolled);
             checkExistingSubmission();
         }
-    }, [user, event]);
+    }, [user, event, checkExistingSubmission]);
 
     const handleEnroll = async () => {
         try {
@@ -43,11 +55,10 @@ const ClassDetail = ({ event, user }) => {
             if (response.status === 200) {
                 setIsEnrolled(true);
                 setEnrollmentError(null);
-                // Optionally, update the event data here
             }
         } catch (error) {
             setEnrollmentError(error.response?.data?.error || 'An error occurred during enrollment');
-            router.push('/auth/masuk')
+            router.push('/auth/masuk');
         }
     };
 
@@ -81,27 +92,13 @@ const ClassDetail = ({ event, user }) => {
         }
     };
 
-    const checkExistingSubmission = async () => {
-        try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submission`, {
-                withCredentials: true
-            });
-            if (response.data.assignment) {
-                setHasSubmitted(true);
-                setAssignmentId(response.data.assignment._id);
-                setSubmissionLink(response.data.assignment.assignmentLink);
-                setSubmissionComment(response.data.assignment.assignmentComment);
-            }
-        } catch (error) {
-            console.error('Error checking existing submission:', error);
-        }
-    };
     const isChallengeOpen = () => {
         if (!event.openAssignment) return false;
         const challengeOpenDate = new Date(event.openAssignment);
         const currentDate = new Date();
         return currentDate >= challengeOpenDate;
     };
+
     const handleEnrollClick = () => {
         setShowConfirmation(true);
     };
@@ -298,7 +295,6 @@ const ClassDetail = ({ event, user }) => {
                                     <p>{new Date(event.deadline).toLocaleDateString()}</p>
                                 </div>
                 
-                                Assets
                                 <div className="flex flex-col gap-2 text-white">
                                     <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
                                         Detail tugas
