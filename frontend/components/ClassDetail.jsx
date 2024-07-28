@@ -172,7 +172,7 @@ const ClassDetail = ({ event, user }) => {
                             <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 text-lg rounded-md">
                                 Tanggal dan lokasi
                             </div>
-                            <p>{new Date(event.date).toLocaleDateString()}</p>
+                            <p>{new Date(event.displayDate).toLocaleDateString()}</p>
                             <p>{event.location}</p>
                         </div>
 
@@ -212,35 +212,42 @@ const ClassDetail = ({ event, user }) => {
                         </div>
                         {/* ENROLL BUTTON */}
                         {!user ? (
-                                    <div className='flex justify-center items-center z-30'>
-                                        <Link href="/auth/masuk" className="text-xl w-full max-w-screen-sm z-10 flex justify-center">
-                                            <button 
-                                                className="text-xl w-full max-w-screen-sm py-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-xl sm:text-2xl cursor-pointer hover:bg-red-900 transition-all"
-                                            >
-                                                Masuk/Daftar
-                                            </button>
-                                        </Link>
+                            <div className='flex justify-center items-center z-30'>
+                                <Link href="/auth/masuk" className="text-xl w-full max-w-screen-sm z-10 flex justify-center">
+                                    <button 
+                                        className="text-xl w-full max-w-screen-sm py-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-xl sm:text-2xl cursor-pointer hover:bg-red-900 transition-all"
+                                    >
+                                        Masuk/Daftar
+                                    </button>
+                                </Link>
+                            </div>
+                        ) : !isEnrolled ? (
+                            <div className='flex justify-center items-center z-30'>
+                                {new Date() < new Date(event.date) ? (
+                                    <div className='text-xl sm:text-2xl text-white font-medium'>
+                                        Enrollment opens on {new Date(event.date).toLocaleDateString()}
                                     </div>
-                                ) : !isEnrolled ? (
-                                    <div className='flex justify-center items-center z-30'>
-                                        {/* IF there are slots, show button, else hide */}
-                                        {event.slots > 0 ? (
-                                            <button 
-                                                onClick={handleEnrollClick}
-                                                className="text-xl w-full max-w-screen-sm py-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-xl sm:text-2xl cursor-pointer hover:bg-red-900 transition-all"
-                                                disabled={event.slots <= 0}
-                                            >
-                                                Enroll
-                                            </button>
-                                        ) : (
-                                            <h1 className='text-xl sm:text-2xl text-white font-medium'>Yah, kelas telah penuh</h1>
-                                        )}
+                                ) : new Date() > new Date(event.dateClose) ? (
+                                    <div className='text-xl sm:text-2xl text-white font-medium'>
+                                        Enrollment for this class has closed
                                     </div>
+                                ) : event.slots > 0 ? (
+                                    <button 
+                                        onClick={handleEnrollClick}
+                                        className="text-xl w-full max-w-screen-sm py-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-xl sm:text-2xl cursor-pointer hover:bg-red-900 transition-all"
+                                    >
+                                        Enroll
+                                    </button>
                                 ) : (
-                                    <div className="text-white bg-green-500 py-2 px-4 z-30 relative rounded-md">
-                                        Anda sudah terdaftar dalam kelas ini
-                                    </div>
+                                    <h1 className='text-xl sm:text-2xl text-white font-medium'>Yah, kelas telah penuh</h1>
                                 )}
+                            </div>
+                        ) : (
+                            <div className="text-white bg-green-500 py-2 px-4 z-30 relative rounded-md">
+                                Anda sudah terdaftar dalam kelas ini
+                            </div>
+                        )}
+
 
                 {/* Confirmation Popup */}
                 {showConfirmation && (
@@ -288,15 +295,15 @@ const ClassDetail = ({ event, user }) => {
                                     <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
                                         Tenggat Pengumpulan
                                     </div>
-                                    <p>{new Date(event.date).toLocaleDateString()}</p>
+                                    <p>{new Date(event.deadline).toLocaleDateString()}</p>
                                 </div>
                 
-                                {/* Assets */}
+                                Assets
                                 <div className="flex flex-col gap-2 text-white">
                                     <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
-                                        Asset
+                                        Detail tugas
                                     </div>
-                                    <p>{new Date(event.date).toLocaleDateString()}</p>
+                                    <p>{event.assets}</p>
                                 </div>
                 
                                 {/* Pengumpulan */}
@@ -304,32 +311,39 @@ const ClassDetail = ({ event, user }) => {
                                     <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md text-white">
                                         Pengumpulan
                                     </div>
-                                    <form onSubmit={handleSubmission} className="flex flex-col gap-2">
-                                        <input 
-                                            type="text"
-                                            value={submissionLink}
-                                            onChange={(e) => setSubmissionLink(e.target.value)}
-                                            className="w-full px-3 py-2 border border-gray-300 text-sm sm:text-base rounded-lg focus:text-basicBlack-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            placeholder="cth: link github, link web, dll"
-                                        />
-                                        <textarea
-                                            value={submissionComment}
-                                            onChange={(e) => setSubmissionComment(e.target.value)}
-                                            className="w-full px-3 py-2 border text-sm sm:text-base border-gray-300 rounded-lg focus:text-basicBlack-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            placeholder="Add a comment"
-                                        />
+                                    {new Date() > new Date(event.deadline) ? (
                                         <p className="text-white mt-2 text-xs sm:text-sm">
-                                            Tugas dikumpulkan dalam bentuk link sesuai dengan arahan mentor pada hari pembelajaran
+                                            Tugas sudah melewati deadline
                                         </p>
-                                        <button 
-                                            type="submit"
-                                            className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
-                                        >
-                                            {hasSubmitted ? 'Update' : 'Submit'}
-                                        </button>
-                                    </form>
+                                    ) : (
+                                        <form onSubmit={handleSubmission} className="flex flex-col gap-2">
+                                            <input 
+                                                type="text"
+                                                value={submissionLink}
+                                                onChange={(e) => setSubmissionLink(e.target.value)}
+                                                className="w-full px-3 py-2 border border-gray-300 text-sm sm:text-base rounded-lg focus:text-basicBlack-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                placeholder="cth: link github, link web, dll"
+                                            />
+                                            <textarea
+                                                value={submissionComment}
+                                                onChange={(e) => setSubmissionComment(e.target.value)}
+                                                className="w-full px-3 py-2 border text-sm sm:text-base border-gray-300 rounded-lg focus:text-basicBlack-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                placeholder="Add a comment"
+                                            />
+                                            <p className="text-white mt-2 text-xs sm:text-sm">
+                                                Tugas dikumpulkan dalam bentuk link sesuai dengan arahan mentor pada hari pembelajaran
+                                            </p>
+                                            <button 
+                                                type="submit"
+                                                className="w-full px-4 py-2 mt-2 bg-basicRed-10 text-white border-2 border-basicDarkBrown-10 rounded-md sm:text-lg focus:outline-none focus:ring-2 focus:ring-white cursor-pointer hover:bg-red-900 transition-all"
+                                            >
+                                                {hasSubmitted ? 'Update' : 'Submit'}
+                                            </button>
+                                        </form>
+                                    )}
                                     {submissionMessage && <p className="text-white mt-2">{submissionMessage}</p>}
                                 </div>
+
                             </>
                         ) : (
                             // Display message when challenge is not open

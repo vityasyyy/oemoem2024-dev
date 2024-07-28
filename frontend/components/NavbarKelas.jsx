@@ -25,7 +25,7 @@ const NavbarKelas = () => {
             {/* Navigation Bar */}
             <nav className="bg-transparent z-50 fixed w-screen top-0 shadow-lg">
                 <div className={`flex items-center justify-between relative z-30 mx-auto py-8 px-[min(10%,512px)] 3xl:px-0 bg-basicBlack-10 h-12 ${isClick ? '' : 'rounded-b-lg'}`}>
-                    <Link href="/kelas">
+                    <Link href="/">
                         <h1 className="text-white text-xl sm:text-2xl font-semibold">
                             OemOem 
                         </h1>

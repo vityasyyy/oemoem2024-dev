@@ -43,7 +43,7 @@ export default function Daftar() {
                 password,
             }, {withCredentials: true});
 
-            if (registerResponse.data.message === "Register succesful") {
+            if (registerResponse.data.message === "Registration successful") {
                 console.log('Registration successful');
 
                 // Automatically log in the user after registration

@@ -56,7 +56,7 @@ export default function Events() {
         {user ? (
           <Class user={user} events={events} />
         ) : (
-          <div className="flex flex-col items-center justify-center mt-8 bg-basicBlack-10">
+          <div className="flex flex-col items-center justify-center mt-8">
             <h1 className="text-black text-lg mb-4">
               Kamu belum terdaftar, silakan{' '}
               <Link href="/auth/daftar">
