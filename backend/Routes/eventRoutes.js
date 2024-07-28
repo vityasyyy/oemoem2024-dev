@@ -7,12 +7,13 @@ const isFull = require('../Middlewares/isFull');
 const isNotYetOpenedEnroll = require('../Middlewares/isNotYetOpenedEnroll')
 const isNotYetOpenedSubmission = require('../Middlewares/isNotYetOpenedSubmission')
 const isPastDeadline = require('../Middlewares/isPastDeadline')
+const enrollmentEnds = require('../Middlewares/enrollmentEnds');
 const router = express.Router({mergeParams: true})
 const {enroll, getAllEvents, getEvent} = require('../Controllers/eventController');
 const {submit, updateAssignment, checkExistingSubmission} = require('../Controllers/assignmentController');
 
 router.get('/', getAllEvents);
-router.post('/:id/enroll', isAuthenticated, isNotYetOpenedEnroll, isFull, enroll);
+router.post('/:id/enroll', isAuthenticated, isNotYetOpenedEnroll, isFull, enrollmentEnds, enroll);
 router.post('/:id/submit', isAuthenticated, isNotYetOpenedSubmission, isEnrolled, isPastDeadline, submit);
 router.put('/:id/update', isAuthenticated, isAssignmentAuthor, updateAssignment);
 
