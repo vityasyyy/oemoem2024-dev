@@ -170,7 +170,9 @@ const ClassDetail = ({ event, user }) => {
                                 Tanggal dan lokasi
                             </div>
                             <p>{new Date(event.displayDate).toLocaleDateString()}</p>
-                            <p>{event.location}</p>
+                            <Link href="https://maps.app.goo.gl/dAQo2nnGwqP2vTaa9">
+                                <p className="text-[#EDB465]">Departemen Ilmu Komputer dan Elektronika UGM</p>
+                            </Link>
                         </div>
 
                         {/* Kebutuhan */}
@@ -201,10 +203,13 @@ const ClassDetail = ({ event, user }) => {
                         {/* Contact Person */}
                         <div className="flex flex-col gap-2 z-30 text-white">
                             <div className="bg-basicBlue-10 w-fit min-w-44 px-4 py-2 rounded-md">
-                                Contact Person
+                                Contact Person & Group Chat
                             </div>
                             <Link href={event.contactPerson.linkCP}>
-                                <p>{event.contactPerson.namaCP}</p>
+                                <p className='text-[#EDB465]'>{event.contactPerson.namaCP}</p>
+                            </Link>
+                            <Link href={event.groupChat}>
+                                <p className='text-[#EDB465]'>Group Chat Kelas</p>
                             </Link>
                         </div>
                         {/* ENROLL BUTTON */}
@@ -275,7 +280,7 @@ const ClassDetail = ({ event, user }) => {
 
                 ) : (
                     <>
-                        {isChallengeOpen() ? (
+                        {isChallengeOpen() && isEnrolled ? (
                             <>
                                 {/* Challenges Section */}
                 
@@ -299,7 +304,9 @@ const ClassDetail = ({ event, user }) => {
                                     <div className="bg-basicBlue-10 text-lg w-fit min-w-44 px-4 py-2 rounded-md">
                                         Detail tugas
                                     </div>
-                                    <p>{event.assets}</p>
+                                    <Link href={event.assets}>
+                                        <p className='text-[#EDB465]'>Klik di sini untuk melihat detail penugasan</p>
+                                    </Link>
                                 </div>
                 
                                 {/* Pengumpulan */}
@@ -344,10 +351,9 @@ const ClassDetail = ({ event, user }) => {
                         ) : (
                             // Display message when challenge is not open
                             <div className="flex flex-col items-center justify-center text-white h-full">
-                                <p className="text-2xl font-bold mb-4">Challenge belum dibuka</p>
-                                <p className="text-lg">
-                                    Challenge akan dibuka pada: {new Date(event.openAssignment).toLocaleString()}
-                                </p>
+                                <p className="text-2xl font-bold mb-4">{isEnrolled ? 'Penugasan belum dibuka' : 'Enroll untuk melihat penugasan'}</p>
+                                {!isEnrolled && <p className='text-lg'>Silakan enroll untuk mengakses penugasan</p>}
+                                {isChallengeOpen() && !isEnrolled && <p className='text-lg'>Penugasan akan dibuka pada: {new Date(event.openAssignment).toLocaleString}</p>}
                             </div>
                         )}
                     </>
