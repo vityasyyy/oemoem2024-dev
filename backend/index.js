@@ -17,6 +17,7 @@ const eventRoutes = require('./Routes/eventRoutes');
 
 const SECRET = process.env.SECRET;
 const app = express();
+app.set('trust proxy', 1);
 
 mongoose.set('strictQuery', true);
 connectDB();
@@ -32,8 +33,24 @@ store.on('error', function(error) {
     console.log('session store error', error);
 })
 const sessionConfig = {
-    store, secret: SECRET, resave: false, saveUninitialized: false, cookies: { httpOnly: true, expires: Date.now() + 1000 * 60 * 60 * 24}, maxAge: 1000 * 60 * 60 * 24
-}
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI,
+        touchAfter: 24 * 60 * 60,
+        crypto: {
+            secret: SECRET
+        }
+    }),
+    secret: SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production', // Only use secure in production
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // Important for cross-site cookies in production
+        maxAge: 1000 * 60 * 60 * 24
+    }
+};
+
 
 app.use(session(sessionConfig));
 app.use(helmet({
@@ -51,7 +68,7 @@ passport.deserializeUser(User.deserializeUser())
 
 app.use(cors({
     origin: 'http://localhost:3000', // Replace with your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS'],
     credentials: true // Allow credentials (cookies) to be sent
 }));
 app.use(express.json());
@@ -70,9 +87,9 @@ app.all('*', (req, res, next) => {
 
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
-    if(!err.message) err.message = "Something is wrong"
-    res.status(statusCode);
-})
+    if(!err.message) err.message = "Something went wrong"
+    res.status(statusCode).json({ error: err.message });
+});
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

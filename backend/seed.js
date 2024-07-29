@@ -1,8 +1,10 @@
+require('dotenv').config()
 const mongoose = require('mongoose');
 const Event = require('./Models/events'); // Adjust this path as needed
-
+const Assignment = require('./Models/assignments');
+const User = require('./Models/users')
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/oemoem2024');
+mongoose.connect(process.env.MONGODB_URI);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -388,7 +390,9 @@ const sampleEvents = [
 
 // Function to seed the database
 const seedDB = async () => {
-    await Event.deleteMany({}); // Clear existing events
+    await Event.deleteMany({});
+    await Assignment.deleteMany({});
+    await User.deleteMany({}) // Clear existing events
     for (let eventData of sampleEvents) {
         const event = new Event(eventData);
         await event.save();
