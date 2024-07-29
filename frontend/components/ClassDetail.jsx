@@ -25,7 +25,7 @@ const ClassDetail = ({ event, user }) => {
     // Memoized checkExistingSubmission to avoid unnecessary re-renders
     const checkExistingSubmission = useCallback(async () => {
         try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submission`, { withCredentials: true });
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submission`, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
             if (response.data.assignment) {
                 setHasSubmitted(true);
                 setAssignmentId(response.data.assignment._id);
@@ -50,7 +50,7 @@ const ClassDetail = ({ event, user }) => {
     const handleEnroll = async () => {
         try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/enroll`, {}, {
-                withCredentials: true
+                withCredentials: true, headers: {'Content-Type': 'application/json'}
             });
             if (response.status === 200) {
                 setIsEnrolled(true);
@@ -70,12 +70,12 @@ const ClassDetail = ({ event, user }) => {
                 response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/event/${assignmentId}/update`, {
                     assignmentLink: submissionLink,
                     assignmentComment: submissionComment
-                }, { withCredentials: true });
+                }, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
             } else {
                 response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submit`, {
                     assignmentLink: submissionLink,
                     assignmentComment: submissionComment
-                }, { withCredentials: true });
+                }, { withCredentials: true, headers: {'Content-Type': 'application/json'}});
             }
 
             if (response.status === 200) {

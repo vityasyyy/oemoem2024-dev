@@ -17,7 +17,7 @@ export default function Masuk() {
     useEffect(() => {
         const checkUserLoggedIn = async () => {
             try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true });
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true, headers: {'Content-Type': 'application/json'}});
                 if (response.data.user) {
                     router.push('/'); // Redirect to home page if user is logged in
                 }
@@ -41,7 +41,7 @@ export default function Masuk() {
             console.log(response)
             if (response.status === 200) {
                 const validateResponse = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, {
-                    withCredentials: true
+                    withCredentials: true, headers: {'Content-Type': 'application/json'}
                 });
                 console.log(validateResponse)
                 // Login successful, redirect to home page

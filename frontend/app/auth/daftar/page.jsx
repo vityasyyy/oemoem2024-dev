@@ -19,7 +19,7 @@ export default function Daftar() {
     useEffect(() => {
         const checkUserLoggedIn = async () => {
             try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true });
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
                 if (response.data.user) {
                     router.push('/'); // Redirect to home page if user is logged in
                 }
@@ -41,7 +41,7 @@ export default function Daftar() {
                 email,
                 username,
                 password,
-            }, {withCredentials: true});
+            }, {withCredentials: true, headers: {'Content-Type': 'application/json'}});
 
             if (registerResponse.data.message === "Registration successful") {
                 console.log('Registration successful');
@@ -50,7 +50,7 @@ export default function Daftar() {
                 const loginResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
                     email,
                     password
-                }, { withCredentials: true });
+                }, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
 
                 console.log('Login response:', loginResponse);
 
