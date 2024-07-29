@@ -16,11 +16,12 @@ export default function Events() {
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/auth/validate', { withCredentials: true });
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true });
         if (response.data.user) {
           setUser(response.data.user);
         }
       } catch (error) {
+        console.log(error)
         console.error('Error checking authentication status:', error);
       } finally {
         setLoading(false); // Set loading to false after checking
@@ -29,7 +30,7 @@ export default function Events() {
 
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/event');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event`);
         setEvents(response.data);
       } catch (error) {
         console.error('Error fetching events:', error);

@@ -18,7 +18,7 @@ export default function Home() {
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/auth/validate', { withCredentials: true });
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true });
         console.log(response);
         if (response.data.user) {
           setUser(response.data.user);
@@ -30,7 +30,7 @@ export default function Home() {
 
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/event');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event`);
         setEvents(response.data);
       } catch (error) {
         console.error('Error fetching events:', error);
