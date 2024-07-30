@@ -12,33 +12,55 @@ import GabungGrupMini from "./GabungGrupMini";
 
 const Class = ({ user }) => {
     const [activeView, setActiveView] = useState('kelas');
-    const [enrolledClasses, setEnrolledClasses] = useState([]);
-    const [allClasses, setAllClasses] = useState([]);
+const [enrolledClasses, setEnrolledClasses] = useState([]);
+const [allClasses, setAllClasses] = useState([]);
 
-    useEffect(() => {
-        if (user) {
-            fetchEnrolledClasses();
-            fetchAllClasses();
+useEffect(() => {
+    if (user) {
+        fetchEnrolledClasses();
+        fetchAllClasses();
+    }
+}, [user]);
+
+const fetchEnrolledClasses = async () => {
+    try {
+        // Get the JWT from localStorage
+        const token = localStorage.getItem('jwt');
+        if (token) {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/${user.id}/enrolled`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            setEnrolledClasses(response.data.enrolledTo);
+        } else {
+            console.error('No JWT token found.');
         }
-    }, [user]);
+    } catch (error) {
+        console.error('Error fetching enrolled classes:', error);
+    }
+};
 
-    const fetchEnrolledClasses = async () => {
-        try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/${user._id}/enrolled`, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
-            setEnrolledClasses(response.data);
-        } catch (error) {
-            console.error('Error fetching enrolled classes:', error);
-        }
-    };
-
-    const fetchAllClasses = async () => {
-        try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event`, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
+const fetchAllClasses = async () => {
+    try {
+        // Get the JWT from localStorage
+        const token = localStorage.getItem('jwt');
+        if (token) {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
             setAllClasses(response.data);
-        } catch (error) {
-            console.error('Error fetching all classes:', error);
+        } else {
+            console.error('No JWT token found.');
         }
-    };
+    } catch (error) {
+        console.error('Error fetching all classes:', error);
+    }
+};
     
     const scrollRef = useRef(null);
     const [scrollPosition, setScrollPosition] = useState(0);

@@ -9,40 +9,62 @@ import { useRouter } from 'next/navigation';
 
 const Akun = () => {
     const [user, setUser] = useState(null);
-    const router = useRouter();
+const router = useRouter();
 
-    useEffect(() => {
-        fetchUser();
-    }, []);
+useEffect(() => {
+    fetchUser();
+}, []);
 
-    const fetchUser = async () => {
-        try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
+const fetchUser = async () => {
+    try {
+        // Get the JWT from localStorage
+        const token = localStorage.getItem('jwt');
+        if (token) {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
             if (response.data.user) {
                 setUser(response.data.user);
             } else {
                 // Redirect to login if not authenticated
                 router.push('/auth/masuk');
             }
-        } catch (error) {
-            console.error('Error fetching user:', error);
+        } else {
+            // Redirect to login if no token found
             router.push('/auth/masuk');
         }
-    };
+    } catch (error) {
+        console.error('Error fetching user:', error);
+        router.push('/auth/masuk');
+    }
+};
 
-    const handleLogout = async () => {
-        try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {}, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
-            if (response.data.message === "Logout successful") {
-                // Clear any client-side storage if you're using any
-                localStorage.removeItem('user'); // If you're storing user data in localStorage
-                // Redirect to login page
-                router.push('/auth/masuk');
+const handleLogout = async () => {
+    try {
+        // Send logout request to the server
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {}, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
             }
-        } catch (error) {
-            console.error('Error logging out:', error);
+        });
+
+        if (response.data.message === "Logout successful") {
+            // Clear JWT from localStorage
+            localStorage.removeItem('jwt');
+            // Clear any additional client-side storage if needed
+            setUser(null); // Optionally clear user state
+            // Redirect to login page
+            router.push('/auth/masuk');
         }
-    };
+    } catch (error) {
+        console.error('Error logging out:', error);
+    }
+};
 
     if (!user) return <Loading />;
 

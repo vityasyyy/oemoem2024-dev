@@ -25,12 +25,22 @@ const ClassDetail = ({ event, user }) => {
     // Memoized checkExistingSubmission to avoid unnecessary re-renders
     const checkExistingSubmission = useCallback(async () => {
         try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submission`, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
-            if (response.data.assignment) {
-                setHasSubmitted(true);
-                setAssignmentId(response.data.assignment._id);
-                setSubmissionLink(response.data.assignment.assignmentLink);
-                setSubmissionComment(response.data.assignment.assignmentComment);
+            const token = localStorage.getItem('jwt');
+            if (token) {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submission`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.data.assignment) {
+                    setHasSubmitted(true);
+                    setAssignmentId(response.data.assignment._id);
+                    setSubmissionLink(response.data.assignment.assignmentLink);
+                    setSubmissionComment(response.data.assignment.assignmentComment);
+                }
+            } else {
+                console.error('No JWT token found.');
             }
         } catch (error) {
             console.error('Error checking existing submission:', error);
@@ -40,7 +50,7 @@ const ClassDetail = ({ event, user }) => {
     useEffect(() => {
         if (user && event) {
             const enrolled = event.enrolledBy.some(enrolledUser =>
-                enrolledUser._id.toString() === user._id.toString()
+                enrolledUser._id.toString() === user.id.toString()
             );
             setIsEnrolled(enrolled);
             checkExistingSubmission();
@@ -49,12 +59,20 @@ const ClassDetail = ({ event, user }) => {
 
     const handleEnroll = async () => {
         try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/enroll`, {}, {
-                withCredentials: true, headers: {'Content-Type': 'application/json'}
-            });
-            if (response.status === 200) {
-                setIsEnrolled(true);
-                setEnrollmentError(null);
+            const token = localStorage.getItem('jwt');
+            if (token) {
+                const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/enroll`, {}, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.status === 200) {
+                    setIsEnrolled(true);
+                    setEnrollmentError(null);
+                }
+            } else {
+                console.error('No JWT token found.');
             }
         } catch (error) {
             setEnrollmentError(error.response?.data?.error || 'An error occurred during enrollment');
@@ -65,27 +83,42 @@ const ClassDetail = ({ event, user }) => {
     const handleSubmission = async (e) => {
         e.preventDefault();
         try {
-            let response;
-            if (hasSubmitted) {
-                response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/event/${assignmentId}/update`, {
-                    assignmentLink: submissionLink,
-                    assignmentComment: submissionComment
-                }, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
-            } else {
-                response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submit`, {
-                    assignmentLink: submissionLink,
-                    assignmentComment: submissionComment
-                }, { withCredentials: true, headers: {'Content-Type': 'application/json'}});
-            }
+            const token = localStorage.getItem('jwt');
+            if (token) {
+                let response;
+                if (hasSubmitted) {
+                    response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/event/${assignmentId}/update`, {
+                        assignmentLink: submissionLink,
+                        assignmentComment: submissionComment
+                    }, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                } else {
+                    response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/event/${event._id}/submit`, {
+                        assignmentLink: submissionLink,
+                        assignmentComment: submissionComment
+                    }, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                }
 
-            if (response.status === 200) {
-                setSubmissionMessage(hasSubmitted ? 'Assignment updated successfully!' : 'Assignment submitted successfully!');
-                setHasSubmitted(true);
-                if (!hasSubmitted) {
-                    setAssignmentId(response.data.assignment._id);
+                if (response.status === 200) {
+                    setSubmissionMessage(hasSubmitted ? 'Assignment updated successfully!' : 'Assignment submitted successfully!');
+                    setHasSubmitted(true);
+                    if (!hasSubmitted) {
+                        setAssignmentId(response.data.assignment._id);
+                    }
+                } else {
+                    setSubmissionMessage(hasSubmitted ? 'Update failed. Please try again.' : 'Submission failed. Please try again.');
                 }
             } else {
-                setSubmissionMessage(hasSubmitted ? 'Update failed. Please try again.' : 'Submission failed. Please try again.');
+                console.error('No JWT token found.');
             }
         } catch (error) {
             setSubmissionMessage(error.response?.data?.error || 'An error occurred. Please try again.');

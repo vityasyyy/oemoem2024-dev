@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import BackButton from "@/components/BackButton";
 import LoginNavbar from "@/components/LoginNavbar";
 import Image from "next/image";
@@ -19,9 +19,19 @@ export default function Daftar() {
     useEffect(() => {
         const checkUserLoggedIn = async () => {
             try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
-                if (response.data.user) {
-                    router.push('/'); // Redirect to home page if user is logged in
+                // Get the JWT from localStorage
+                const token = localStorage.getItem('jwt');
+                if (token) {
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.data.user) {
+                        router.push('/kelas'); // Redirect to home page if user is logged in
+                    }
                 }
             } catch (error) {
                 console.error('Error checking authentication status:', error);
@@ -41,7 +51,7 @@ export default function Daftar() {
                 email,
                 username,
                 password,
-            }, {withCredentials: true, headers: {'Content-Type': 'application/json'}});
+            }, { headers: { 'Content-Type': 'application/json' } });
 
             if (registerResponse.data.message === "Registration successful") {
                 console.log('Registration successful');
@@ -50,12 +60,12 @@ export default function Daftar() {
                 const loginResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
                     email,
                     password
-                }, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
-
-                console.log('Login response:', loginResponse);
+                }, { headers: { 'Content-Type': 'application/json' } });
 
                 if (loginResponse.status === 200) {
                     console.log('Login successful');
+                    // Store the JWT in localStorage
+                    localStorage.setItem('jwt', loginResponse.data.token);
                     router.push('/kelas');
                 } else {
                     console.log('Login failed:', loginResponse.data);

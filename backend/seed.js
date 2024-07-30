@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Event = require('./Models/events'); // Adjust this path as needed
 const Assignment = require('./Models/assignments');
 const User = require('./Models/users')
+const BlacklistedToken = require('./Models/tokenBlacklist');
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -392,7 +393,8 @@ const sampleEvents = [
 const seedDB = async () => {
     await Event.deleteMany({});
     await Assignment.deleteMany({});
-    await User.deleteMany({}) // Clear existing events
+    await User.deleteMany({});
+    await BlacklistedToken.deleteMany({}) // Clear existing events
     for (let eventData of sampleEvents) {
         const event = new Event(eventData);
         await event.save();

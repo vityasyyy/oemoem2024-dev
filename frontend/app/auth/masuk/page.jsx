@@ -1,5 +1,4 @@
-
-"use client"
+'use client'
 import LoginNavbar from "@/components/LoginNavbar";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,9 +16,19 @@ export default function Masuk() {
     useEffect(() => {
         const checkUserLoggedIn = async () => {
             try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true, headers: {'Content-Type': 'application/json'}});
-                if (response.data.user) {
-                    router.push('/'); // Redirect to home page if user is logged in
+                // Get the JWT from localStorage
+                const token = localStorage.getItem('jwt');
+                if (token) {
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.data.user) {
+                        router.push('/kelas'); // Redirect to home page if user is logged in
+                    }
                 }
             } catch (error) {
                 console.error('Error checking authentication status:', error);
@@ -37,18 +46,18 @@ export default function Masuk() {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
                 email,
                 password
-            }, {withCredentials: true});
-            console.log(response)
+            }, { headers: { 'Content-Type': 'application/json' } });
+
             if (response.status === 200) {
-                const validateResponse = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, {
-                    withCredentials: true, headers: {'Content-Type': 'application/json'}
-                });
-                console.log(validateResponse)
-                // Login successful, redirect to home page
+                // Store the JWT in localStorage
+                localStorage.setItem('jwt', response.data.token);
+                console.log('Login successful');
                 router.push('/kelas');
+            } else {
+                console.log('Login failed:', response.data);
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
             setError(error.response?.data?.error || 'An error occurred during login');
         }
     };
@@ -81,7 +90,7 @@ export default function Masuk() {
                         {/* Form */}
                         <h2 className="text-basicLightBrown-10 font-medium sm:mt-4">Email</h2>
                         <input
-                            type="text"
+                            type="email"
                             placeholder="Tuliskan Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}

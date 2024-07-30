@@ -18,19 +18,36 @@ export default function Home() {
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true });
+        // Get the JWT from localStorage or wherever it's stored
+        const token = localStorage.getItem('jwt');
+        if (!token) {
+          throw new Error('No token found');
+        }
+
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
         console.log(response);
         if (response.data.user) {
           setUser(response.data.user);
+        } else {
+          // Handle case where user is not authenticated
+          localStorage.removeItem('jwt');
         }
       } catch (error) {
         console.error('Error checking authentication status:', error);
+        // Handle logout or redirection if needed
       }
     };
 
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event`, {});
+
         setEvents(response.data);
       } catch (error) {
         console.error('Error fetching events:', error);
@@ -50,7 +67,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero user={user}/>
+      <Hero user={user} />
       <div className="bg-basicBlack-10 px-[min(10%,512px)]">
         <Classes events={events} />
       </div>

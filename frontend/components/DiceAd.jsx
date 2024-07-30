@@ -9,9 +9,19 @@ const DiceAd = () => {
     useEffect(() => {
         const checkUserLoggedIn = async () => {
             try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true });
-                if (response.data.user) {
-                    setIsLoggedIn(true);
+                // Get the JWT from localStorage
+                const token = localStorage.getItem('jwt');
+                if (token) {
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.data.user) {
+                        router.push('/kelas'); // Redirect to home page if user is logged in
+                    }
                 }
             } catch (error) {
                 console.error('Error checking authentication status:', error);

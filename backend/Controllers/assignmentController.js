@@ -58,7 +58,6 @@ module.exports.updateAssignment = async (req, res) => {
         const { id: assignmentId } = req.params;
         const { assignmentLink, assignmentComment } = req.body;
         const userId = req.user._id;
-
         // Find the assignment by ID
         const assignment = await Assignment.findById(assignmentId);
 

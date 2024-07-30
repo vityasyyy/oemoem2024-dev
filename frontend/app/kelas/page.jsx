@@ -16,39 +16,53 @@ export default function Events() {
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, { withCredentials: true, headers: {'Content-Type': 'application/json'} });
-        if (response.data.user) {
-          setUser(response.data.user);
+        // Get the JWT from localStorage
+        const token = localStorage.getItem('jwt');
+        if (token) {
+          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate`, {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          });
+
+          if (response.data.user) {
+            console.log(response.data)
+            setUser(response.data.user); // Set user state if authenticated
+            fetchEvents(); // Fetch events if user is logged in
+          } else {
+            router.push('/auth/masuk'); // Redirect to login if user is not authenticated
+          }
+        } else {
+          router.push('/auth/masuk'); // Redirect to login if no token is found
         }
       } catch (error) {
-        console.log(error)
         console.error('Error checking authentication status:', error);
-      } finally {
-        setLoading(false); // Set loading to false after checking
+        router.push('/auth/masuk'); // Redirect to login on error
       }
     };
 
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+            'Content-Type': 'application/json'
+          }
+        });
         setEvents(response.data);
+        setLoading(false); // Update loading state after fetching events
       } catch (error) {
         console.error('Error fetching events:', error);
+        setLoading(false); // Ensure loading state is updated on error
       }
     };
 
-    checkUserLoggedIn();
-    fetchEvents();
-  }, []);
-
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push('/auth/masuk'); // Use router.push for navigation
-    }
-  }, [loading, user, router]);
+    checkUserLoggedIn(); // Start user authentication check
+  }, [router]); // Add router to dependencies to handle route changes
 
   if (loading) {
-    return <Loading />; // Show a loading message while checking authentication
+    return <Loading />; // Show a loading message while checking authentication and fetching data
   }
 
   return (
