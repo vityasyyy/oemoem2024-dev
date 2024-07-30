@@ -1,3 +1,4 @@
+require('dotenv').config()
 const User = require('../Models/users');
 const jwt = require('jsonwebtoken');
 const BlacklistedToken = require('../Models/tokenBlacklist');

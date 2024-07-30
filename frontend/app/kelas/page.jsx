@@ -27,7 +27,6 @@ export default function Events() {
           });
 
           if (response.data.user) {
-            console.log(response.data)
             setUser(response.data.user); // Set user state if authenticated
             fetchEvents(); // Fetch events if user is logged in
           } else {
